@@ -9,8 +9,21 @@ from typing import Optional
 
 # The only values we accept for these fields.
 # If something outside this list gets passed in, the system throws an error.
-VALID_SOURCES = {"wasserman", "deloitte", "bcg", "nielsen", "mckinsey", "reddit"}
-VALID_SPORTS = {"WNBA", "NWSL", "WTA", "volleyball", "general"}
+VALID_SOURCES = {
+    "wasserman", "deloitte", "bcg", "nielsen",
+    "mckinsey",  # reserved — site blocks scrapers, add manually if needed
+    "reddit", "youtube"
+}
+VALID_SPORTS = {
+    # Women's leagues
+    "WNBA", "NWSL", "WTA", "PWHL",
+    # Men's leagues
+    "NFL", "NBA", "MLB", "MLS", "NHL",
+    # International
+    "formula1", "olympics", "laliga", "premierleague",
+    # General
+    "volleyball", "general"
+}
 VALID_SEASON_PHASES = {"preseason", "midseason", "playoff", "finals", "offseason", "unknown"}
 
 
