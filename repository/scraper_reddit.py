@@ -1,5 +1,6 @@
 # scraper_reddit.py — Reddit female fan conversation scraper.
-# Uses public .json endpoints (no API key). Run: python scraper_reddit.py
+# Uses public .json endpoints (no API key). 
+# Run: python3 scraper_reddit.py
 # Install: pip install requests python-dotenv
 
 import os
