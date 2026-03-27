@@ -1,0 +1,92 @@
+[
+  {
+    "post_id": "75c4c5d2-e041-4783-9b77-f06d22432b89",
+    "sentiment": "positive",
+    "sentiment_score": 0.89,
+    "emotional_affinity_score": 86,
+    "behavioral_pathway": "none",
+    "confidence_score": 0.82,
+    "priority_signal": "none"
+  },
+  {
+    "post_id": "0230dd74-d395-4159-b2c5-94504564dd1f",
+    "sentiment": "positive",
+    "sentiment_score": 0.74,
+    "emotional_affinity_score": 70,
+    "behavioral_pathway": "none",
+    "confidence_score": 0.59,
+    "priority_signal": "none"
+  },
+  {
+    "post_id": "ef6f5077-e9b5-4357-bef3-e1d20075be48",
+    "sentiment": "negative",
+    "sentiment_score": 0.32,
+    "emotional_affinity_score": 44,
+    "behavioral_pathway": "churn_risk",
+    "confidence_score": 0.4,
+    "priority_signal": "none"
+  },
+  {
+    "post_id": "28be460d-ab47-4be4-bd2c-63db50ba4ad3",
+    "sentiment": "positive",
+    "sentiment_score": 0.74,
+    "emotional_affinity_score": 45,
+    "behavioral_pathway": "none",
+    "confidence_score": 0.46,
+    "priority_signal": "none"
+  },
+  {
+    "post_id": "60bb53c7-2716-440a-82c6-1a7b64fa57c0",
+    "sentiment": "positive",
+    "sentiment_score": 0.82,
+    "emotional_affinity_score": 54,
+    "behavioral_pathway": "none",
+    "confidence_score": 0.59,
+    "priority_signal": "none"
+  },
+  {
+    "post_id": "b1ea26cd-cbc9-45b1-b354-96e050175a11",
+    "sentiment": "negative",
+    "sentiment_score": 0.14,
+    "emotional_affinity_score": 93,
+    "behavioral_pathway": "identity_attachment",
+    "confidence_score": 0.83,
+    "priority_signal": "loyalty_stress"
+  },
+  {
+    "post_id": "383882b0-3771-48dd-a236-18f15fbdd1a9",
+    "sentiment": "positive",
+    "sentiment_score": 0.85,
+    "emotional_affinity_score": 55,
+    "behavioral_pathway": "none",
+    "confidence_score": 0.62,
+    "priority_signal": "loyalty_stress"
+  },
+  {
+    "post_id": "4c74d49f-d199-4c1a-8afb-c2187cb158fa",
+    "sentiment": "negative",
+    "sentiment_score": 0.1,
+    "emotional_affinity_score": 79,
+    "behavioral_pathway": "none",
+    "confidence_score": 0.79,
+    "priority_signal": "loyalty_stress"
+  },
+  {
+    "post_id": "8c5b8e2f-5ab0-470c-a534-6956f740d878",
+    "sentiment": "positive",
+    "sentiment_score": 0.85,
+    "emotional_affinity_score": 66,
+    "behavioral_pathway": "identity_attachment",
+    "confidence_score": 0.68,
+    "priority_signal": "identity_anchor"
+  },
+  {
+    "post_id": "5d320848-5177-4307-a189-f56c5e5422fa",
+    "sentiment": "negative",
+    "sentiment_score": 0.07,
+    "emotional_affinity_score": 51,
+    "behavioral_pathway": "purchase_intent",
+    "confidence_score": 0.68,
+    "priority_signal": "none"
+  }
+]
