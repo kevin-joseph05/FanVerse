@@ -1,0 +1,12 @@
+[project]
+name = "fanverse"
+version = "0.1.0"
+description = "FanVerse signal extraction and Reddit scraper"
+requires-python = ">=3.10"
+dependencies = [
+    "vaderSentiment",
+    "transformers",
+    "requests",
+    "python-dotenv",
+    "torch",
+]

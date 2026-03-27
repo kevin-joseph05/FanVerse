@@ -1,0 +1,8 @@
+.python-version
+uv.lock
+.venv/
+__pycache__/
+*.pyc
+.pytest_cache/
+.env
+*.egg-info/
