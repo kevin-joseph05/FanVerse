@@ -13,4 +13,9 @@ dependencies = [
     "pandas>=2.3.3",
     "scikit-learn>=1.7.2",
     "matplotlib>=3.10.8",
+    "streamlit>=1.41.0",
+    "plotly>=5.24.0",
+    "google-generativeai>=0.8.0",
+    "rembg[cpu]>=2.0.69",
+    "pillow>=12.1.1",
 ]
