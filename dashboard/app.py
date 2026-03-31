@@ -7,6 +7,7 @@ Run:  streamlit run dashboard/app.py
 import streamlit as st
 import plotly.graph_objects as go
 import plotly.express as px
+from plotly.subplots import make_subplots
 import pandas as pd
 
 from data import (
@@ -740,41 +741,48 @@ sim = compute_simulation(st.session_state["fanverse_query_idx"])
 sim_chart_col, sim_summary_col = st.columns([3, 2])
 
 with sim_chart_col:
-    fig_sim = go.Figure()
+    colours = [SEGMENT_COLOURS.get(s, "#ccc") for s in sim["segments"]]
 
-    uplift_vals = [p - b for p, b in zip(sim["projected"], sim["baseline"])]
+    fig_sim = make_subplots(
+        rows=1, cols=2,
+        specs=[[{"type": "domain"}, {"type": "domain"}]],
+        subplot_titles=["Status Quo", "With Recommended Action"],
+    )
 
-    fig_sim.add_trace(go.Bar(
-        name="Baseline (status quo)",
-        y=sim["segments"],
-        x=sim["baseline"],
-        orientation="h",
-        marker_color="#d0d0d0",
-        hovertemplate="%{y}<br>Baseline: %{x}%<extra></extra>",
-    ))
-    fig_sim.add_trace(go.Bar(
-        name="Uplift with action",
-        y=sim["segments"],
-        x=uplift_vals,
-        orientation="h",
-        marker_color="#4A90D9",
-        hovertemplate="%{y}<br>Uplift: +%{x}%<extra></extra>",
-    ))
+    fig_sim.add_trace(go.Pie(
+        labels=sim["segments"],
+        values=sim["before"],
+        hole=0.5,
+        marker_colors=colours,
+        textinfo="percent",
+        textfont=dict(size=10),
+        hovertemplate="%{label}: %{value}%<extra></extra>",
+        showlegend=True,
+        name="",
+    ), row=1, col=1)
+
+    fig_sim.add_trace(go.Pie(
+        labels=sim["segments"],
+        values=sim["after"],
+        hole=0.5,
+        marker_colors=colours,
+        textinfo="percent",
+        textfont=dict(size=10),
+        hovertemplate="%{label}: %{value}%<extra></extra>",
+        showlegend=False,
+        name="",
+    ), row=1, col=2)
 
     fig_sim.update_layout(
-        barmode="stack",
-        height=320,
-        margin=dict(l=0, r=40, t=8, b=0),
-        plot_bgcolor="white",
+        height=340,
+        margin=dict(l=0, r=0, t=40, b=0),
         paper_bgcolor="white",
-        legend=dict(orientation="h", yanchor="bottom", y=1.02, xanchor="left", x=0, font=dict(size=10)),
-        xaxis=dict(
-            title="Projected 90-day retention (%)",
-            range=[0, 100],
-            showgrid=True, gridcolor="#f0f0f0",
-            title_font=dict(size=11),
+        legend=dict(
+            orientation="v",
+            yanchor="middle", y=0.5,
+            xanchor="left", x=1.02,
+            font=dict(size=10),
         ),
-        yaxis=dict(showgrid=False, tickfont=dict(size=11)),
     )
     st.plotly_chart(fig_sim, use_container_width=True)
 
@@ -795,10 +803,10 @@ with sim_summary_col:
             unsafe_allow_html=True,
         )
 
-    _metric_row("Fans re-engaged (at-risk segments)", f"+{s['fans_reengaged_pct']}%", "#2a7a2a")
-    _metric_row("Churn reduction",                    f"−{s['churn_reduction']}%",   "#4A90D9")
-    _metric_row("Conversion uplift (mid-tier)",       f"+{s['conversion_uplift']}%", "#2a7a2a")
-    _metric_row("Model confidence",                   f"{s['model_confidence']}%",   "#888")
+    _metric_row("At-risk fans converted",       f"{s['fans_reengaged_pct']}%",  "#2a7a2a")
+    _metric_row("Drop in at-risk share (pp)",   f"−{s['churn_reduction']}pp",   "#4A90D9")
+    _metric_row("Growth in top-tier fans",      f"+{s['conversion_uplift']}%",  "#2a7a2a")
+    _metric_row("Model confidence",             f"{s['model_confidence']}%",    "#888")
 
     st.markdown("</div>", unsafe_allow_html=True)
     st.caption("Model-based projection · 90-day horizon · anchored to real cluster sentiment means")

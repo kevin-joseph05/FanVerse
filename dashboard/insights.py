@@ -153,110 +153,117 @@ def get_insight(query: str, signals_df: pd.DataFrame, segments_df: pd.DataFrame)
 
 # ── Simulation model ───────────────────────────────────────────────────────
 
-# Baseline 90-day retention rates derived from real cluster sentiment means.
-# Frustrated Loyalist (sentiment 0.19) and Passive/Disengaged (0.40) are
-# the two at-risk groups. Rates are conservative estimates, not predictions.
-_BASELINE_RETENTION = {
-    "Superfan":                          90,
-    "Core Engaged Fan":                  72,
-    "Casual Enthusiast":                 55,
-    "Emotionally Invested, Weak Signal": 48,
-    "Frustrated Loyalist":               22,
-    "Passive / Disengaged":              18,
+_SEGMENT_ORDER = [
+    "Superfan",
+    "Emotionally Invested, Weak Signal",
+    "Casual Enthusiast",
+    "Core Engaged Fan",
+    "Frustrated Loyalist",
+    "Passive / Disengaged",
+]
+
+# Status quo fan base distribution (% of total, sums to 100)
+_BEFORE_DIST = {
+    "Superfan":                          12,
+    "Core Engaged Fan":                  18,
+    "Casual Enthusiast":                 22,
+    "Emotionally Invested, Weak Signal": 20,
+    "Frustrated Loyalist":               15,
+    "Passive / Disengaged":              13,
 }
 
-# Per-query uplift applied to baseline when recommended action is taken.
-# Index matches PRESET_QUERIES order.
-_UPLIFT_BY_QUERY = [
-    # Query 0 — address disengagement / loyalty stress signals
+# After-action distributions per preset query — fans convert upward
+_AFTER_DIST = [
+    # Query 0 — address disengagement / loyalty stress
     {
-        "Superfan":                          3,
-        "Core Engaged Fan":                  6,
-        "Casual Enthusiast":                 9,
-        "Emotionally Invested, Weak Signal": 11,
-        "Frustrated Loyalist":               22,
-        "Passive / Disengaged":              16,
+        "Superfan":                          13,
+        "Core Engaged Fan":                  20,
+        "Casual Enthusiast":                 28,
+        "Emotionally Invested, Weak Signal": 20,
+        "Frustrated Loyalist":               11,
+        "Passive / Disengaged":               8,
     },
     # Query 1 — cross-sport co-marketing activation
     {
-        "Superfan":                          5,
-        "Core Engaged Fan":                  11,
-        "Casual Enthusiast":                 16,
-        "Emotionally Invested, Weak Signal": 18,
-        "Frustrated Loyalist":               4,
-        "Passive / Disengaged":              3,
+        "Superfan":                          17,
+        "Core Engaged Fan":                  25,
+        "Casual Enthusiast":                 25,
+        "Emotionally Invested, Weak Signal": 19,
+        "Frustrated Loyalist":               10,
+        "Passive / Disengaged":               4,
     },
     # Query 2 — cultural moment content strategy
     {
-        "Superfan":                          4,
-        "Core Engaged Fan":                  7,
-        "Casual Enthusiast":                 10,
-        "Emotionally Invested, Weak Signal": 9,
-        "Frustrated Loyalist":               28,
-        "Passive / Disengaged":              12,
+        "Superfan":                          14,
+        "Core Engaged Fan":                  22,
+        "Casual Enthusiast":                 27,
+        "Emotionally Invested, Weak Signal": 19,
+        "Frustrated Loyalist":               10,
+        "Passive / Disengaged":               8,
     },
 ]
 
-# Fallback uplift for free-text queries
-_DEFAULT_UPLIFT = {seg: 8 for seg in _BASELINE_RETENTION}
+# Fallback for free-text queries
+_DEFAULT_AFTER = {
+    "Superfan":                          14,
+    "Core Engaged Fan":                  21,
+    "Casual Enthusiast":                 24,
+    "Emotionally Invested, Weak Signal": 20,
+    "Frustrated Loyalist":               12,
+    "Passive / Disengaged":               9,
+}
 
 
 def compute_simulation(query_index: int | None) -> dict:
     """
-    Returns simulation data for the bar chart and summary metrics.
+    Returns before/after segment distribution data for the donut charts.
 
     query_index: int (0–2) for preset queries, None for free-text.
 
     Return shape:
         {
-            "segments":   list[str],
-            "baseline":   list[int],   # % retention, status quo
-            "projected":  list[int],   # % retention, with action
+            "segments": list[str],
+            "before":   list[int],  # % of fan base per segment, status quo
+            "after":    list[int],  # % of fan base per segment, with action
             "summary": {
-                "churn_reduction":    int,  # % improvement in at-risk segments
-                "conversion_uplift":  int,  # % improvement in mid-tier segments
-                "fans_reengaged_pct": int,  # avg uplift across at-risk
-                "model_confidence":   int,  # fixed per scenario
+                "churn_reduction":    int,  # pp drop in at-risk share
+                "conversion_uplift":  int,  # % increase in top-tier share
+                "fans_reengaged_pct": int,  # % of at-risk fans converted
+                "model_confidence":   int,
             }
         }
     """
-    uplift = (
-        _UPLIFT_BY_QUERY[query_index]
-        if isinstance(query_index, int) and 0 <= query_index < len(_UPLIFT_BY_QUERY)
-        else _DEFAULT_UPLIFT
+    after_map = (
+        _AFTER_DIST[query_index]
+        if isinstance(query_index, int) and 0 <= query_index < len(_AFTER_DIST)
+        else _DEFAULT_AFTER
     )
 
-    # Order segments from most to least engaged for the chart
-    order = [
-        "Superfan",
-        "Core Engaged Fan",
-        "Casual Enthusiast",
-        "Emotionally Invested, Weak Signal",
-        "Frustrated Loyalist",
-        "Passive / Disengaged",
-    ]
+    before = [_BEFORE_DIST[s] for s in _SEGMENT_ORDER]
+    after  = [after_map[s]    for s in _SEGMENT_ORDER]
 
-    baseline  = [_BASELINE_RETENTION[s] for s in order]
-    projected = [min(99, _BASELINE_RETENTION[s] + uplift[s]) for s in order]
+    at_risk  = ["Frustrated Loyalist", "Passive / Disengaged"]
+    top_tier = ["Superfan", "Core Engaged Fan"]
 
-    at_risk     = ["Frustrated Loyalist", "Passive / Disengaged"]
-    mid_tier    = ["Casual Enthusiast", "Emotionally Invested, Weak Signal"]
+    before_at_risk = sum(_BEFORE_DIST[s] for s in at_risk)
+    after_at_risk  = sum(after_map[s]    for s in at_risk)
+    before_top     = sum(_BEFORE_DIST[s] for s in top_tier)
+    after_top      = sum(after_map[s]    for s in top_tier)
 
-    churn_uplift = sum(uplift[s] for s in at_risk) / len(at_risk)
-    conv_uplift  = sum(uplift[s] for s in mid_tier) / len(mid_tier)
-    avg_rengaged = sum(uplift[s] for s in at_risk) / len(at_risk)
+    fans_reengaged  = round((before_at_risk - after_at_risk) / before_at_risk * 100)
+    churn_reduction = before_at_risk - after_at_risk
+    conv_uplift     = round((after_top - before_top) / before_top * 100)
 
     confidence_map = {0: 74, 1: 61, 2: 68, None: 55}
-    model_confidence = confidence_map.get(query_index, 55)
 
     return {
-        "segments":  order,
-        "baseline":  baseline,
-        "projected": projected,
+        "segments": _SEGMENT_ORDER,
+        "before":   before,
+        "after":    after,
         "summary": {
-            "churn_reduction":    round(churn_uplift),
-            "conversion_uplift":  round(conv_uplift),
-            "fans_reengaged_pct": round(avg_rengaged),
-            "model_confidence":   model_confidence,
+            "churn_reduction":    churn_reduction,
+            "conversion_uplift":  conv_uplift,
+            "fans_reengaged_pct": fans_reengaged,
+            "model_confidence":   confidence_map.get(query_index, 55),
         },
     }
