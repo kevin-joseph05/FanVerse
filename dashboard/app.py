@@ -6,6 +6,7 @@ Run:  streamlit run dashboard/app.py
 
 import streamlit as st
 import plotly.graph_objects as go
+from PIL import Image
 import plotly.express as px
 from plotly.subplots import make_subplots
 import pandas as pd
@@ -32,7 +33,7 @@ from insights import PRESET_QUERIES, get_insight, compute_simulation
 
 st.set_page_config(
     page_title="FanVerse",
-    page_icon="💫",
+    page_icon=Image.open("dashboard/favicon.png"),
     layout="wide",
     initial_sidebar_state="collapsed",
 )
@@ -53,14 +54,14 @@ st.markdown("""
     align-items: center;
     gap: 12px;
     padding: 10px 0 14px 0;
-    border-bottom: 1px solid #e0e0e0;
+    border-bottom: 2px solid #9fe9c8;
     margin-bottom: 20px;
   }
   .wordmark {
     font-size: 22px;
     font-weight: 800;
     letter-spacing: 3px;
-    color: #1a1a2e;
+    color: #012120;
     margin-right: 8px;
   }
   .tagline {
@@ -74,6 +75,7 @@ st.markdown("""
   .kpi-card {
     background: #fafafa;
     border: 1px solid #e8e8e8;
+    border-top: 3px solid #9fe9c8;
     border-radius: 8px;
     padding: 16px 20px;
   }
@@ -88,7 +90,7 @@ st.markdown("""
     font-size: 36px;
     font-weight: 700;
     line-height: 1;
-    color: #1a1a2e;
+    color: #012120;
   }
   .kpi-delta-pos { font-size: 12px; color: #3a9a3a; margin-top: 4px; }
   .kpi-delta-neg { font-size: 12px; color: #c03030; margin-top: 4px; }
@@ -112,8 +114,8 @@ st.markdown("""
     font-weight: 700;
     text-transform: uppercase;
     letter-spacing: 1.5px;
-    color: #666;
-    border-bottom: 1px solid #eee;
+    color: #012120;
+    border-bottom: 2px solid #9fe9c8;
     padding-bottom: 6px;
     margin-bottom: 12px;
   }
