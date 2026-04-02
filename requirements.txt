@@ -1,0 +1,9 @@
+streamlit>=1.41.0
+plotly>=5.24.0
+pandas>=2.3.3
+scikit-learn>=1.7.2
+google-generativeai>=0.8.0
+python-dotenv>=1.0.0
+requests>=2.31.0
+pillow>=12.1.1
+vaderSentiment
