@@ -1,5 +1,5 @@
 # scraper_reddit.py — Reddit female fan conversation scraper.
-# Uses public .json endpoints (no API key). 
+# Uses public .json endpoints (no API key).
 # Run: python3 scraper_reddit.py
 # Install: pip install requests python-dotenv
 
@@ -7,6 +7,8 @@ import os
 import re
 import sys
 import time
+import threading
+from concurrent.futures import ThreadPoolExecutor, as_completed
 from datetime import datetime, timezone
 from pathlib import Path
 from typing import Optional
@@ -23,34 +25,73 @@ load_dotenv(Path(__file__).parent / ".env", override=False)
 USER_AGENT = os.environ.get("REDDIT_USER_AGENT", "script:FanVerse-scraper:v0.1 (research project)")
 
 BASE_URL = "https://www.reddit.com"
-REQUEST_DELAY = 1.0  # unauthenticated rate limit isn't published — stay conservative
-POST_LIMIT = 25
-COMMENT_LIMIT = 5
+REQUEST_DELAY = 0.5   # per-thread delay; parallelism spreads load across workers
+POST_LIMIT = 100
+COMMENT_LIMIT = 100
+MAX_WORKERS = 4       # parallel comment fetches — conservative to avoid 429s
 MIN_TEXT_LENGTH = 150
 REDDIT_KIND_POST = "t3"
 REDDIT_KIND_COMMENT = "t1"
 
-# Collection method (hot posts vs search) is auto-selected by subscriber count.
+# Collection method (hot/top posts vs search) is auto-selected by subscriber count.
 SUBREDDITS = {
-    "wnba":          ["WNBA"],
-    "NWSL":          ["NWSL"],
-    "WomensSoccer":  ["general"],
-    "PWHL":          ["general"],
-    "nba":           ["general"],
-    "nfl":           ["general"],
-    "mlb":           ["general"],
-    "mls":           ["general"],
-    "laliga":        ["general"],
-    "premierleague": ["general"],
-    "nhl":           ["general"],
-    "formula1":      ["general"],
-    "olympics":      ["general"],
+    # Women's leagues — primary targets
+    "wnba":              ["WNBA"],
+    "NWSL":              ["NWSL"],
+    "WomensSoccer":      ["MLS", "NWSL"],
+    "PWHL":              ["PWHL"],
+    "womenssports":      ["general"],
+    "WomensSports":      ["general"],
+    "FemaleSports":      ["general"],
+    # Olympic / individual sports with large female fanbases
+    "olympics":          ["olympics"],
+    "tennis":            ["WTA"],
+    "gymnastics":        ["general"],
+    "swimming":          ["general"],
+    "volleyball":        ["volleyball"],
+    "golf":              ["general"],
+    "athletics":         ["general"],
+    # Major men's leagues — searched for female fan signals
+    "nba":               ["NBA"],
+    "nfl":               ["NFL"],
+    "mlb":               ["MLB"],
+    "mls":               ["MLS"],
+    "laliga":            ["laliga"],
+    "premierleague":     ["premierleague"],
+    "nhl":               ["NHL"],
+    "formula1":          ["formula1"],
+    "soccer":            ["MLS"],
+    "basketball":        ["NBA"],
+    "CFB":               ["NFL"],
+    "collegebasketball": ["NBA"],
+    # Additional leagues / communities
+    "rugby":             ["general"],
+    "cricket":           ["general"],
+    "cycling":           ["general"],
+    "sports":            ["general"],
+    "gcb":               ["general"],  # r/gcb — women's college basketball
 }
 
-LARGE_THRESHOLD = 500_000  # above this: search queries; below: hot posts
-SEARCH_QUERIES = ["female fan", "women fans", "as a woman fan", "girl fan"]
+LARGE_THRESHOLD = 500_000  # above this: search queries; below: hot/top posts
+
+# Expanded search queries for large subreddits
+SEARCH_QUERIES = [
+    "female fan", "women fans", "as a woman fan", "girl fan",
+    "women who watch", "female sports fan", "as a woman",
+    "as a female", "women watching", "she got me into",
+    "woman here", "girl here", "as a woman who",
+    "women in sports", "female fandom",
+]
+
+# Sort orders scraped for small/medium subreddits — deduped by post ID
+SORT_ORDERS = [
+    ("hot",  None),
+    ("top",  "week"),
+    ("top",  "month"),
+]
 
 FEMALE_FAN_SIGNALS = [
+    # Explicit fan identity
     "as a woman", "as a female", "as a girl",
     "i'm a woman", "i am a woman", "im a woman", "i'm a girl", "i am a girl", "im a girl",
     "as a woman fan", "as a female fan", "as a girl who", "woman who watches", "girl who watches",
@@ -60,17 +101,25 @@ FEMALE_FAN_SIGNALS = [
     "being a woman", "being female", "being a girl",
     "as a female sports", "as a woman sports", "experience as a woman", "experience as a female",
     "she/her", "woman here", "girl here", "female here",
-    "got me into", "got me hooked", "first game i ever",
-    "that's what got me", "fell in love with", "changed everything for me",
-    "i became a fan when", "i became a fan after", "never watched before", "didn't watch until",
-    "she's the reason", "she's why i", "she got me",
-    "my favorite player", "i've been a fan since", "grew up watching",
-    "been following since", "been a fan for years", "loyalty", "will always support", "stick with",
-    "can't watch anymore", "stopped watching", "lost me as a fan",
-    "done with", "i gave up on", "used to love", "not the same anymore", "hard to keep supporting",
-    "love the player hate the", "still support her even", "the league let", "the organization failed",
-    "front office", "ownership doesn't care",
-    "also follow", "watch both", "big fan of both", "wnba and", "nwsl and", "women's soccer and",
+    # Self-identification in context (e.g. "I'm a 30 year old woman", "I'm a female cyclist")
+    "i'm a female", "i am a female", "im a female",
+    "year old woman", "year old female", "year-old woman", "year-old female",
+    "young woman", "older woman",
+    "only woman", "only female", "only girl",
+    "as a mom", "as a mother",
+    "women in sports", "women who play",
+    # Fan origin / conversion stories
+    "got me into sports", "got me hooked on", "first game i ever watched",
+    "i became a fan when", "i became a fan after", "never watched sports before", "didn't watch until",
+    "she's the reason i watch", "she's why i watch", "she got me into",
+    "i've been a fan since", "grew up watching",
+    # Loyalty / disillusionment
+    "been a fan for years", "will always support her", "lost me as a fan",
+    "hard to keep supporting", "love the player hate the",
+    "still support her even", "the league let her down",
+    # Cross-sport following
+    "also follow", "watch both", "big fan of both",
+    "wnba and", "nwsl and", "women's soccer and",
 ]
 
 _SIGNAL_RE = re.compile("|".join(re.escape(p) for p in FEMALE_FAN_SIGNALS), re.IGNORECASE)
@@ -89,6 +138,15 @@ _PHASE_KEYWORDS = {
     "offseason": ["offseason", "off-season", "free agency", "trade deadline"],
     "midseason": ["all-star", "all star", "midseason", "mid-season"],
 }
+
+_thread_local = threading.local()
+
+
+def get_thread_session() -> requests.Session:
+    """Returns a per-thread Session so concurrent workers don't share state."""
+    if not hasattr(_thread_local, "session"):
+        _thread_local.session = make_session()
+    return _thread_local.session
 
 
 def is_mod_post(title: str, body: str) -> bool:
@@ -177,35 +235,45 @@ def get_subscriber_count(session, subreddit_name: str) -> int:
     return data.get("data", {}).get("subscribers", 0) if data else 0
 
 
-def fetch_posts(session, subreddit_name: str) -> list:
-    data = reddit_get(session, f"{BASE_URL}/r/{subreddit_name}/hot.json", params={"limit": POST_LIMIT})
+def fetch_posts_sorted(session, subreddit_name: str, sort: str = "hot", time_filter: str = None) -> list:
+    params = {"limit": POST_LIMIT}
+    if time_filter:
+        params["t"] = time_filter
+    data = reddit_get(session, f"{BASE_URL}/r/{subreddit_name}/{sort}.json", params=params)
     time.sleep(REQUEST_DELAY)
     if not data:
         return []
     return [c["data"] for c in data["data"]["children"] if c["kind"] == REDDIT_KIND_POST]
 
 
-def fetch_comments(session, subreddit_name: str, post_id: str) -> list:
+def _fetch_comments_worker(subreddit_name: str, post_id: str) -> list:
+    """Worker that fetches comments using a thread-local session."""
+    session = get_thread_session()
     data = reddit_get(session, f"{BASE_URL}/r/{subreddit_name}/comments/{post_id}.json",
                       params={"limit": COMMENT_LIMIT, "depth": 1})
     time.sleep(REQUEST_DELAY)
     if not data or len(data) < 2:
         return []
-    # Reddit returns [post_listing, comment_listing] — comments are at index 1.
     return [c["data"] for c in data[1]["data"]["children"] if c["kind"] == REDDIT_KIND_COMMENT]
 
 
 def scrape_subreddit(session, subreddit_name: str, sports: list, require_signal=False) -> list:
-    entries = []
-    posts = fetch_posts(session, subreddit_name)
-    if not posts:
-        return entries
+    # Collect posts from multiple sort orders, deduplicating by post ID
+    seen_post_ids: set = set()
+    all_posts = []
+    for sort, time_filter in SORT_ORDERS:
+        for post in fetch_posts_sorted(session, subreddit_name, sort, time_filter):
+            if post["id"] not in seen_post_ids:
+                seen_post_ids.add(post["id"])
+                all_posts.append(post)
 
-    collected_posts = collected_comments = 0
+    entries = []
+    posts_needing_comments = []
+    collected_posts = 0
     rejected = {"not_text_post": 0, "stickied": 0, "mod_post": 0,
                 "too_short": 0, "url_only": 0, "low_score": 0, "non_english": 0, "no_signal": 0}
 
-    for post in posts:
+    for post in all_posts:
         post_body = post.get("selftext", "").strip()
         post_title = post.get("title", "").strip()
         post_text = f"{post_title}\n\n{post_body}".strip()
@@ -218,7 +286,7 @@ def scrape_subreddit(session, subreddit_name: str, sports: list, require_signal=
         fetch_post_comments = True
         if not post.get("is_self") or not post_body:
             rejected["not_text_post"] += 1
-            # Link posts still get comment fetching — fan discussion often happens in comments.
+            # Link posts still get comments — fan discussion happens there.
         elif post.get("stickied", False):
             rejected["stickied"] += 1
             fetch_post_comments = False
@@ -244,65 +312,94 @@ def scrape_subreddit(session, subreddit_name: str, sports: list, require_signal=
         if post_passes:
             entries.append(build_post_entry(post_text, report_title, post_url, sports, post_date, post_id, subreddit_name, score))
             collected_posts += 1
-            print(f"  [post] {post_title[:70]}")
 
         if fetch_post_comments:
-            for comment in fetch_comments(session, subreddit_name, post_id):
+            posts_needing_comments.append((post_id, report_title, post_url, sports, post_date, subreddit_name, score))
+
+    # Parallel comment fetching
+    collected_comments = 0
+    with ThreadPoolExecutor(max_workers=MAX_WORKERS) as executor:
+        future_to_meta = {
+            executor.submit(_fetch_comments_worker, subreddit_name, pid): (pid, rtitle, purl, sp, pdate, sr, sc)
+            for pid, rtitle, purl, sp, pdate, sr, sc in posts_needing_comments
+        }
+        for future in as_completed(future_to_meta):
+            pid, report_title, post_url, sports_, post_date, subreddit_, score = future_to_meta[future]
+            for comment in future.result():
                 body = comment.get("body", "").strip()
+                if comment.get("score", 0) < 0:
+                    continue
                 if not is_valid_comment(body, require_signal):
                     continue
-                entries.append(build_comment_entry(body, report_title, f"https://www.reddit.com{comment['permalink']}",
-                    sports, ts_to_date(comment["created_utc"]), post_id, comment["id"], subreddit_name, comment.get("score", 0)))
+                entries.append(build_comment_entry(
+                    body, report_title, f"https://www.reddit.com{comment['permalink']}",
+                    sports_, post_date, pid, comment["id"], subreddit_, comment.get("score", 0)))
                 collected_comments += 1
 
     rejection_parts = [f"{v} {k.replace('_', ' ')}" for k, v in rejected.items() if v > 0]
-    print(f"  → {len(posts)} fetched — {', '.join(rejection_parts) or 'none'} | {collected_posts} posts + {collected_comments} comments kept")
+    print(f"  → {len(all_posts)} posts — {', '.join(rejection_parts) or 'none'} | {collected_posts} posts + {collected_comments} comments kept")
     return entries
 
 
 def search_subreddit(session, subreddit_name: str, sports: list) -> list:
-    entries = []
     seen_post_ids: set = set()
-    collected_posts = collected_comments = 0
+    posts_to_process = []
 
     for query in SEARCH_QUERIES:
         data = reddit_get(session, f"{BASE_URL}/r/{subreddit_name}/search.json",
-                          params={"q": query, "sort": "relevance", "limit": 25, "restrict_sr": 1})
+                          params={"q": query, "sort": "relevance", "limit": 100, "restrict_sr": 1})
         time.sleep(REQUEST_DELAY)
         if not data:
             continue
-
         for child in data["data"]["children"]:
             if child["kind"] != REDDIT_KIND_POST:
                 continue
             post = child["data"]
-            post_id = post["id"]
-            if post_id in seen_post_ids:
-                continue
-            seen_post_ids.add(post_id)
+            if post["id"] not in seen_post_ids:
+                seen_post_ids.add(post["id"])
+                posts_to_process.append((post, query))
 
-            post_body = post.get("selftext", "").strip()
-            post_title = post.get("title", "").strip()
-            post_text = f"{post_title}\n\n{post_body}".strip()
-            post_date = ts_to_date(post["created_utc"])
-            post_url = f"https://www.reddit.com{post['permalink']}"
-            report_title = f"r/{subreddit_name}: {post_title[:120]}"
-            score = post.get("score", 0)
+    entries = []
+    collected_posts = 0
+    posts_needing_comments = []
 
-            if (post.get("is_self") and len(post_body) >= MIN_TEXT_LENGTH and score >= 2
-                    and not post.get("stickied", False) and not is_mod_post(post_title, post_body)
-                    and is_english(post_text) and not is_url_only(post_text)):
-                entries.append(build_post_entry(post_text, report_title, post_url, sports, post_date, post_id, subreddit_name, score, search_query=query))
-                collected_posts += 1
-                print(f"  [post] {post_title[:70]}")
+    for post, query in posts_to_process:
+        post_body = post.get("selftext", "").strip()
+        post_title = post.get("title", "").strip()
+        post_text = f"{post_title}\n\n{post_body}".strip()
+        post_date = ts_to_date(post["created_utc"])
+        post_url = f"https://www.reddit.com{post['permalink']}"
+        report_title = f"r/{subreddit_name}: {post_title[:120]}"
+        score = post.get("score", 0)
+        post_id = post["id"]
 
-            # Always check comments — search surfaced this post for a reason.
-            for comment in fetch_comments(session, subreddit_name, post_id):
+        if (post.get("is_self") and len(post_body) >= MIN_TEXT_LENGTH and score >= 2
+                and not post.get("stickied", False) and not is_mod_post(post_title, post_body)
+                and is_english(post_text) and not is_url_only(post_text)):
+            entries.append(build_post_entry(post_text, report_title, post_url, sports, post_date, post_id, subreddit_name, score, search_query=query))
+            collected_posts += 1
+
+        # Always fetch comments — search surfaced this post for a reason.
+        posts_needing_comments.append((post_id, report_title, post_url, sports, post_date, subreddit_name, score, query))
+
+    # Parallel comment fetching
+    collected_comments = 0
+    with ThreadPoolExecutor(max_workers=MAX_WORKERS) as executor:
+        future_to_meta = {
+            executor.submit(_fetch_comments_worker, subreddit_name, pid): (pid, rtitle, purl, sp, pdate, sr, sc, q)
+            for pid, rtitle, purl, sp, pdate, sr, sc, q in posts_needing_comments
+        }
+        for future in as_completed(future_to_meta):
+            pid, report_title, post_url, sports_, post_date, subreddit_, score, query = future_to_meta[future]
+            for comment in future.result():
                 body = comment.get("body", "").strip()
+                if comment.get("score", 0) < 0:
+                    continue
                 if not is_valid_comment(body, require_signal=True):
                     continue
-                entries.append(build_comment_entry(body, report_title, f"https://www.reddit.com{comment['permalink']}",
-                    sports, ts_to_date(comment["created_utc"]), post_id, comment["id"], subreddit_name, comment.get("score", 0), search_query=query))
+                entries.append(build_comment_entry(
+                    body, report_title, f"https://www.reddit.com{comment['permalink']}",
+                    sports_, post_date, pid, comment["id"], subreddit_, comment.get("score", 0), search_query=query))
                 collected_comments += 1
 
     print(f"  → {len(seen_post_ids)} posts scanned | {collected_posts} posts + {collected_comments} comments kept")
@@ -326,7 +423,7 @@ def main():
             print(f"\n[r/{subreddit_name}] {count:,} subscribers — using search queries...")
             entries = search_subreddit(session, subreddit_name, sports)
         else:
-            print(f"\n[r/{subreddit_name}] {count:,} subscribers — scraping hot posts...")
+            print(f"\n[r/{subreddit_name}] {count:,} subscribers — scraping hot/top posts...")
             entries = scrape_subreddit(session, subreddit_name, sports, require_signal=True)
         all_entries.extend(entries)
 

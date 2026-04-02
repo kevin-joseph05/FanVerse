@@ -12,7 +12,7 @@ from typing import Optional
 VALID_SOURCES = {
     "wasserman", "deloitte", "bcg", "nielsen",
     "mckinsey",  # reserved — site blocks scrapers, add manually if needed
-    "reddit", "youtube"
+    "reddit", "youtube", "substack"
 }
 VALID_SPORTS = {
     # Women's leagues

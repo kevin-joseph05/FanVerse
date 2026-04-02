@@ -7,6 +7,50 @@ from datetime import datetime, timezone
 from pathlib import Path
 from schema import build_record
 
+# Auto-tag sports based on subreddit name or keywords in report_title/text.
+# Checked in order — first match wins. Falls back to whatever the scraper provided.
+_SPORT_TAG_RULES = [
+    (["wnba", "women's basketball", "women's nba"],         "WNBA"),
+    (["nwsl", "women's soccer", "women's football"],        "NWSL"),
+    (["pwhl", "women's hockey"],                            "PWHL"),
+    (["wta", "women's tennis"],                             "WTA"),
+    (["r/nba", "subreddit=nba", "nba "],                    "NBA"),
+    (["r/nfl", "subreddit=nfl", "nfl "],                    "NFL"),
+    (["r/mlb", "subreddit=mlb", "mlb "],                    "MLB"),
+    (["r/nhl", "subreddit=nhl", "nhl "],                    "NHL"),
+    (["r/mls", "subreddit=mls", " mls "],                   "MLS"),
+    (["r/premierleague", "premier league"],                  "premierleague"),
+    (["r/laliga", "la liga", "laliga"],                      "laliga"),
+    (["r/formula1", "formula 1", "formula1", " f1 "],        "formula1"),
+    (["r/olympics", "olympic games", "paris 2024"],          "olympics"),
+    (["r/volleyball", "volleyball"],                         "volleyball"),
+]
+
+
+def infer_sports_from_context(entry: dict) -> list:
+    """Return a more specific sports tag if we can infer one from context."""
+    current = entry.get("sports", ["general"])
+    if current != ["general"]:
+        return current  # already tagged specifically
+
+    # Build a lookup string from subreddit, report_title, and the start of text
+    extra = entry.get("extra") or {}
+    subreddit = extra.get("subreddit", "").lower()
+    pub = extra.get("publication", "").lower()
+    haystack = " ".join([
+        f"subreddit={subreddit}",
+        f"r/{subreddit}",
+        pub,
+        entry.get("report_title", "").lower(),
+        entry.get("text", "")[:300].lower(),
+    ])
+
+    for keywords, sport in _SPORT_TAG_RULES:
+        if any(kw in haystack for kw in keywords):
+            return [sport]
+
+    return current
+
 REPO_PATH = Path("repository.jsonl")    # one record per line
 LOG_PATH = Path("ingestion_log.jsonl")  # one entry per run
 
@@ -112,5 +156,7 @@ def repo_stats() -> dict:
 def ingest(raw_entries: list[dict]) -> dict:
     # The main function. Pass it a list of data points, it saves them to the repository.
     # Builds each record using schema.py, then calls append_records to save them.
+    for entry in raw_entries:
+        entry["sports"] = infer_sports_from_context(entry)
     records = [build_record(**entry) for entry in raw_entries]
     return append_records(records)
