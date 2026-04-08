@@ -42,6 +42,7 @@ Respond with a JSON object in exactly this format — no markdown fences, raw JS
 
 # ── Context builder ────────────────────────────────────────────────────────
 
+
 def build_context(query: str, signals_df: pd.DataFrame, n_records: int = 25) -> str:
     """
     Selects the most relevant records from signals_df for the given query
@@ -50,17 +51,17 @@ def build_context(query: str, signals_df: pd.DataFrame, n_records: int = 25) -> 
     q = query.lower()
 
     if any(w in q for w in ("disengagement", "churn", "leaving", "shift", "triggered")):
-        mask = (
-            signals_df["behavioral_pathway"].isin(["churn_risk", "disengagement_marker"]) |
-            signals_df["priority_signal"].isin(["loyalty_stress", "trust_split"])
-        )
+        mask = signals_df["behavioral_pathway"].isin(
+            ["churn_risk", "disengagement_marker"]
+        ) | signals_df["priority_signal"].isin(["loyalty_stress", "trust_split"])
     elif any(w in q for w in ("cross-sport", "co-marketing", "two leagues", "multi")):
-        mask = signals_df["priority_signal"].isin(["cross_sport_superfan", "identity_anchor"])
-    elif any(w in q for w in ("cultural", "outside", "moment", "toward", "away")):
-        mask = (
-            signals_df["priority_signal"].isin(["loyalty_stress", "trust_split"]) |
-            signals_df["behavioral_pathway"].isin(["churn_risk", "community_influence"])
+        mask = signals_df["priority_signal"].isin(
+            ["cross_sport_superfan", "identity_anchor"]
         )
+    elif any(w in q for w in ("cultural", "outside", "moment", "toward", "away")):
+        mask = signals_df["priority_signal"].isin(
+            ["loyalty_stress", "trust_split"]
+        ) | signals_df["behavioral_pathway"].isin(["churn_risk", "community_influence"])
     else:
         mask = signals_df["priority_signal"] != "none"
 
@@ -83,7 +84,10 @@ def build_context(query: str, signals_df: pd.DataFrame, n_records: int = 25) -> 
 
 # ── Main insight function — wire Gemini API here ──────────────────────────
 
-def get_insight(query: str, signals_df: pd.DataFrame, segments_df: pd.DataFrame) -> dict:
+
+def get_insight(
+    query: str, signals_df: pd.DataFrame, segments_df: pd.DataFrame
+) -> dict:
     """
     Returns a structured insight dict:
         {
@@ -127,13 +131,13 @@ def get_insight(query: str, signals_df: pd.DataFrame, segments_df: pd.DataFrame)
     load_dotenv(Path(__file__).parent.parent / "repository" / ".env")
     genai.configure(api_key=os.environ["GEMINI_API_KEY"])
 
-    model   = genai.GenerativeModel("gemini-2.5-flash")
+    model = genai.GenerativeModel("gemini-2.5-flash")
     context = build_context(query, signals_df)
-    prompt  = INSIGHT_PROMPT.format(query=query, context=context)
+    prompt = INSIGHT_PROMPT.format(query=query, context=context)
 
     try:
         response = model.generate_content(prompt)
-        result   = _json.loads(response.text)
+        result = _json.loads(response.text)
         result["ready"] = True
         return result
     except Exception as e:
@@ -143,11 +147,11 @@ def get_insight(query: str, signals_df: pd.DataFrame, segments_df: pd.DataFrame)
         else:
             finding = f"API error: {err[:200]}"
         return {
-            "finding":            finding,
-            "evidence":           "",
-            "confidence":         0,
+            "finding": finding,
+            "evidence": "",
+            "confidence": 0,
             "recommended_action": "",
-            "ready":              False,
+            "ready": False,
         }
 
 
@@ -155,62 +159,62 @@ def get_insight(query: str, signals_df: pd.DataFrame, segments_df: pd.DataFrame)
 
 _SEGMENT_ORDER = [
     "Superfan",
+    "Core Engaged Fan",
     "Emotionally Invested, Weak Signal",
     "Casual Enthusiast",
-    "Core Engaged Fan",
     "Frustrated Loyalist",
     "Passive / Disengaged",
 ]
 
 # Status quo fan base distribution (% of total, sums to 100)
 _BEFORE_DIST = {
-    "Superfan":                          12,
-    "Core Engaged Fan":                  18,
-    "Casual Enthusiast":                 22,
+    "Superfan": 12,
+    "Core Engaged Fan": 18,
     "Emotionally Invested, Weak Signal": 20,
-    "Frustrated Loyalist":               15,
-    "Passive / Disengaged":              13,
+    "Casual Enthusiast": 25,
+    "Frustrated Loyalist": 15,
+    "Passive / Disengaged": 10,
 }
 
 # After-action distributions per preset query — fans convert upward
 _AFTER_DIST = [
     # Query 0 — address disengagement / loyalty stress
     {
-        "Superfan":                          13,
-        "Core Engaged Fan":                  20,
-        "Casual Enthusiast":                 28,
-        "Emotionally Invested, Weak Signal": 20,
-        "Frustrated Loyalist":               11,
-        "Passive / Disengaged":               8,
+        "Superfan": 14,
+        "Core Engaged Fan": 20,
+        "Emotionally Invested, Weak Signal": 22,
+        "Casual Enthusiast": 25,
+        "Frustrated Loyalist": 12,
+        "Passive / Disengaged": 7,
     },
     # Query 1 — cross-sport co-marketing activation
     {
-        "Superfan":                          17,
-        "Core Engaged Fan":                  25,
-        "Casual Enthusiast":                 25,
-        "Emotionally Invested, Weak Signal": 19,
-        "Frustrated Loyalist":               10,
-        "Passive / Disengaged":               4,
+        "Superfan": 16,
+        "Core Engaged Fan": 22,
+        "Emotionally Invested, Weak Signal": 22,
+        "Casual Enthusiast": 23,
+        "Frustrated Loyalist": 11,
+        "Passive / Disengaged": 6,
     },
     # Query 2 — cultural moment content strategy
     {
-        "Superfan":                          14,
-        "Core Engaged Fan":                  22,
-        "Casual Enthusiast":                 27,
-        "Emotionally Invested, Weak Signal": 19,
-        "Frustrated Loyalist":               10,
-        "Passive / Disengaged":               8,
+        "Superfan": 14,
+        "Core Engaged Fan": 21,
+        "Emotionally Invested, Weak Signal": 22,
+        "Casual Enthusiast": 24,
+        "Frustrated Loyalist": 12,
+        "Passive / Disengaged": 7,
     },
 ]
 
 # Fallback for free-text queries
 _DEFAULT_AFTER = {
-    "Superfan":                          14,
-    "Core Engaged Fan":                  21,
-    "Casual Enthusiast":                 24,
-    "Emotionally Invested, Weak Signal": 20,
-    "Frustrated Loyalist":               12,
-    "Passive / Disengaged":               9,
+    "Superfan": 14,
+    "Core Engaged Fan": 20,
+    "Emotionally Invested, Weak Signal": 21,
+    "Casual Enthusiast": 25,
+    "Frustrated Loyalist": 13,
+    "Passive / Disengaged": 7,
 }
 
 
@@ -240,30 +244,30 @@ def compute_simulation(query_index: int | None) -> dict:
     )
 
     before = [_BEFORE_DIST[s] for s in _SEGMENT_ORDER]
-    after  = [after_map[s]    for s in _SEGMENT_ORDER]
+    after = [after_map[s] for s in _SEGMENT_ORDER]
 
-    at_risk  = ["Frustrated Loyalist", "Passive / Disengaged"]
+    at_risk = ["Frustrated Loyalist", "Passive / Disengaged"]
     top_tier = ["Superfan", "Core Engaged Fan"]
 
     before_at_risk = sum(_BEFORE_DIST[s] for s in at_risk)
-    after_at_risk  = sum(after_map[s]    for s in at_risk)
-    before_top     = sum(_BEFORE_DIST[s] for s in top_tier)
-    after_top      = sum(after_map[s]    for s in top_tier)
+    after_at_risk = sum(after_map[s] for s in at_risk)
+    before_top = sum(_BEFORE_DIST[s] for s in top_tier)
+    after_top = sum(after_map[s] for s in top_tier)
 
-    fans_reengaged  = round((before_at_risk - after_at_risk) / before_at_risk * 100)
+    fans_reengaged = round((before_at_risk - after_at_risk) / before_at_risk * 100)
     churn_reduction = before_at_risk - after_at_risk
-    conv_uplift     = round((after_top - before_top) / before_top * 100)
+    conv_uplift = round((after_top - before_top) / before_top * 100)
 
     confidence_map = {0: 74, 1: 61, 2: 68, None: 55}
 
     return {
         "segments": _SEGMENT_ORDER,
-        "before":   before,
-        "after":    after,
+        "before": before,
+        "after": after,
         "summary": {
-            "churn_reduction":    churn_reduction,
-            "conversion_uplift":  conv_uplift,
+            "churn_reduction": churn_reduction,
+            "conversion_uplift": conv_uplift,
             "fans_reengaged_pct": fans_reengaged,
-            "model_confidence":   confidence_map.get(query_index, 55),
+            "model_confidence": confidence_map.get(query_index, 55),
         },
     }

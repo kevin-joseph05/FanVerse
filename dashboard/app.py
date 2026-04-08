@@ -17,6 +17,7 @@ from data import (
     PERIOD_OPTIONS,
     SEGMENT_COLOURS,
     SPORT_COLOURS,
+    SOURCE_MAP,
     apply_filters,
     build_pca_df,
     kpi_affinity_score,
@@ -40,7 +41,8 @@ st.set_page_config(
 
 # ── Styling ────────────────────────────────────────────────────────────────
 
-st.markdown("""
+st.markdown(
+    """
 <style>
   /* Global font */
   html, body, [class*="css"] { font-family: 'Inter', 'Segoe UI', sans-serif; }
@@ -120,35 +122,58 @@ st.markdown("""
     margin-bottom: 12px;
   }
 </style>
-""", unsafe_allow_html=True)
+""",
+    unsafe_allow_html=True,
+)
 
 
 # ── Top bar ────────────────────────────────────────────────────────────────
 
 title_col = st.columns([1])[0]
 with title_col:
-    st.markdown("""
+    st.markdown(
+        """
 <div class="topbar">
   <span class="wordmark">FANVERSE</span>
   <span class="tagline">Female Fan Intelligence</span>
 </div>
-""", unsafe_allow_html=True)
+""",
+        unsafe_allow_html=True,
+    )
 
 filter_col1, filter_col2, filter_col3, filter_col4 = st.columns([1, 1, 1, 5])
 
 with filter_col1:
-    sport_filter = st.selectbox("Sport", SPORT_OPTIONS, index=0, label_visibility="collapsed",
-                                 key="sport", help="Filter by sport")
+    sport_filter = st.selectbox(
+        "Sport",
+        SPORT_OPTIONS,
+        index=0,
+        label_visibility="collapsed",
+        key="sport",
+        help="Filter by sport",
+    )
     st.caption(f"Sport: **{sport_filter}**")
 
 with filter_col2:
-    source_filter = st.selectbox("Source", SOURCE_OPTIONS, index=0, label_visibility="collapsed",
-                                  key="source", help="Social = Reddit  |  Research = industry reports")
+    source_filter = st.selectbox(
+        "Source",
+        SOURCE_OPTIONS,
+        index=0,
+        label_visibility="collapsed",
+        key="source",
+        help="Social = Reddit  |  Research = industry reports",
+    )
     st.caption(f"Source: **{source_filter}**")
 
 with filter_col3:
-    period_filter = st.selectbox("Period", PERIOD_OPTIONS, index=2, label_visibility="collapsed",
-                                  key="period", help="Restrict to records within this window")
+    period_filter = st.selectbox(
+        "Period",
+        PERIOD_OPTIONS,
+        index=2,
+        label_visibility="collapsed",
+        key="period",
+        help="Restrict to records within this window",
+    )
     st.caption(f"Period: **{period_filter}**")
 
 # Load data with current filters
@@ -161,10 +186,10 @@ signals, segments = apply_filters(
 
 # ── KPI Strip ──────────────────────────────────────────────────────────────
 
-kpi_affinity  = kpi_affinity_score(signals)
-kpi_churn     = kpi_churn_signals(signals)
-kpi_conv      = kpi_conversion_signals(signals)
-kpi_counts    = kpi_record_counts(signals)
+kpi_affinity = kpi_affinity_score(signals)
+kpi_churn = kpi_churn_signals(signals)
+kpi_conv = kpi_conversion_signals(signals)
+kpi_counts = kpi_record_counts(signals)
 
 k1, k2, k3, k4 = st.columns(4)
 
@@ -172,13 +197,16 @@ with k1:
     delta = kpi_affinity["delta"]
     delta_class = "kpi-delta-pos" if delta >= 0 else "kpi-delta-neg"
     arrow = "▲" if delta >= 0 else "▼"
-    st.markdown(f"""
+    st.markdown(
+        f"""
     <div class="kpi-card">
       <div class="kpi-label">Emotional Affinity Score</div>
-      <div class="kpi-value">{kpi_affinity['score']}</div>
+      <div class="kpi-value">{kpi_affinity["score"]}</div>
       <div class="{delta_class}">{arrow} {abs(delta)} vs prior period</div>
     </div>
-    """, unsafe_allow_html=True)
+    """,
+        unsafe_allow_html=True,
+    )
 
 with k2:
     churn_tags = ""
@@ -188,42 +216,51 @@ with k2:
     for label, count in list(kpi_churn["pathway_counts"].items())[:2]:
         if label not in ("none", churn_tags):
             churn_tags += f'<span class="chip chip-red">{label} ×{count}</span>'
-    st.markdown(f"""
+    st.markdown(
+        f"""
     <div class="kpi-card">
       <div class="kpi-label">Active Churn / Stress Signals</div>
-      <div class="kpi-value" style="color:#c03030;">{kpi_churn['total']}</div>
+      <div class="kpi-value" style="color:#c03030;">{kpi_churn["total"]}</div>
       <div style="margin-top:6px;">{churn_tags}</div>
     </div>
-    """, unsafe_allow_html=True)
+    """,
+        unsafe_allow_html=True,
+    )
 
 with k3:
     conv_tags = ""
     for label, count in list(kpi_conv["pathway_counts"].items())[:3]:
         if label != "none":
             conv_tags += f'<span class="chip chip-green">{label} ×{count}</span>'
-    st.markdown(f"""
+    st.markdown(
+        f"""
     <div class="kpi-card">
       <div class="kpi-label">Conversion Signals</div>
-      <div class="kpi-value" style="color:#2a7a2a;">{kpi_conv['total']}</div>
+      <div class="kpi-value" style="color:#2a7a2a;">{kpi_conv["total"]}</div>
       <div style="margin-top:6px;">{conv_tags}</div>
     </div>
-    """, unsafe_allow_html=True)
+    """,
+        unsafe_allow_html=True,
+    )
 
 with k4:
     sport_chips = ""
     for sp, cnt in list(kpi_counts["by_sport"].items())[:4]:
         sport_chips += f'<span class="chip chip-blue">{sp} {cnt}</span>'
-    st.markdown(f"""
+    st.markdown(
+        f"""
     <div class="kpi-card">
       <div class="kpi-label">Records Analysed</div>
-      <div class="kpi-value">{kpi_counts['total']}</div>
+      <div class="kpi-value">{kpi_counts["total"]}</div>
       <div style="margin-top:6px;">
-        <span class="chip chip-blue">social {kpi_counts['social']}</span>
-        <span class="chip chip-blue">research {kpi_counts['research']}</span>
+        <span class="chip chip-blue">social {kpi_counts["social"]}</span>
+        <span class="chip chip-blue">research {kpi_counts["research"]}</span>
         {sport_chips}
       </div>
     </div>
-    """, unsafe_allow_html=True)
+    """,
+        unsafe_allow_html=True,
+    )
 
 st.markdown("<div style='margin-top:24px;'></div>", unsafe_allow_html=True)
 
@@ -233,7 +270,10 @@ st.markdown("<div style='margin-top:24px;'></div>", unsafe_allow_html=True)
 trend_col, seg_col = st.columns([3, 2])
 
 with trend_col:
-    st.markdown('<div class="section-header">Emotional Affinity Score — Trend</div>', unsafe_allow_html=True)
+    st.markdown(
+        '<div class="section-header">Emotional Affinity Score — Trend</div>',
+        unsafe_allow_html=True,
+    )
 
     trend_df = affinity_trend(signals, freq="M")
     annotations = affinity_trend_annotations(signals, top_n=6)
@@ -247,20 +287,22 @@ with trend_col:
         for sp in sports_in_data:
             sp_df = trend_df[trend_df["sport"] == sp].sort_values("period")
             colour = SPORT_COLOURS.get(sp, "#888")
-            fig.add_trace(go.Scatter(
-                x=sp_df["period"],
-                y=sp_df["avg_affinity"],
-                mode="lines+markers",
-                name=sp.upper() if sp != "general" else "General",
-                line=dict(color=colour, width=2),
-                marker=dict(size=5),
-                hovertemplate=(
-                    "<b>%{x|%b %Y}</b><br>"
-                    f"Sport: {sp}<br>"
-                    "Avg Affinity: %{y:.1f}<br>"
-                    "<extra></extra>"
-                ),
-            ))
+            fig.add_trace(
+                go.Scatter(
+                    x=sp_df["period"],
+                    y=sp_df["avg_affinity"],
+                    mode="lines+markers",
+                    name=sp.upper() if sp != "general" else "General",
+                    line=dict(color=colour, width=2),
+                    marker=dict(size=5),
+                    hovertemplate=(
+                        "<b>%{x|%b %Y}</b><br>"
+                        f"Sport: {sp}<br>"
+                        "Avg Affinity: %{y:.1f}<br>"
+                        "<extra></extra>"
+                    ),
+                )
+            )
 
         # Annotations for notable events
         for ann in annotations:
@@ -286,7 +328,12 @@ with trend_col:
             paper_bgcolor="white",
             legend=dict(orientation="h", yanchor="bottom", y=1.02, xanchor="left", x=0),
             xaxis=dict(showgrid=False, title=""),
-            yaxis=dict(showgrid=True, gridcolor="#f0f0f0", range=[0, 105], title="Avg Affinity Score"),
+            yaxis=dict(
+                showgrid=True,
+                gridcolor="#f0f0f0",
+                range=[0, 105],
+                title="Avg Affinity Score",
+            ),
             hovermode="x unified",
         )
         st.plotly_chart(fig, use_container_width=True)
@@ -298,7 +345,11 @@ with trend_col:
                     arrow = "▲" if ann["score"] >= 70 else "▼"
                     colour = "#2a7a2a" if ann["score"] >= 70 else "#c03030"
                     signal_display = ann["signal"] if ann["signal"] != "none" else "—"
-                    date_display = ann["date"].strftime("%b %d, %Y") if hasattr(ann["date"], "strftime") else str(ann["date"])
+                    date_display = (
+                        ann["date"].strftime("%b %d, %Y")
+                        if hasattr(ann["date"], "strftime")
+                        else str(ann["date"])
+                    )
                     st.markdown(
                         f"<span style='color:{colour};font-weight:bold;'>{arrow} {ann['score']}</span>"
                         f"&nbsp;·&nbsp;<code>{ann['sport']}</code>"
@@ -314,21 +365,28 @@ with trend_col:
 
 
 with seg_col:
-    st.markdown('<div class="section-header">Fan Segments — Overview</div>', unsafe_allow_html=True)
+    st.markdown(
+        '<div class="section-header">Fan Segments — Overview</div>',
+        unsafe_allow_html=True,
+    )
 
     seg_summary = segment_summary(segments)
 
     if seg_summary.empty:
         st.info("No segment data matches the current filters.")
     else:
-        fig_donut = go.Figure(go.Pie(
-            labels=seg_summary["segment"],
-            values=seg_summary["count"],
-            hole=0.55,
-            marker_colors=[SEGMENT_COLOURS.get(s, "#ccc") for s in seg_summary["segment"]],
-            textinfo="percent",
-            hovertemplate="<b>%{label}</b><br>%{value} records (%{percent})<extra></extra>",
-        ))
+        fig_donut = go.Figure(
+            go.Pie(
+                labels=seg_summary["segment"],
+                values=seg_summary["count"],
+                hole=0.55,
+                marker_colors=[
+                    SEGMENT_COLOURS.get(s, "#ccc") for s in seg_summary["segment"]
+                ],
+                textinfo="percent",
+                hovertemplate="<b>%{label}</b><br>%{value} records (%{percent})<extra></extra>",
+            )
+        )
         fig_donut.update_layout(
             height=210,
             margin=dict(l=0, r=0, t=0, b=0),
@@ -356,13 +414,21 @@ st.markdown("<div style='margin-top:24px;'></div>", unsafe_allow_html=True)
 
 # ── Fan Segment Map — PCA 2D Scatter ──────────────────────────────────────
 
-st.markdown('<div class="section-header">Fan Segment Map — PCA 2D Scatter</div>', unsafe_allow_html=True)
+st.markdown(
+    '<div class="section-header">Fan Segment Map — PCA 2D Scatter</div>',
+    unsafe_allow_html=True,
+)
 
 pca_df = build_pca_df()
 
-tab_all, tab_wnba, tab_nwsl, tab_social, tab_research = st.tabs([
-    "All Sports", "WNBA", "NWSL", "Social Only", "Research Only"
-])
+# Generate tab names
+tab_names = (
+    ["All Sports"]
+    + [sport for sport in SPORT_OPTIONS if sport != "All"]
+    + ["Social Only", "Research Only"]
+)
+tabs = st.tabs(tab_names)
+
 
 def _render_scatter(df: pd.DataFrame, title_note: str = "") -> None:
     """Renders a PCA scatter for the given (already filtered) dataframe."""
@@ -381,32 +447,42 @@ def _render_scatter(df: pd.DataFrame, title_note: str = "") -> None:
         if not mask.any():
             continue
         sub = df[mask]
-        fig.add_trace(go.Scatter(
-            x=sub["pc1"],
-            y=sub["pc2"],
-            mode="markers",
-            name=segment,
-            marker=dict(
-                color=colour,
-                size=marker_sizes[mask].tolist(),
-                line=dict(width=0.5, color="white"),
-                opacity=0.85,
-            ),
-            customdata=sub[["report_title", "hover_text", "behavioral_pathway",
-                             "priority_signal", "sport", "confidence_score"]].values,
-            hovertemplate=(
-                "<b>%{fullData.name}</b><br>"
-                "<b>%{customdata[0]}</b><br>"
-                "<br>"
-                "%{customdata[1]}<br>"
-                "<br>"
-                "Pathway: %{customdata[2]}<br>"
-                "Priority: %{customdata[3]}<br>"
-                "Sport: %{customdata[4]}<br>"
-                "Confidence: %{customdata[5]:.2f}"
-                "<extra></extra>"
-            ),
-        ))
+        fig.add_trace(
+            go.Scatter(
+                x=sub["pc1"],
+                y=sub["pc2"],
+                mode="markers",
+                name=segment,
+                marker=dict(
+                    color=colour,
+                    size=marker_sizes[mask].tolist(),
+                    line=dict(width=0.5, color="white"),
+                    opacity=0.85,
+                ),
+                customdata=sub[
+                    [
+                        "report_title",
+                        "hover_text",
+                        "behavioral_pathway",
+                        "priority_signal",
+                        "sport",
+                        "confidence_score",
+                    ]
+                ].values,
+                hovertemplate=(
+                    "<b>%{fullData.name}</b><br>"
+                    "<b>%{customdata[0]}</b><br>"
+                    "<br>"
+                    "%{customdata[1]}<br>"
+                    "<br>"
+                    "Pathway: %{customdata[2]}<br>"
+                    "Priority: %{customdata[3]}<br>"
+                    "Sport: %{customdata[4]}<br>"
+                    "Confidence: %{customdata[5]:.2f}"
+                    "<extra></extra>"
+                ),
+            )
+        )
 
     fig.update_layout(
         height=420,
@@ -415,51 +491,70 @@ def _render_scatter(df: pd.DataFrame, title_note: str = "") -> None:
         paper_bgcolor="white",
         legend=dict(
             orientation="v",
-            yanchor="top", y=1,
-            xanchor="left", x=1.01,
+            yanchor="top",
+            y=1,
+            xanchor="left",
+            x=1.01,
             font=dict(size=11),
         ),
         xaxis=dict(
             title="PC1 — Overall Engagement (↑ sentiment · affinity · confidence)",
-            showgrid=True, gridcolor="#f5f5f5", zeroline=True, zerolinecolor="#ddd",
-            title_font=dict(size=11), tickfont=dict(size=10),
+            showgrid=True,
+            gridcolor="#f5f5f5",
+            zeroline=True,
+            zerolinecolor="#ddd",
+            title_font=dict(size=11),
+            tickfont=dict(size=10),
         ),
         yaxis=dict(
             title="PC2 — Sentiment vs Affinity Trade-off",
-            showgrid=True, gridcolor="#f5f5f5", zeroline=True, zerolinecolor="#ddd",
-            title_font=dict(size=11), tickfont=dict(size=10),
+            showgrid=True,
+            gridcolor="#f5f5f5",
+            zeroline=True,
+            zerolinecolor="#ddd",
+            title_font=dict(size=11),
+            tickfont=dict(size=10),
         ),
         hovermode="closest",
-        annotations=[dict(
-            text=f"{n} records · 88.7% variance explained{' · ' + title_note if title_note else ''}",
-            xref="paper", yref="paper",
-            x=0, y=1.04, showarrow=False,
-            font=dict(size=10, color="#aaa"),
-        )],
+        annotations=[
+            dict(
+                text=f"{n} records · 88.7% variance explained{' · ' + title_note if title_note else ''}",
+                xref="paper",
+                yref="paper",
+                x=0,
+                y=1.04,
+                showarrow=False,
+                font=dict(size=10, color="#aaa"),
+            )
+        ],
     )
     st.plotly_chart(fig, use_container_width=True)
 
 
-with tab_all:
-    _render_scatter(pca_df.drop_duplicates("record_id"))
-
-with tab_wnba:
-    _render_scatter(pca_df[pca_df["sport"] == "WNBA"], "WNBA only")
-
-with tab_nwsl:
-    _render_scatter(pca_df[pca_df["sport"] == "NWSL"], "NWSL only")
-
-with tab_social:
-    _render_scatter(
-        pca_df[pca_df["source"] == "reddit"].drop_duplicates("record_id"),
-        "Reddit / social only",
-    )
-
-with tab_research:
-    research_df = pca_df[pca_df["source"] != "reddit"].drop_duplicates("record_id")
-    if len(research_df) < 10:
-        st.caption(f"Only {len(research_df)} research records — sparse by design at this stage.")
-    _render_scatter(research_df, "Research reports only")
+for tab_name, tab in zip(tab_names, tabs):
+    with tab:
+        if tab_name == "All Sports":
+            df = pca_df.drop_duplicates("record_id")
+            _render_scatter(df)
+        elif tab_name in SPORT_OPTIONS:
+            df = pca_df[pca_df["sport"] == tab_name]
+            _render_scatter(df, f"{tab_name} only")
+        elif tab_name == "Social Only":
+            social_sources = SOURCE_MAP["Social"]
+            df = pca_df[pca_df["source"].isin(social_sources)].drop_duplicates(
+                "record_id"
+            )
+            _render_scatter(df, "Social only")
+        elif tab_name == "Research Only":
+            research_sources = SOURCE_MAP["Research"]
+            df = pca_df[pca_df["source"].isin(research_sources)].drop_duplicates(
+                "record_id"
+            )
+            if len(df) < 10:
+                st.caption(
+                    f"Only {len(df)} research records — sparse by design at this stage."
+                )
+            _render_scatter(df, "Research only")
 
 st.markdown("<div style='margin-top:24px;'></div>", unsafe_allow_html=True)
 
@@ -469,46 +564,73 @@ st.markdown("<div style='margin-top:24px;'></div>", unsafe_allow_html=True)
 b_col, feed_col = st.columns(2)
 
 with b_col:
-    st.markdown('<div class="section-header">Priority Signals by Sport</div>', unsafe_allow_html=True)
+    st.markdown(
+        '<div class="section-header">Priority Signals by Sport</div>',
+        unsafe_allow_html=True,
+    )
 
     SIGNAL_COLOURS = {
-        "loyalty_stress":       "#D95B5B",
-        "identity_anchor":      "#4A90D9",
-        "trust_split":          "#E8A838",
+        "loyalty_stress": "#D95B5B",
+        "identity_anchor": "#4A90D9",
+        "trust_split": "#E8A838",
         "cross_sport_superfan": "#5BAD6F",
-        "conversion_moment":    "#9B6FD9",
+        "conversion_moment": "#9B6FD9",
     }
     SIGNAL_LABELS = {
-        "loyalty_stress":       "Loyalty Stress",
-        "identity_anchor":      "Identity Anchor",
-        "trust_split":          "Trust Split",
+        "loyalty_stress": "Loyalty Stress",
+        "identity_anchor": "Identity Anchor",
+        "trust_split": "Trust Split",
         "cross_sport_superfan": "Cross-Sport Super Fan",
-        "conversion_moment":    "Conversion Moment",
+        "conversion_moment": "Conversion Moment",
     }
-    SPORT_DISPLAY = {"general": "General / Multi-Sport", "WNBA": "WNBA", "NWSL": "NWSL"}
+    # Map sport keys to display names
+    SPORT_DISPLAY = {}
+    for sport in SPORT_OPTIONS:
+        if sport == "All":
+            continue
+        if sport == "general":
+            SPORT_DISPLAY[sport] = "General / Multi-Sport"
+        elif sport == "formula1":
+            SPORT_DISPLAY[sport] = "Formula 1"
+        elif sport == "premierleague":
+            SPORT_DISPLAY[sport] = "Premier League"
+        else:
+            SPORT_DISPLAY[sport] = sport.upper()
 
     bar_src = signals.drop_duplicates("record_id")
-    bar_df  = bar_src[bar_src["priority_signal"] != "none"][["sport", "priority_signal"]].copy()
+    bar_df = bar_src[bar_src["priority_signal"] != "none"][
+        ["sport", "priority_signal"]
+    ].copy()
     bar_df["sport"] = bar_df["sport"].map(SPORT_DISPLAY).fillna(bar_df["sport"])
 
     if bar_df.empty:
         st.info("No priority signals in current filter.")
     else:
-        counts = bar_df.groupby(["sport", "priority_signal"]).size().reset_index(name="n")
-        sport_order = [s for s in ["WNBA", "NWSL", "General / Multi-Sport"] if s in counts["sport"].unique()]
+        counts = (
+            bar_df.groupby(["sport", "priority_signal"]).size().reset_index(name="n")
+        )
+        sport_order = [
+            s
+            for s in ["WNBA", "NWSL", "General / Multi-Sport"]
+            if s in counts["sport"].unique()
+        ]
 
         fig_bar = go.Figure()
         for signal, colour in SIGNAL_COLOURS.items():
             sub = counts[counts["priority_signal"] == signal]
             if sub.empty:
                 continue
-            fig_bar.add_trace(go.Bar(
-                name=SIGNAL_LABELS.get(signal, signal),
-                x=sub["sport"],
-                y=sub["n"],
-                marker_color=colour,
-                hovertemplate="%{x}<br>" + SIGNAL_LABELS.get(signal, signal) + ": %{y} records<extra></extra>",
-            ))
+            fig_bar.add_trace(
+                go.Bar(
+                    name=SIGNAL_LABELS.get(signal, signal),
+                    x=sub["sport"],
+                    y=sub["n"],
+                    marker_color=colour,
+                    hovertemplate="%{x}<br>"
+                    + SIGNAL_LABELS.get(signal, signal)
+                    + ": %{y} records<extra></extra>",
+                )
+            )
 
         fig_bar.update_layout(
             barmode="group",
@@ -516,7 +638,14 @@ with b_col:
             margin=dict(l=0, r=0, t=8, b=0),
             plot_bgcolor="white",
             paper_bgcolor="white",
-            legend=dict(orientation="h", yanchor="bottom", y=1.02, xanchor="left", x=0, font=dict(size=10)),
+            legend=dict(
+                orientation="h",
+                yanchor="bottom",
+                y=1.02,
+                xanchor="left",
+                x=0,
+                font=dict(size=10),
+            ),
             xaxis=dict(title="", showgrid=False),
             yaxis=dict(title="Records", showgrid=True, gridcolor="#f0f0f0"),
             bargap=0.25,
@@ -525,7 +654,9 @@ with b_col:
         st.plotly_chart(fig_bar, use_container_width=True)
         total_sig = len(bar_df)
         total_all = len(bar_src)
-        st.caption(f"{total_sig} of {total_all} records carry a priority signal ({round(total_sig / total_all * 100)}%)")
+        st.caption(
+            f"{total_sig} of {total_all} records carry a priority signal ({round(total_sig / total_all * 100)}%)"
+        )
 
     with st.expander("What do these signals mean?"):
         st.markdown("""
@@ -540,29 +671,31 @@ with b_col:
 
 
 with feed_col:
-    st.markdown('<div class="section-header">Cultural Signal Feed</div>', unsafe_allow_html=True)
+    st.markdown(
+        '<div class="section-header">Cultural Signal Feed</div>', unsafe_allow_html=True
+    )
 
     # Signal → (hex colour, display label)
     FEED_SIGNAL_STYLE = {
-        "churn_risk":            ("#D95B5B", "Churn Risk"),
-        "disengagement_marker":  ("#D95B5B", "Disengagement"),
-        "loyalty_stress":        ("#D95B5B", "Loyalty Stress"),
-        "trust_split":           ("#E8A838", "Trust Split"),
-        "purchase_intent":       ("#5BAD6F", "Purchase Intent"),
-        "loyalty_signal":        ("#5BAD6F", "Loyalty Signal"),
-        "conversion_trigger":    ("#5BAD6F", "Conversion Trigger"),
-        "identity_anchor":       ("#4A90D9", "Identity Anchor"),
-        "identity_attachment":   ("#4A90D9", "Identity Attachment"),
-        "community_influence":   ("#9B6FD9", "Community Influence"),
-        "cross_sport_superfan":  ("#5BAD6F", "Cross-Sport Super Fan"),
-        "conversion_moment":     ("#9B6FD9", "Conversion Moment"),
+        "churn_risk": ("#D95B5B", "Churn Risk"),
+        "disengagement_marker": ("#D95B5B", "Disengagement"),
+        "loyalty_stress": ("#D95B5B", "Loyalty Stress"),
+        "trust_split": ("#E8A838", "Trust Split"),
+        "purchase_intent": ("#5BAD6F", "Purchase Intent"),
+        "loyalty_signal": ("#5BAD6F", "Loyalty Signal"),
+        "conversion_trigger": ("#5BAD6F", "Conversion Trigger"),
+        "identity_anchor": ("#4A90D9", "Identity Anchor"),
+        "identity_attachment": ("#4A90D9", "Identity Attachment"),
+        "community_influence": ("#9B6FD9", "Community Influence"),
+        "cross_sport_superfan": ("#5BAD6F", "Cross-Sport Super Fan"),
+        "conversion_moment": ("#9B6FD9", "Conversion Moment"),
     }
 
     feed_df = signals.drop_duplicates("record_id").copy()
     feed_df["date"] = pd.to_datetime(feed_df["date"], errors="coerce")
     feed_df = feed_df[
-        (feed_df["behavioral_pathway"] != "none") |
-        (feed_df["priority_signal"]    != "none")
+        (feed_df["behavioral_pathway"] != "none")
+        | (feed_df["priority_signal"] != "none")
     ].sort_values("date", ascending=False)
 
     if feed_df.empty:
@@ -577,11 +710,17 @@ with feed_col:
             if len(text) < 40:
                 continue
 
-            title        = str(row.get("report_title", "")).strip()
-            date_str     = row["date"].strftime("%b %d, %Y") if pd.notna(row["date"]) else "—"
-            sport        = str(row.get("sport", "—"))
-            subreddit    = str(row.get("subreddit", "")) or ""
-            source_label = f"r/{subreddit}" if subreddit and subreddit != "nan" else str(row.get("source", "—"))
+            title = str(row.get("report_title", "")).strip()
+            date_str = (
+                row["date"].strftime("%b %d, %Y") if pd.notna(row["date"]) else "—"
+            )
+            sport = str(row.get("sport", "—"))
+            subreddit = str(row.get("subreddit", "")) or ""
+            source_label = (
+                f"r/{subreddit}"
+                if subreddit and subreddit != "nan"
+                else str(row.get("source", "—"))
+            )
 
             # Pick the most specific signal for display
             active_signal = (
@@ -589,10 +728,14 @@ with feed_col:
                 if row["priority_signal"] != "none"
                 else row["behavioral_pathway"]
             )
-            sig_colour, sig_label = FEED_SIGNAL_STYLE.get(active_signal, ("#aaa", active_signal))
+            sig_colour, sig_label = FEED_SIGNAL_STYLE.get(
+                active_signal, ("#aaa", active_signal)
+            )
 
-            sent_colour = "#c03030" if row["sentiment"] == "negative" else (
-                "#2a7a2a" if row["sentiment"] == "positive" else "#888"
+            sent_colour = (
+                "#c03030"
+                if row["sentiment"] == "negative"
+                else ("#2a7a2a" if row["sentiment"] == "positive" else "#888")
             )
 
             expander_label = f"{sig_label}  ·  {date_str}  ·  {source_label}"
@@ -624,25 +767,31 @@ st.markdown("<div style='margin-top:16px;'></div>", unsafe_allow_html=True)
 
 # ── Insight Panel ──────────────────────────────────────────────────────────
 
-st.markdown('<div class="section-header">Insight Panel — Ask FanVerse</div>', unsafe_allow_html=True)
+st.markdown(
+    '<div class="section-header">Insight Panel — Ask FanVerse</div>',
+    unsafe_allow_html=True,
+)
 
 # Session state
-if "fanverse_query"     not in st.session_state:
-    st.session_state["fanverse_query"]     = None
+if "fanverse_query" not in st.session_state:
+    st.session_state["fanverse_query"] = None
 if "fanverse_query_idx" not in st.session_state:
     st.session_state["fanverse_query_idx"] = None
-if "fanverse_insight"   not in st.session_state:
-    st.session_state["fanverse_insight"]   = None
+if "fanverse_insight" not in st.session_state:
+    st.session_state["fanverse_insight"] = None
 
 # Preset query chips
-st.markdown("<div style='font-size:11px;color:#999;text-transform:uppercase;letter-spacing:1px;margin-bottom:8px;'>Preset queries</div>", unsafe_allow_html=True)
+st.markdown(
+    "<div style='font-size:11px;color:#999;text-transform:uppercase;letter-spacing:1px;margin-bottom:8px;'>Preset queries</div>",
+    unsafe_allow_html=True,
+)
 chip_cols = st.columns(len(PRESET_QUERIES))
 for i, q in enumerate(PRESET_QUERIES):
     with chip_cols[i]:
         if st.button(q, key=f"preset_{i}", use_container_width=True):
-            st.session_state["fanverse_query"]     = q
+            st.session_state["fanverse_query"] = q
             st.session_state["fanverse_query_idx"] = i
-            st.session_state["fanverse_insight"]   = get_insight(q, signals, segments)
+            st.session_state["fanverse_insight"] = get_insight(q, signals, segments)
 
 # Free-text input
 st.markdown("<div style='margin-top:10px;'></div>", unsafe_allow_html=True)
@@ -657,9 +806,11 @@ with free_col:
 with btn_col:
     if st.button("Ask →", use_container_width=True, type="primary"):
         if free_text.strip():
-            st.session_state["fanverse_query"]     = free_text.strip()
+            st.session_state["fanverse_query"] = free_text.strip()
             st.session_state["fanverse_query_idx"] = None
-            st.session_state["fanverse_insight"]   = get_insight(free_text.strip(), signals, segments)
+            st.session_state["fanverse_insight"] = get_insight(
+                free_text.strip(), signals, segments
+            )
 
 # Response card
 st.markdown("<div style='margin-top:14px;'></div>", unsafe_allow_html=True)
@@ -686,8 +837,10 @@ elif not insight["ready"]:
 else:
     r_finding, r_evidence, r_confidence, r_action = st.columns(4)
     confidence_colour = (
-        "#2a7a2a" if insight["confidence"] >= 70
-        else "#c07000" if insight["confidence"] >= 45
+        "#2a7a2a"
+        if insight["confidence"] >= 70
+        else "#c07000"
+        if insight["confidence"] >= 45
         else "#c03030"
     )
 
@@ -697,7 +850,10 @@ else:
             "letter-spacing:1px;color:#999;margin-bottom:6px;'>Finding</div>",
             unsafe_allow_html=True,
         )
-        st.markdown(f"<div style='font-size:13px;color:#333;line-height:1.5;'>{insight['finding']}</div>", unsafe_allow_html=True)
+        st.markdown(
+            f"<div style='font-size:13px;color:#333;line-height:1.5;'>{insight['finding']}</div>",
+            unsafe_allow_html=True,
+        )
 
     with r_evidence:
         st.markdown(
@@ -705,7 +861,10 @@ else:
             "letter-spacing:1px;color:#999;margin-bottom:6px;'>Evidence</div>",
             unsafe_allow_html=True,
         )
-        st.markdown(f"<div style='font-size:13px;color:#555;line-height:1.5;'>{insight['evidence']}</div>", unsafe_allow_html=True)
+        st.markdown(
+            f"<div style='font-size:13px;color:#555;line-height:1.5;'>{insight['evidence']}</div>",
+            unsafe_allow_html=True,
+        )
 
     with r_confidence:
         st.markdown(
@@ -736,7 +895,10 @@ st.markdown("<div style='margin-top:24px;'></div>", unsafe_allow_html=True)
 
 # ── Live Simulation ────────────────────────────────────────────────────────
 
-st.markdown('<div class="section-header">Live Simulation — Action vs Status Quo</div>', unsafe_allow_html=True)
+st.markdown(
+    '<div class="section-header">Live Simulation — Action vs Status Quo</div>',
+    unsafe_allow_html=True,
+)
 
 sim = compute_simulation(st.session_state["fanverse_query_idx"])
 
@@ -746,34 +908,43 @@ with sim_chart_col:
     colours = [SEGMENT_COLOURS.get(s, "#ccc") for s in sim["segments"]]
 
     fig_sim = make_subplots(
-        rows=1, cols=2,
+        rows=1,
+        cols=2,
         specs=[[{"type": "domain"}, {"type": "domain"}]],
         subplot_titles=["Status Quo", "With Recommended Action"],
     )
 
-    fig_sim.add_trace(go.Pie(
-        labels=sim["segments"],
-        values=sim["before"],
-        hole=0.5,
-        marker_colors=colours,
-        textinfo="percent",
-        textfont=dict(size=10),
-        hovertemplate="%{label}: %{value}%<extra></extra>",
-        showlegend=True,
-        name="",
-    ), row=1, col=1)
+    fig_sim.add_trace(
+        go.Pie(
+            labels=sim["segments"],
+            values=sim["before"],
+            hole=0.5,
+            marker_colors=colours,
+            textinfo="percent",
+            textfont=dict(size=10),
+            hovertemplate="%{label}: %{value}%<extra></extra>",
+            showlegend=True,
+            name="",
+        ),
+        row=1,
+        col=1,
+    )
 
-    fig_sim.add_trace(go.Pie(
-        labels=sim["segments"],
-        values=sim["after"],
-        hole=0.5,
-        marker_colors=colours,
-        textinfo="percent",
-        textfont=dict(size=10),
-        hovertemplate="%{label}: %{value}%<extra></extra>",
-        showlegend=False,
-        name="",
-    ), row=1, col=2)
+    fig_sim.add_trace(
+        go.Pie(
+            labels=sim["segments"],
+            values=sim["after"],
+            hole=0.5,
+            marker_colors=colours,
+            textinfo="percent",
+            textfont=dict(size=10),
+            hovertemplate="%{label}: %{value}%<extra></extra>",
+            showlegend=False,
+            name="",
+        ),
+        row=1,
+        col=2,
+    )
 
     fig_sim.update_layout(
         height=340,
@@ -781,8 +952,10 @@ with sim_chart_col:
         paper_bgcolor="white",
         legend=dict(
             orientation="v",
-            yanchor="middle", y=0.5,
-            xanchor="left", x=1.02,
+            yanchor="middle",
+            y=0.5,
+            xanchor="left",
+            x=1.02,
             font=dict(size=10),
         ),
     )
@@ -805,10 +978,12 @@ with sim_summary_col:
             unsafe_allow_html=True,
         )
 
-    _metric_row("At-risk fans converted",       f"{s['fans_reengaged_pct']}%",  "#2a7a2a")
-    _metric_row("Drop in at-risk share (pp)",   f"−{s['churn_reduction']}pp",   "#4A90D9")
-    _metric_row("Growth in top-tier fans",      f"+{s['conversion_uplift']}%",  "#2a7a2a")
-    _metric_row("Model confidence",             f"{s['model_confidence']}%",    "#888")
+    _metric_row("At-risk fans converted", f"{s['fans_reengaged_pct']}%", "#2a7a2a")
+    _metric_row("Drop in at-risk share (pp)", f"−{s['churn_reduction']}pp", "#4A90D9")
+    _metric_row("Growth in top-tier fans", f"+{s['conversion_uplift']}%", "#2a7a2a")
+    _metric_row("Model confidence", f"{s['model_confidence']}%", "#888")
 
     st.markdown("</div>", unsafe_allow_html=True)
-    st.caption("Model-based projection · 90-day horizon · anchored to real cluster sentiment means")
+    st.caption(
+        "Model-based projection · 90-day horizon · anchored to real cluster sentiment means"
+    )
