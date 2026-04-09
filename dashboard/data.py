@@ -14,8 +14,8 @@ from sklearn.preprocessing import StandardScaler
 from sklearn.decomposition import PCA
 
 _ROOT = Path(__file__).parent.parent
-_SIGNALS_PATH  = _ROOT / "repository" / "output" / "repository_signals.json"
-_SEGMENTS_PATH = _ROOT / "repository" / "output" / "fan_segments.json"
+_SIGNALS_PATH  = _ROOT / "repository" / "output" / "repository_signals_5wins.json"
+_SEGMENTS_PATH = _ROOT / "repository" / "output" / "fan_segments_5wins.json"
 
 SOURCE_OPTIONS = ["All", "Social", "Research"]
 PERIOD_OPTIONS = ["1yr", "5yr", "All time"]
@@ -319,7 +319,9 @@ def build_pca_df() -> pd.DataFrame:
 
     # Merge in hover text + signal labels from signals (deduped — avoid sport explosion)
     signals = _load_signals_raw()
-    sig_cols = ["record_id", "text", "report_title", "behavioral_pathway", "priority_signal", "subreddit"]
+    # Only select columns that exist in the signals dataframe
+    desired_cols = ["record_id", "text", "report_title", "behavioral_pathway", "priority_signal", "subreddit"]
+    sig_cols = [col for col in desired_cols if col in signals.columns]
     sig_dedup = signals.drop_duplicates("record_id")[sig_cols]
 
     df = seg_df.merge(sig_dedup, on="record_id", how="left")

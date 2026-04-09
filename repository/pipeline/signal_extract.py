@@ -1,7 +1,23 @@
 import json
+import sys
 from pathlib import Path
 from vaderSentiment.vaderSentiment import SentimentIntensityAnalyzer
 from transformers import pipeline
+
+# ---- CLIENT CONFIGURATION ----
+if len(sys.argv) < 2:
+    print("Usage: python3 signal_extract.py <client_name>")
+    print("Example: python3 signal_extract.py 5wins")
+    print("         python3 signal_extract.py allez_sports")
+    sys.exit(1)
+
+CLIENT = sys.argv[1]
+REPO_PATH = Path(__file__).parent.parent / "data" / "clients" / f"{CLIENT}_repository.jsonl"
+OUTPUT_PATH = Path(__file__).parent.parent / "output" / f"repository_signals_{CLIENT}.json"
+
+if not REPO_PATH.exists():
+    print(f"ERROR: {REPO_PATH} not found")
+    sys.exit(1)
 
 # ---- LOAD MODELS ----
 sid = SentimentIntensityAnalyzer()
@@ -14,30 +30,32 @@ emotion_classifier = pipeline(
 )
 
 # ---- LOAD DATA ----
-REPO_PATH = Path(__file__).parent.parent / "data" / "processed" / "repository.json"
-OUTPUT_PATH = Path(__file__).parent.parent / "output" / "repository_signals.json"
-
+print(f"Loading {CLIENT} data from {REPO_PATH}...")
+posts = []
 with open(REPO_PATH, "r") as f:
-    posts = json.load(f)
+    for line in f:
+        posts.append(json.loads(line))
 
 # ---- KEYWORD RULES FOR BEHAVIORAL PATHWAY ----
+# Instagram-optimized phrase matching (short, enthusiastic language)
 PATHWAY_KEYWORDS = {
-    "loyalty_signal": ["ride or die", "been a fan since", "never switching", "my team", "always supported", "love this team", "season tickets"],
-    "churn_risk": ["done", "last straw", "moving on", "can't support", "disappointed", "losing faith", "hate", "joke"],
-    "conversion_trigger": ["just started watching", "first game", "got me into", "new fan", "hooked", "converted me"],
-    "community_influence": ["who's going", "watch party", "outfit check", "let's go", "game day", "who else"],
-    "purchase_intent": ["buying", "merch", "tickets", "just ordered", "where can I get", "season pass", "reselling"],
-    "identity_attachment": ["my rook", "our team", "she's the reason", "inspires me", "means everything", "don't wanna see her go"],
+    "loyalty_signal": ["lets go", "hypeddd", "yassss", "get the gold", "great to see", "we will"],
+    "churn_risk": ["i'm done with", "done watching", "not watching anymore", "lost me as a fan", "can't support them anymore", "last straw", "unsubscribing", "unfollowing", "moving on", "gave up on", "hard to keep supporting", "lost me as"],
+    "conversion_trigger": ["best [thing] i ever", "just watched", "just saw", "first time", "never knew", "finally", "discovered", "can't believe"],
+    "community_influence": ["how do i join", "show up", "let's go @", "meet up", "who's in", "sign up", "get ready to"],
+    "purchase_intent": ["just ordered", "where can i get", "want to buy", "buying tickets", "season pass"],
+    "identity_attachment": ["love", "you rock", "so proud", "i remember", "best", "way to go", "you deserve", "learned from", "great seeing"],
     "disengagement_marker": ["stopped watching", "don't care anymore", "used to watch", "lost interest", "not worth it"]
 }
 
 # ---- KEYWORD RULES FOR PRIORITY SIGNAL ----
+# Instagram-optimized phrase matching (short, enthusiastic language)
 PRIORITY_KEYWORDS = {
-    "loyalty_stress": ["losing", "scandal", "trade", "cut", "protect", "leave", "losing faith", "last straw"],
-    "identity_anchor": ["she's the reason", "follow her", "wherever she goes", "my player", "rook", "protect"],
-    "conversion_moment": ["first game", "got me into", "started watching", "hooked", "new fan"],
-    "cross_sport_superfan": ["also watch", "both leagues", "NWSL and WNBA", "love both", "multi-sport"],
-    "trust_split": ["love the players", "hate the organization", "front office", "management", "ownership"]
+    "loyalty_stress": ["will miss", "miss you", "come back", "don't go"],
+    "identity_anchor": ["she's the reason", "follow her", "because of her", "you rock"],
+    "conversion_moment": ["just watched", "just saw", "first time", "discovered", "best [thing] i ever"],
+    "cross_sport_superfan": ["also watch", "both", "multiple"],
+    "trust_split": ["love the", "hate the"]
 }
 
 def classify_pathway(text):

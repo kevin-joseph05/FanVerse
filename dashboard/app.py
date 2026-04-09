@@ -293,7 +293,7 @@ with title_col:
     st.markdown(f"""
 <div class="topbar">
   <img src="data:image/png;base64,{encoded}" style="height: 40px; image-rendering: crisp-edges;">
-  <span class="tagline">Female Fan Intelligence</span>
+  <span class="tagline">5wins · Female Fan Intelligence</span>
 </div>
 """, unsafe_allow_html=True)
 

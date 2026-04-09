@@ -1,0 +1,3343 @@
+[
+  {
+    "record_id": "5c3120f142da36f3be445e71",
+    "source": "instagram",
+    "sports": [
+      "general"
+    ],
+    "sentiment_encoded": 2,
+    "sentiment_score": 0.89,
+    "emotional_affinity_score": 45,
+    "confidence_score": 0.62,
+    "cluster": 2,
+    "segment": "Core Engaged Fan"
+  },
+  {
+    "record_id": "102d7a0b76663e2507dc3729",
+    "source": "instagram",
+    "sports": [
+      "general"
+    ],
+    "sentiment_encoded": 1,
+    "sentiment_score": 0.5,
+    "emotional_affinity_score": 55,
+    "confidence_score": 0.28,
+    "cluster": 3,
+    "segment": "Casual Enthusiast"
+  },
+  {
+    "record_id": "c8aba3e8f558555f799bc478",
+    "source": "instagram",
+    "sports": [
+      "general"
+    ],
+    "sentiment_encoded": 1,
+    "sentiment_score": 0.5,
+    "emotional_affinity_score": 88,
+    "confidence_score": 0.44,
+    "cluster": 5,
+    "segment": "Passive / Disengaged"
+  },
+  {
+    "record_id": "65e7202832f32d29898ebc73",
+    "source": "instagram",
+    "sports": [
+      "general"
+    ],
+    "sentiment_encoded": 2,
+    "sentiment_score": 0.82,
+    "emotional_affinity_score": 69,
+    "confidence_score": 0.67,
+    "cluster": 4,
+    "segment": "Frustrated Loyalist"
+  },
+  {
+    "record_id": "fafc21711f1701265c96aff8",
+    "source": "instagram",
+    "sports": [
+      "general"
+    ],
+    "sentiment_encoded": 1,
+    "sentiment_score": 0.5,
+    "emotional_affinity_score": 37,
+    "confidence_score": 0.18,
+    "cluster": 3,
+    "segment": "Casual Enthusiast"
+  },
+  {
+    "record_id": "ca7b5044d1055de8f06778e8",
+    "source": "instagram",
+    "sports": [
+      "general"
+    ],
+    "sentiment_encoded": 2,
+    "sentiment_score": 0.82,
+    "emotional_affinity_score": 87,
+    "confidence_score": 0.76,
+    "cluster": 0,
+    "segment": "Superfan"
+  },
+  {
+    "record_id": "974cd4692d8ea5d2b253c633",
+    "source": "instagram",
+    "sports": [
+      "general"
+    ],
+    "sentiment_encoded": 2,
+    "sentiment_score": 0.87,
+    "emotional_affinity_score": 93,
+    "confidence_score": 0.84,
+    "cluster": 0,
+    "segment": "Superfan"
+  },
+  {
+    "record_id": "5c62a12ed760698750c9fe6e",
+    "source": "instagram",
+    "sports": [
+      "general"
+    ],
+    "sentiment_encoded": 2,
+    "sentiment_score": 0.92,
+    "emotional_affinity_score": 84,
+    "confidence_score": 0.83,
+    "cluster": 0,
+    "segment": "Superfan"
+  },
+  {
+    "record_id": "1d16ecbfee264374e7bae37b",
+    "source": "instagram",
+    "sports": [
+      "general"
+    ],
+    "sentiment_encoded": 1,
+    "sentiment_score": 0.5,
+    "emotional_affinity_score": 52,
+    "confidence_score": 0.26,
+    "cluster": 3,
+    "segment": "Casual Enthusiast"
+  },
+  {
+    "record_id": "fc0399e767e45c75f67f4839",
+    "source": "instagram",
+    "sports": [
+      "general"
+    ],
+    "sentiment_encoded": 2,
+    "sentiment_score": 0.97,
+    "emotional_affinity_score": 70,
+    "confidence_score": 0.82,
+    "cluster": 4,
+    "segment": "Frustrated Loyalist"
+  },
+  {
+    "record_id": "172975c301c8f7b5b2cd90a7",
+    "source": "instagram",
+    "sports": [
+      "general"
+    ],
+    "sentiment_encoded": 1,
+    "sentiment_score": 0.5,
+    "emotional_affinity_score": 69,
+    "confidence_score": 0.34,
+    "cluster": 5,
+    "segment": "Passive / Disengaged"
+  },
+  {
+    "record_id": "da59db03a966d618055584fa",
+    "source": "instagram",
+    "sports": [
+      "general"
+    ],
+    "sentiment_encoded": 1,
+    "sentiment_score": 0.5,
+    "emotional_affinity_score": 74,
+    "confidence_score": 0.37,
+    "cluster": 5,
+    "segment": "Passive / Disengaged"
+  },
+  {
+    "record_id": "8f88d7188d451dc764d74456",
+    "source": "instagram",
+    "sports": [
+      "general"
+    ],
+    "sentiment_encoded": 2,
+    "sentiment_score": 0.83,
+    "emotional_affinity_score": 73,
+    "confidence_score": 0.69,
+    "cluster": 4,
+    "segment": "Frustrated Loyalist"
+  },
+  {
+    "record_id": "a44eba8018a5c2e4af4534bf",
+    "source": "instagram",
+    "sports": [
+      "general"
+    ],
+    "sentiment_encoded": 1,
+    "sentiment_score": 0.5,
+    "emotional_affinity_score": 91,
+    "confidence_score": 0.45,
+    "cluster": 5,
+    "segment": "Passive / Disengaged"
+  },
+  {
+    "record_id": "18cab90b0cc7454af31f236b",
+    "source": "instagram",
+    "sports": [
+      "general"
+    ],
+    "sentiment_encoded": 1,
+    "sentiment_score": 0.5,
+    "emotional_affinity_score": 73,
+    "confidence_score": 0.36,
+    "cluster": 5,
+    "segment": "Passive / Disengaged"
+  },
+  {
+    "record_id": "4482fba3b17a576dff55ac65",
+    "source": "instagram",
+    "sports": [
+      "general"
+    ],
+    "sentiment_encoded": 2,
+    "sentiment_score": 0.96,
+    "emotional_affinity_score": 89,
+    "confidence_score": 0.9,
+    "cluster": 0,
+    "segment": "Superfan"
+  },
+  {
+    "record_id": "ed6be3030df39970aa4751cd",
+    "source": "instagram",
+    "sports": [
+      "general"
+    ],
+    "sentiment_encoded": 1,
+    "sentiment_score": 0.5,
+    "emotional_affinity_score": 69,
+    "confidence_score": 0.34,
+    "cluster": 5,
+    "segment": "Passive / Disengaged"
+  },
+  {
+    "record_id": "fd9ef0b85030260323fdcae4",
+    "source": "instagram",
+    "sports": [
+      "general"
+    ],
+    "sentiment_encoded": 1,
+    "sentiment_score": 0.5,
+    "emotional_affinity_score": 61,
+    "confidence_score": 0.31,
+    "cluster": 3,
+    "segment": "Casual Enthusiast"
+  },
+  {
+    "record_id": "a5efc7eb92cfce2ab75c3685",
+    "source": "instagram",
+    "sports": [
+      "general"
+    ],
+    "sentiment_encoded": 2,
+    "sentiment_score": 0.97,
+    "emotional_affinity_score": 78,
+    "confidence_score": 0.86,
+    "cluster": 0,
+    "segment": "Superfan"
+  },
+  {
+    "record_id": "c43523ae7ff531a90fea4525",
+    "source": "instagram",
+    "sports": [
+      "general"
+    ],
+    "sentiment_encoded": 2,
+    "sentiment_score": 0.87,
+    "emotional_affinity_score": 88,
+    "confidence_score": 0.81,
+    "cluster": 0,
+    "segment": "Superfan"
+  },
+  {
+    "record_id": "4530b5a9e44015097d349fa9",
+    "source": "instagram",
+    "sports": [
+      "general"
+    ],
+    "sentiment_encoded": 2,
+    "sentiment_score": 0.64,
+    "emotional_affinity_score": 45,
+    "confidence_score": 0.36,
+    "cluster": 3,
+    "segment": "Casual Enthusiast"
+  },
+  {
+    "record_id": "ec3e4f4dc95bb1e16a48038c",
+    "source": "instagram",
+    "sports": [
+      "general"
+    ],
+    "sentiment_encoded": 1,
+    "sentiment_score": 0.5,
+    "emotional_affinity_score": 88,
+    "confidence_score": 0.44,
+    "cluster": 5,
+    "segment": "Passive / Disengaged"
+  },
+  {
+    "record_id": "5de2591af63f361bcf6d092a",
+    "source": "instagram",
+    "sports": [
+      "general"
+    ],
+    "sentiment_encoded": 2,
+    "sentiment_score": 0.83,
+    "emotional_affinity_score": 94,
+    "confidence_score": 0.8,
+    "cluster": 0,
+    "segment": "Superfan"
+  },
+  {
+    "record_id": "90fa6ce579bbf6ef31531b77",
+    "source": "instagram",
+    "sports": [
+      "general"
+    ],
+    "sentiment_encoded": 2,
+    "sentiment_score": 0.98,
+    "emotional_affinity_score": 83,
+    "confidence_score": 0.89,
+    "cluster": 0,
+    "segment": "Superfan"
+  },
+  {
+    "record_id": "b974845e041823777179e994",
+    "source": "instagram",
+    "sports": [
+      "general"
+    ],
+    "sentiment_encoded": 1,
+    "sentiment_score": 0.5,
+    "emotional_affinity_score": 55,
+    "confidence_score": 0.27,
+    "cluster": 3,
+    "segment": "Casual Enthusiast"
+  },
+  {
+    "record_id": "512e9f39a97747f9279df508",
+    "source": "instagram",
+    "sports": [
+      "general"
+    ],
+    "sentiment_encoded": 2,
+    "sentiment_score": 0.87,
+    "emotional_affinity_score": 87,
+    "confidence_score": 0.81,
+    "cluster": 0,
+    "segment": "Superfan"
+  },
+  {
+    "record_id": "0f99dcc0bf6153f9d4a63a2b",
+    "source": "instagram",
+    "sports": [
+      "general"
+    ],
+    "sentiment_encoded": 2,
+    "sentiment_score": 0.94,
+    "emotional_affinity_score": 59,
+    "confidence_score": 0.74,
+    "cluster": 4,
+    "segment": "Frustrated Loyalist"
+  },
+  {
+    "record_id": "9705fc5b154f8d9c58787ea9",
+    "source": "instagram",
+    "sports": [
+      "general"
+    ],
+    "sentiment_encoded": 2,
+    "sentiment_score": 0.94,
+    "emotional_affinity_score": 89,
+    "confidence_score": 0.88,
+    "cluster": 0,
+    "segment": "Superfan"
+  },
+  {
+    "record_id": "3ab5b848ee83543b697bf525",
+    "source": "instagram",
+    "sports": [
+      "general"
+    ],
+    "sentiment_encoded": 2,
+    "sentiment_score": 0.77,
+    "emotional_affinity_score": 81,
+    "confidence_score": 0.67,
+    "cluster": 4,
+    "segment": "Frustrated Loyalist"
+  },
+  {
+    "record_id": "d9ab758318ff62104824da56",
+    "source": "instagram",
+    "sports": [
+      "general"
+    ],
+    "sentiment_encoded": 2,
+    "sentiment_score": 0.7,
+    "emotional_affinity_score": 49,
+    "confidence_score": 0.45,
+    "cluster": 2,
+    "segment": "Core Engaged Fan"
+  },
+  {
+    "record_id": "ae2e482d0dd660cc71b72aa5",
+    "source": "instagram",
+    "sports": [
+      "general"
+    ],
+    "sentiment_encoded": 2,
+    "sentiment_score": 0.95,
+    "emotional_affinity_score": 98,
+    "confidence_score": 0.94,
+    "cluster": 0,
+    "segment": "Superfan"
+  },
+  {
+    "record_id": "0b16af63082e5625eed92c94",
+    "source": "instagram",
+    "sports": [
+      "general"
+    ],
+    "sentiment_encoded": 2,
+    "sentiment_score": 0.55,
+    "emotional_affinity_score": 36,
+    "confidence_score": 0.23,
+    "cluster": 3,
+    "segment": "Casual Enthusiast"
+  },
+  {
+    "record_id": "fe64c5790a5adfeeb728ce71",
+    "source": "instagram",
+    "sports": [
+      "general"
+    ],
+    "sentiment_encoded": 2,
+    "sentiment_score": 0.81,
+    "emotional_affinity_score": 69,
+    "confidence_score": 0.65,
+    "cluster": 4,
+    "segment": "Frustrated Loyalist"
+  },
+  {
+    "record_id": "0f133ad6814a0cb1a0a0d0c8",
+    "source": "instagram",
+    "sports": [
+      "general"
+    ],
+    "sentiment_encoded": 2,
+    "sentiment_score": 0.87,
+    "emotional_affinity_score": 56,
+    "confidence_score": 0.65,
+    "cluster": 2,
+    "segment": "Core Engaged Fan"
+  },
+  {
+    "record_id": "61ad7dde38b1f7741d598f6a",
+    "source": "instagram",
+    "sports": [
+      "general"
+    ],
+    "sentiment_encoded": 1,
+    "sentiment_score": 0.5,
+    "emotional_affinity_score": 78,
+    "confidence_score": 0.39,
+    "cluster": 5,
+    "segment": "Passive / Disengaged"
+  },
+  {
+    "record_id": "20e3f6f14fe65d5ee5cf4765",
+    "source": "instagram",
+    "sports": [
+      "general"
+    ],
+    "sentiment_encoded": 2,
+    "sentiment_score": 0.85,
+    "emotional_affinity_score": 70,
+    "confidence_score": 0.7,
+    "cluster": 4,
+    "segment": "Frustrated Loyalist"
+  },
+  {
+    "record_id": "76a6ea07be3445db8206f7fc",
+    "source": "instagram",
+    "sports": [
+      "general"
+    ],
+    "sentiment_encoded": 2,
+    "sentiment_score": 0.98,
+    "emotional_affinity_score": 62,
+    "confidence_score": 0.79,
+    "cluster": 4,
+    "segment": "Frustrated Loyalist"
+  },
+  {
+    "record_id": "37209e9be7efa4a7be5dda0a",
+    "source": "instagram",
+    "sports": [
+      "general"
+    ],
+    "sentiment_encoded": 0,
+    "sentiment_score": 0.13,
+    "emotional_affinity_score": 42,
+    "confidence_score": 0.58,
+    "cluster": 1,
+    "segment": "Emotionally Invested, Weak Signal"
+  },
+  {
+    "record_id": "e66ca071e2307d63c053dcd1",
+    "source": "instagram",
+    "sports": [
+      "general"
+    ],
+    "sentiment_encoded": 2,
+    "sentiment_score": 0.64,
+    "emotional_affinity_score": 67,
+    "confidence_score": 0.47,
+    "cluster": 5,
+    "segment": "Passive / Disengaged"
+  },
+  {
+    "record_id": "f765f4cada9a5a7244cf2a9d",
+    "source": "instagram",
+    "sports": [
+      "general"
+    ],
+    "sentiment_encoded": 2,
+    "sentiment_score": 0.86,
+    "emotional_affinity_score": 49,
+    "confidence_score": 0.6,
+    "cluster": 2,
+    "segment": "Core Engaged Fan"
+  },
+  {
+    "record_id": "22d424057dac5edce8b4e2df",
+    "source": "instagram",
+    "sports": [
+      "general"
+    ],
+    "sentiment_encoded": 2,
+    "sentiment_score": 0.97,
+    "emotional_affinity_score": 78,
+    "confidence_score": 0.86,
+    "cluster": 0,
+    "segment": "Superfan"
+  },
+  {
+    "record_id": "77177a7c81211590524521bf",
+    "source": "instagram",
+    "sports": [
+      "general"
+    ],
+    "sentiment_encoded": 2,
+    "sentiment_score": 0.95,
+    "emotional_affinity_score": 88,
+    "confidence_score": 0.9,
+    "cluster": 0,
+    "segment": "Superfan"
+  },
+  {
+    "record_id": "6ef1fa00e70c8e50424dfd00",
+    "source": "instagram",
+    "sports": [
+      "general"
+    ],
+    "sentiment_encoded": 2,
+    "sentiment_score": 0.88,
+    "emotional_affinity_score": 63,
+    "confidence_score": 0.69,
+    "cluster": 4,
+    "segment": "Frustrated Loyalist"
+  },
+  {
+    "record_id": "7c42b42e8aadae1416e9fa15",
+    "source": "instagram",
+    "sports": [
+      "general"
+    ],
+    "sentiment_encoded": 1,
+    "sentiment_score": 0.5,
+    "emotional_affinity_score": 84,
+    "confidence_score": 0.42,
+    "cluster": 5,
+    "segment": "Passive / Disengaged"
+  },
+  {
+    "record_id": "edfdea98326f745173d33dc0",
+    "source": "instagram",
+    "sports": [
+      "general"
+    ],
+    "sentiment_encoded": 0,
+    "sentiment_score": 0.33,
+    "emotional_affinity_score": 39,
+    "confidence_score": 0.36,
+    "cluster": 3,
+    "segment": "Casual Enthusiast"
+  },
+  {
+    "record_id": "489013247b43935388c73187",
+    "source": "instagram",
+    "sports": [
+      "general"
+    ],
+    "sentiment_encoded": 2,
+    "sentiment_score": 0.83,
+    "emotional_affinity_score": 86,
+    "confidence_score": 0.76,
+    "cluster": 0,
+    "segment": "Superfan"
+  },
+  {
+    "record_id": "edc76033c922fdd1c4ff7435",
+    "source": "instagram",
+    "sports": [
+      "general"
+    ],
+    "sentiment_encoded": 2,
+    "sentiment_score": 0.65,
+    "emotional_affinity_score": 76,
+    "confidence_score": 0.53,
+    "cluster": 5,
+    "segment": "Passive / Disengaged"
+  },
+  {
+    "record_id": "96ff95a5e11f57a760119ace",
+    "source": "instagram",
+    "sports": [
+      "general"
+    ],
+    "sentiment_encoded": 2,
+    "sentiment_score": 0.96,
+    "emotional_affinity_score": 49,
+    "confidence_score": 0.71,
+    "cluster": 2,
+    "segment": "Core Engaged Fan"
+  },
+  {
+    "record_id": "158c78ae2061b5010e0a561b",
+    "source": "instagram",
+    "sports": [
+      "general"
+    ],
+    "sentiment_encoded": 0,
+    "sentiment_score": 0.3,
+    "emotional_affinity_score": 54,
+    "confidence_score": 0.47,
+    "cluster": 1,
+    "segment": "Emotionally Invested, Weak Signal"
+  },
+  {
+    "record_id": "df1a868e25717fc6d0aa748f",
+    "source": "instagram",
+    "sports": [
+      "general"
+    ],
+    "sentiment_encoded": 1,
+    "sentiment_score": 0.5,
+    "emotional_affinity_score": 47,
+    "confidence_score": 0.24,
+    "cluster": 3,
+    "segment": "Casual Enthusiast"
+  },
+  {
+    "record_id": "96f3b2adbf4960d72da365a1",
+    "source": "instagram",
+    "sports": [
+      "general"
+    ],
+    "sentiment_encoded": 0,
+    "sentiment_score": 0.3,
+    "emotional_affinity_score": 50,
+    "confidence_score": 0.45,
+    "cluster": 1,
+    "segment": "Emotionally Invested, Weak Signal"
+  },
+  {
+    "record_id": "50512378cc7d14a462651235",
+    "source": "instagram",
+    "sports": [
+      "general"
+    ],
+    "sentiment_encoded": 2,
+    "sentiment_score": 0.63,
+    "emotional_affinity_score": 84,
+    "confidence_score": 0.56,
+    "cluster": 5,
+    "segment": "Passive / Disengaged"
+  },
+  {
+    "record_id": "fb66fa024f9e89b04ce597f9",
+    "source": "instagram",
+    "sports": [
+      "general"
+    ],
+    "sentiment_encoded": 0,
+    "sentiment_score": 0.09,
+    "emotional_affinity_score": 38,
+    "confidence_score": 0.6,
+    "cluster": 1,
+    "segment": "Emotionally Invested, Weak Signal"
+  },
+  {
+    "record_id": "d99ce8e7e8223e2e9432487d",
+    "source": "instagram",
+    "sports": [
+      "general"
+    ],
+    "sentiment_encoded": 0,
+    "sentiment_score": 0.33,
+    "emotional_affinity_score": 81,
+    "confidence_score": 0.58,
+    "cluster": 5,
+    "segment": "Passive / Disengaged"
+  },
+  {
+    "record_id": "f9e429eab6ca01153fafcfbb",
+    "source": "instagram",
+    "sports": [
+      "general"
+    ],
+    "sentiment_encoded": 2,
+    "sentiment_score": 0.68,
+    "emotional_affinity_score": 90,
+    "confidence_score": 0.63,
+    "cluster": 5,
+    "segment": "Passive / Disengaged"
+  },
+  {
+    "record_id": "af03c78440c359b6cfd2cf27",
+    "source": "instagram",
+    "sports": [
+      "general"
+    ],
+    "sentiment_encoded": 2,
+    "sentiment_score": 0.81,
+    "emotional_affinity_score": 95,
+    "confidence_score": 0.79,
+    "cluster": 0,
+    "segment": "Superfan"
+  },
+  {
+    "record_id": "216ae7a6f439101867a45e3d",
+    "source": "instagram",
+    "sports": [
+      "general"
+    ],
+    "sentiment_encoded": 2,
+    "sentiment_score": 0.83,
+    "emotional_affinity_score": 97,
+    "confidence_score": 0.81,
+    "cluster": 0,
+    "segment": "Superfan"
+  },
+  {
+    "record_id": "4b9b7c867a623139e57662fe",
+    "source": "instagram",
+    "sports": [
+      "general"
+    ],
+    "sentiment_encoded": 2,
+    "sentiment_score": 0.92,
+    "emotional_affinity_score": 85,
+    "confidence_score": 0.85,
+    "cluster": 0,
+    "segment": "Superfan"
+  },
+  {
+    "record_id": "b76b0c1148757e7b4002cd39",
+    "source": "instagram",
+    "sports": [
+      "general"
+    ],
+    "sentiment_encoded": 0,
+    "sentiment_score": 0.35,
+    "emotional_affinity_score": 36,
+    "confidence_score": 0.33,
+    "cluster": 3,
+    "segment": "Casual Enthusiast"
+  },
+  {
+    "record_id": "5658357dd482dabac5ae729c",
+    "source": "instagram",
+    "sports": [
+      "general"
+    ],
+    "sentiment_encoded": 2,
+    "sentiment_score": 0.92,
+    "emotional_affinity_score": 89,
+    "confidence_score": 0.86,
+    "cluster": 0,
+    "segment": "Superfan"
+  },
+  {
+    "record_id": "3387d765be5771c074fa9d8b",
+    "source": "instagram",
+    "sports": [
+      "general"
+    ],
+    "sentiment_encoded": 2,
+    "sentiment_score": 0.94,
+    "emotional_affinity_score": 65,
+    "confidence_score": 0.76,
+    "cluster": 4,
+    "segment": "Frustrated Loyalist"
+  },
+  {
+    "record_id": "288e856ea83b8b64a9610b55",
+    "source": "instagram",
+    "sports": [
+      "general"
+    ],
+    "sentiment_encoded": 1,
+    "sentiment_score": 0.5,
+    "emotional_affinity_score": 45,
+    "confidence_score": 0.22,
+    "cluster": 3,
+    "segment": "Casual Enthusiast"
+  },
+  {
+    "record_id": "7390474e222befe9d9e84a5d",
+    "source": "instagram",
+    "sports": [
+      "general"
+    ],
+    "sentiment_encoded": 2,
+    "sentiment_score": 0.99,
+    "emotional_affinity_score": 96,
+    "confidence_score": 0.97,
+    "cluster": 0,
+    "segment": "Superfan"
+  },
+  {
+    "record_id": "cc9427ceafeb5088ed9325f9",
+    "source": "instagram",
+    "sports": [
+      "general"
+    ],
+    "sentiment_encoded": 2,
+    "sentiment_score": 1.0,
+    "emotional_affinity_score": 92,
+    "confidence_score": 0.96,
+    "cluster": 0,
+    "segment": "Superfan"
+  },
+  {
+    "record_id": "83a5cd95d73c0df90d44deb0",
+    "source": "instagram",
+    "sports": [
+      "general"
+    ],
+    "sentiment_encoded": 1,
+    "sentiment_score": 0.5,
+    "emotional_affinity_score": 79,
+    "confidence_score": 0.4,
+    "cluster": 5,
+    "segment": "Passive / Disengaged"
+  },
+  {
+    "record_id": "dc4f014bd514c60e1f5ccd80",
+    "source": "instagram",
+    "sports": [
+      "general"
+    ],
+    "sentiment_encoded": 2,
+    "sentiment_score": 0.68,
+    "emotional_affinity_score": 62,
+    "confidence_score": 0.49,
+    "cluster": 2,
+    "segment": "Core Engaged Fan"
+  },
+  {
+    "record_id": "bac3e63b94f0a5150588fbaa",
+    "source": "instagram",
+    "sports": [
+      "general"
+    ],
+    "sentiment_encoded": 1,
+    "sentiment_score": 0.5,
+    "emotional_affinity_score": 84,
+    "confidence_score": 0.42,
+    "cluster": 5,
+    "segment": "Passive / Disengaged"
+  },
+  {
+    "record_id": "b26bacfca69848397f921233",
+    "source": "instagram",
+    "sports": [
+      "general"
+    ],
+    "sentiment_encoded": 2,
+    "sentiment_score": 0.75,
+    "emotional_affinity_score": 57,
+    "confidence_score": 0.53,
+    "cluster": 2,
+    "segment": "Core Engaged Fan"
+  },
+  {
+    "record_id": "7a70d8a0e9c7b11c10c70ccc",
+    "source": "instagram",
+    "sports": [
+      "general"
+    ],
+    "sentiment_encoded": 2,
+    "sentiment_score": 0.94,
+    "emotional_affinity_score": 45,
+    "confidence_score": 0.66,
+    "cluster": 2,
+    "segment": "Core Engaged Fan"
+  },
+  {
+    "record_id": "f44687f4e559926e29eb1461",
+    "source": "instagram",
+    "sports": [
+      "general"
+    ],
+    "sentiment_encoded": 2,
+    "sentiment_score": 0.84,
+    "emotional_affinity_score": 84,
+    "confidence_score": 0.76,
+    "cluster": 0,
+    "segment": "Superfan"
+  },
+  {
+    "record_id": "c62a56361268b75a1a0e997d",
+    "source": "instagram",
+    "sports": [
+      "general"
+    ],
+    "sentiment_encoded": 2,
+    "sentiment_score": 0.65,
+    "emotional_affinity_score": 80,
+    "confidence_score": 0.55,
+    "cluster": 5,
+    "segment": "Passive / Disengaged"
+  },
+  {
+    "record_id": "3f8be476afc9d4203886a008",
+    "source": "instagram",
+    "sports": [
+      "general"
+    ],
+    "sentiment_encoded": 0,
+    "sentiment_score": 0.44,
+    "emotional_affinity_score": 69,
+    "confidence_score": 0.41,
+    "cluster": 5,
+    "segment": "Passive / Disengaged"
+  },
+  {
+    "record_id": "fa0e5aed29fe932e37b92734",
+    "source": "instagram",
+    "sports": [
+      "general"
+    ],
+    "sentiment_encoded": 2,
+    "sentiment_score": 0.98,
+    "emotional_affinity_score": 84,
+    "confidence_score": 0.9,
+    "cluster": 0,
+    "segment": "Superfan"
+  },
+  {
+    "record_id": "b06620566072590f7ee9a4ad",
+    "source": "instagram",
+    "sports": [
+      "general"
+    ],
+    "sentiment_encoded": 1,
+    "sentiment_score": 0.5,
+    "emotional_affinity_score": 49,
+    "confidence_score": 0.24,
+    "cluster": 3,
+    "segment": "Casual Enthusiast"
+  },
+  {
+    "record_id": "bfa41d9d8175538aca533e65",
+    "source": "instagram",
+    "sports": [
+      "general"
+    ],
+    "sentiment_encoded": 2,
+    "sentiment_score": 0.78,
+    "emotional_affinity_score": 57,
+    "confidence_score": 0.57,
+    "cluster": 2,
+    "segment": "Core Engaged Fan"
+  },
+  {
+    "record_id": "c0c5b92dd612c900dae1f569",
+    "source": "instagram",
+    "sports": [
+      "general"
+    ],
+    "sentiment_encoded": 1,
+    "sentiment_score": 0.5,
+    "emotional_affinity_score": 70,
+    "confidence_score": 0.35,
+    "cluster": 5,
+    "segment": "Passive / Disengaged"
+  },
+  {
+    "record_id": "c65555786b3d01b9949d9b44",
+    "source": "instagram",
+    "sports": [
+      "general"
+    ],
+    "sentiment_encoded": 2,
+    "sentiment_score": 0.85,
+    "emotional_affinity_score": 56,
+    "confidence_score": 0.63,
+    "cluster": 2,
+    "segment": "Core Engaged Fan"
+  },
+  {
+    "record_id": "154fec966408255dec056597",
+    "source": "instagram",
+    "sports": [
+      "general"
+    ],
+    "sentiment_encoded": 2,
+    "sentiment_score": 0.91,
+    "emotional_affinity_score": 95,
+    "confidence_score": 0.88,
+    "cluster": 0,
+    "segment": "Superfan"
+  },
+  {
+    "record_id": "1ab528b744d3227be3ca31db",
+    "source": "instagram",
+    "sports": [
+      "general"
+    ],
+    "sentiment_encoded": 2,
+    "sentiment_score": 0.96,
+    "emotional_affinity_score": 39,
+    "confidence_score": 0.66,
+    "cluster": 2,
+    "segment": "Core Engaged Fan"
+  },
+  {
+    "record_id": "cb1c7bcee9bdaa7c06fdbcc4",
+    "source": "instagram",
+    "sports": [
+      "general"
+    ],
+    "sentiment_encoded": 1,
+    "sentiment_score": 0.5,
+    "emotional_affinity_score": 87,
+    "confidence_score": 0.43,
+    "cluster": 5,
+    "segment": "Passive / Disengaged"
+  },
+  {
+    "record_id": "c88e4028507b73a4c598d981",
+    "source": "instagram",
+    "sports": [
+      "general"
+    ],
+    "sentiment_encoded": 1,
+    "sentiment_score": 0.5,
+    "emotional_affinity_score": 55,
+    "confidence_score": 0.28,
+    "cluster": 3,
+    "segment": "Casual Enthusiast"
+  },
+  {
+    "record_id": "361b2667b145f996cb49a134",
+    "source": "instagram",
+    "sports": [
+      "general"
+    ],
+    "sentiment_encoded": 2,
+    "sentiment_score": 0.57,
+    "emotional_affinity_score": 68,
+    "confidence_score": 0.41,
+    "cluster": 5,
+    "segment": "Passive / Disengaged"
+  },
+  {
+    "record_id": "ebdb45b3cb7eee119b189cdc",
+    "source": "instagram",
+    "sports": [
+      "general"
+    ],
+    "sentiment_encoded": 0,
+    "sentiment_score": 0.33,
+    "emotional_affinity_score": 86,
+    "confidence_score": 0.6,
+    "cluster": 5,
+    "segment": "Passive / Disengaged"
+  },
+  {
+    "record_id": "4a119bd1c4ea80164e3a4a1e",
+    "source": "instagram",
+    "sports": [
+      "general"
+    ],
+    "sentiment_encoded": 2,
+    "sentiment_score": 0.89,
+    "emotional_affinity_score": 88,
+    "confidence_score": 0.83,
+    "cluster": 0,
+    "segment": "Superfan"
+  },
+  {
+    "record_id": "c1b7c8b22633af559c646f45",
+    "source": "instagram",
+    "sports": [
+      "general"
+    ],
+    "sentiment_encoded": 2,
+    "sentiment_score": 0.94,
+    "emotional_affinity_score": 92,
+    "confidence_score": 0.9,
+    "cluster": 0,
+    "segment": "Superfan"
+  },
+  {
+    "record_id": "c212832e84d4d0b7cfb6113f",
+    "source": "instagram",
+    "sports": [
+      "general"
+    ],
+    "sentiment_encoded": 0,
+    "sentiment_score": 0.21,
+    "emotional_affinity_score": 73,
+    "confidence_score": 0.66,
+    "cluster": 1,
+    "segment": "Emotionally Invested, Weak Signal"
+  },
+  {
+    "record_id": "0179bb3f66070ec9bcccc7c6",
+    "source": "instagram",
+    "sports": [
+      "general"
+    ],
+    "sentiment_encoded": 2,
+    "sentiment_score": 0.99,
+    "emotional_affinity_score": 94,
+    "confidence_score": 0.95,
+    "cluster": 0,
+    "segment": "Superfan"
+  },
+  {
+    "record_id": "3a6848ddcd59d19941910f77",
+    "source": "instagram",
+    "sports": [
+      "general"
+    ],
+    "sentiment_encoded": 2,
+    "sentiment_score": 0.9,
+    "emotional_affinity_score": 89,
+    "confidence_score": 0.84,
+    "cluster": 0,
+    "segment": "Superfan"
+  },
+  {
+    "record_id": "d94b6e4ada70fb1ef89b4467",
+    "source": "instagram",
+    "sports": [
+      "general"
+    ],
+    "sentiment_encoded": 2,
+    "sentiment_score": 0.72,
+    "emotional_affinity_score": 91,
+    "confidence_score": 0.67,
+    "cluster": 0,
+    "segment": "Superfan"
+  },
+  {
+    "record_id": "60d825089efc0312c375dee1",
+    "source": "instagram",
+    "sports": [
+      "general"
+    ],
+    "sentiment_encoded": 2,
+    "sentiment_score": 0.85,
+    "emotional_affinity_score": 93,
+    "confidence_score": 0.82,
+    "cluster": 0,
+    "segment": "Superfan"
+  },
+  {
+    "record_id": "42dd23d51f114c6b1e4a7290",
+    "source": "instagram",
+    "sports": [
+      "general"
+    ],
+    "sentiment_encoded": 1,
+    "sentiment_score": 0.5,
+    "emotional_affinity_score": 95,
+    "confidence_score": 0.47,
+    "cluster": 5,
+    "segment": "Passive / Disengaged"
+  },
+  {
+    "record_id": "a066168dd5f400b9e4a6cf2a",
+    "source": "instagram",
+    "sports": [
+      "general"
+    ],
+    "sentiment_encoded": 1,
+    "sentiment_score": 0.5,
+    "emotional_affinity_score": 37,
+    "confidence_score": 0.18,
+    "cluster": 3,
+    "segment": "Casual Enthusiast"
+  },
+  {
+    "record_id": "6325dfdf5c0db35603eabfc4",
+    "source": "instagram",
+    "sports": [
+      "general"
+    ],
+    "sentiment_encoded": 2,
+    "sentiment_score": 0.88,
+    "emotional_affinity_score": 95,
+    "confidence_score": 0.86,
+    "cluster": 0,
+    "segment": "Superfan"
+  },
+  {
+    "record_id": "357006ae4ecdb42e954d3db5",
+    "source": "instagram",
+    "sports": [
+      "general"
+    ],
+    "sentiment_encoded": 2,
+    "sentiment_score": 0.91,
+    "emotional_affinity_score": 65,
+    "confidence_score": 0.73,
+    "cluster": 4,
+    "segment": "Frustrated Loyalist"
+  },
+  {
+    "record_id": "9d6d73af69cf380997ce43ca",
+    "source": "instagram",
+    "sports": [
+      "general"
+    ],
+    "sentiment_encoded": 2,
+    "sentiment_score": 0.79,
+    "emotional_affinity_score": 77,
+    "confidence_score": 0.67,
+    "cluster": 4,
+    "segment": "Frustrated Loyalist"
+  },
+  {
+    "record_id": "7013523ec64a3947ac619001",
+    "source": "instagram",
+    "sports": [
+      "general"
+    ],
+    "sentiment_encoded": 2,
+    "sentiment_score": 0.63,
+    "emotional_affinity_score": 28,
+    "confidence_score": 0.26,
+    "cluster": 3,
+    "segment": "Casual Enthusiast"
+  },
+  {
+    "record_id": "8fb8f8d9d90fc2c363c4b4bd",
+    "source": "instagram",
+    "sports": [
+      "general"
+    ],
+    "sentiment_encoded": 2,
+    "sentiment_score": 0.96,
+    "emotional_affinity_score": 67,
+    "confidence_score": 0.79,
+    "cluster": 4,
+    "segment": "Frustrated Loyalist"
+  },
+  {
+    "record_id": "91be1987518b41216c1f0b3b",
+    "source": "instagram",
+    "sports": [
+      "general"
+    ],
+    "sentiment_encoded": 2,
+    "sentiment_score": 0.84,
+    "emotional_affinity_score": 87,
+    "confidence_score": 0.77,
+    "cluster": 0,
+    "segment": "Superfan"
+  },
+  {
+    "record_id": "7a7212fd4e2d1493bbaa4365",
+    "source": "instagram",
+    "sports": [
+      "general"
+    ],
+    "sentiment_encoded": 1,
+    "sentiment_score": 0.5,
+    "emotional_affinity_score": 40,
+    "confidence_score": 0.2,
+    "cluster": 3,
+    "segment": "Casual Enthusiast"
+  },
+  {
+    "record_id": "6a73412e86b7f5ee40aafe2e",
+    "source": "instagram",
+    "sports": [
+      "general"
+    ],
+    "sentiment_encoded": 2,
+    "sentiment_score": 0.97,
+    "emotional_affinity_score": 84,
+    "confidence_score": 0.9,
+    "cluster": 0,
+    "segment": "Superfan"
+  },
+  {
+    "record_id": "5f3f281edfce70aeb3049856",
+    "source": "instagram",
+    "sports": [
+      "general"
+    ],
+    "sentiment_encoded": 2,
+    "sentiment_score": 0.73,
+    "emotional_affinity_score": 40,
+    "confidence_score": 0.43,
+    "cluster": 2,
+    "segment": "Core Engaged Fan"
+  },
+  {
+    "record_id": "dfd0dda474ff3676da2dc87f",
+    "source": "instagram",
+    "sports": [
+      "general"
+    ],
+    "sentiment_encoded": 1,
+    "sentiment_score": 0.5,
+    "emotional_affinity_score": 54,
+    "confidence_score": 0.27,
+    "cluster": 3,
+    "segment": "Casual Enthusiast"
+  },
+  {
+    "record_id": "1099c513b8d30d1a6e4fbc8f",
+    "source": "instagram",
+    "sports": [
+      "general"
+    ],
+    "sentiment_encoded": 0,
+    "sentiment_score": 0.06,
+    "emotional_affinity_score": 97,
+    "confidence_score": 0.92,
+    "cluster": 1,
+    "segment": "Emotionally Invested, Weak Signal"
+  },
+  {
+    "record_id": "be073371d66676925443ab14",
+    "source": "instagram",
+    "sports": [
+      "general"
+    ],
+    "sentiment_encoded": 0,
+    "sentiment_score": 0.3,
+    "emotional_affinity_score": 63,
+    "confidence_score": 0.51,
+    "cluster": 1,
+    "segment": "Emotionally Invested, Weak Signal"
+  },
+  {
+    "record_id": "9c86f8c84bd32f9d88e21c92",
+    "source": "instagram",
+    "sports": [
+      "general"
+    ],
+    "sentiment_encoded": 2,
+    "sentiment_score": 0.78,
+    "emotional_affinity_score": 97,
+    "confidence_score": 0.76,
+    "cluster": 0,
+    "segment": "Superfan"
+  },
+  {
+    "record_id": "fc500426eebe9482bf2c5178",
+    "source": "instagram",
+    "sports": [
+      "general"
+    ],
+    "sentiment_encoded": 2,
+    "sentiment_score": 0.98,
+    "emotional_affinity_score": 80,
+    "confidence_score": 0.89,
+    "cluster": 0,
+    "segment": "Superfan"
+  },
+  {
+    "record_id": "c19c4a6b7e01c2ca9f81b81f",
+    "source": "instagram",
+    "sports": [
+      "general"
+    ],
+    "sentiment_encoded": 2,
+    "sentiment_score": 0.95,
+    "emotional_affinity_score": 75,
+    "confidence_score": 0.82,
+    "cluster": 0,
+    "segment": "Superfan"
+  },
+  {
+    "record_id": "2319999b7fcf31f3899d74fa",
+    "source": "instagram",
+    "sports": [
+      "general"
+    ],
+    "sentiment_encoded": 2,
+    "sentiment_score": 0.79,
+    "emotional_affinity_score": 82,
+    "confidence_score": 0.7,
+    "cluster": 4,
+    "segment": "Frustrated Loyalist"
+  },
+  {
+    "record_id": "658ee2d9cc771e533c2b4664",
+    "source": "instagram",
+    "sports": [
+      "general"
+    ],
+    "sentiment_encoded": 2,
+    "sentiment_score": 0.7,
+    "emotional_affinity_score": 38,
+    "confidence_score": 0.39,
+    "cluster": 2,
+    "segment": "Core Engaged Fan"
+  },
+  {
+    "record_id": "6f0df11a3a3d0880bc37aab0",
+    "source": "instagram",
+    "sports": [
+      "general"
+    ],
+    "sentiment_encoded": 1,
+    "sentiment_score": 0.5,
+    "emotional_affinity_score": 83,
+    "confidence_score": 0.42,
+    "cluster": 5,
+    "segment": "Passive / Disengaged"
+  },
+  {
+    "record_id": "f0e96ed093c1b7c799de8f9e",
+    "source": "instagram",
+    "sports": [
+      "general"
+    ],
+    "sentiment_encoded": 2,
+    "sentiment_score": 0.95,
+    "emotional_affinity_score": 69,
+    "confidence_score": 0.79,
+    "cluster": 4,
+    "segment": "Frustrated Loyalist"
+  },
+  {
+    "record_id": "e26b3583fdd963be6fa0384c",
+    "source": "instagram",
+    "sports": [
+      "general"
+    ],
+    "sentiment_encoded": 0,
+    "sentiment_score": 0.33,
+    "emotional_affinity_score": 85,
+    "confidence_score": 0.59,
+    "cluster": 5,
+    "segment": "Passive / Disengaged"
+  },
+  {
+    "record_id": "68320f9df0e39f498cf34e7f",
+    "source": "instagram",
+    "sports": [
+      "general"
+    ],
+    "sentiment_encoded": 2,
+    "sentiment_score": 0.81,
+    "emotional_affinity_score": 88,
+    "confidence_score": 0.75,
+    "cluster": 0,
+    "segment": "Superfan"
+  },
+  {
+    "record_id": "6667a7dde7a3bef12c6c25a0",
+    "source": "instagram",
+    "sports": [
+      "general"
+    ],
+    "sentiment_encoded": 2,
+    "sentiment_score": 0.98,
+    "emotional_affinity_score": 63,
+    "confidence_score": 0.79,
+    "cluster": 4,
+    "segment": "Frustrated Loyalist"
+  },
+  {
+    "record_id": "c82ed32d38e502501dcb4ae7",
+    "source": "instagram",
+    "sports": [
+      "general"
+    ],
+    "sentiment_encoded": 1,
+    "sentiment_score": 0.5,
+    "emotional_affinity_score": 50,
+    "confidence_score": 0.25,
+    "cluster": 3,
+    "segment": "Casual Enthusiast"
+  },
+  {
+    "record_id": "684da77d3829e0589bb83d6a",
+    "source": "instagram",
+    "sports": [
+      "general"
+    ],
+    "sentiment_encoded": 2,
+    "sentiment_score": 0.74,
+    "emotional_affinity_score": 39,
+    "confidence_score": 0.43,
+    "cluster": 2,
+    "segment": "Core Engaged Fan"
+  },
+  {
+    "record_id": "34039ebc51f7d424d8cfb4f8",
+    "source": "instagram",
+    "sports": [
+      "general"
+    ],
+    "sentiment_encoded": 2,
+    "sentiment_score": 0.85,
+    "emotional_affinity_score": 61,
+    "confidence_score": 0.66,
+    "cluster": 4,
+    "segment": "Frustrated Loyalist"
+  },
+  {
+    "record_id": "4e01adf9329b6250ba3df1b0",
+    "source": "instagram",
+    "sports": [
+      "general"
+    ],
+    "sentiment_encoded": 2,
+    "sentiment_score": 0.66,
+    "emotional_affinity_score": 51,
+    "confidence_score": 0.42,
+    "cluster": 2,
+    "segment": "Core Engaged Fan"
+  },
+  {
+    "record_id": "5719b84730d8352f089dfb2a",
+    "source": "instagram",
+    "sports": [
+      "general"
+    ],
+    "sentiment_encoded": 2,
+    "sentiment_score": 0.72,
+    "emotional_affinity_score": 67,
+    "confidence_score": 0.55,
+    "cluster": 4,
+    "segment": "Frustrated Loyalist"
+  },
+  {
+    "record_id": "a47a7dd5a2086ad05ba96abd",
+    "source": "instagram",
+    "sports": [
+      "general"
+    ],
+    "sentiment_encoded": 2,
+    "sentiment_score": 0.81,
+    "emotional_affinity_score": 57,
+    "confidence_score": 0.59,
+    "cluster": 2,
+    "segment": "Core Engaged Fan"
+  },
+  {
+    "record_id": "6441ceecc946d399a1354660",
+    "source": "instagram",
+    "sports": [
+      "general"
+    ],
+    "sentiment_encoded": 2,
+    "sentiment_score": 0.93,
+    "emotional_affinity_score": 84,
+    "confidence_score": 0.85,
+    "cluster": 0,
+    "segment": "Superfan"
+  },
+  {
+    "record_id": "f82495945ddd2d2fdf7c210c",
+    "source": "instagram",
+    "sports": [
+      "general"
+    ],
+    "sentiment_encoded": 2,
+    "sentiment_score": 0.98,
+    "emotional_affinity_score": 79,
+    "confidence_score": 0.87,
+    "cluster": 0,
+    "segment": "Superfan"
+  },
+  {
+    "record_id": "8de8aa9da83ae40289e110c1",
+    "source": "instagram",
+    "sports": [
+      "general"
+    ],
+    "sentiment_encoded": 0,
+    "sentiment_score": 0.21,
+    "emotional_affinity_score": 54,
+    "confidence_score": 0.56,
+    "cluster": 1,
+    "segment": "Emotionally Invested, Weak Signal"
+  },
+  {
+    "record_id": "cd1bccc67918a8fb6eb12b51",
+    "source": "instagram",
+    "sports": [
+      "general"
+    ],
+    "sentiment_encoded": 2,
+    "sentiment_score": 0.86,
+    "emotional_affinity_score": 80,
+    "confidence_score": 0.76,
+    "cluster": 4,
+    "segment": "Frustrated Loyalist"
+  },
+  {
+    "record_id": "6a63d0c9bd26291eb0be0c0f",
+    "source": "instagram",
+    "sports": [
+      "general"
+    ],
+    "sentiment_encoded": 2,
+    "sentiment_score": 0.99,
+    "emotional_affinity_score": 75,
+    "confidence_score": 0.86,
+    "cluster": 0,
+    "segment": "Superfan"
+  },
+  {
+    "record_id": "bbfb4158c8b853718aa236c7",
+    "source": "instagram",
+    "sports": [
+      "general"
+    ],
+    "sentiment_encoded": 2,
+    "sentiment_score": 0.75,
+    "emotional_affinity_score": 46,
+    "confidence_score": 0.48,
+    "cluster": 2,
+    "segment": "Core Engaged Fan"
+  },
+  {
+    "record_id": "f713ecb6599529431b99ed83",
+    "source": "instagram",
+    "sports": [
+      "general"
+    ],
+    "sentiment_encoded": 2,
+    "sentiment_score": 0.79,
+    "emotional_affinity_score": 88,
+    "confidence_score": 0.73,
+    "cluster": 0,
+    "segment": "Superfan"
+  },
+  {
+    "record_id": "d03427620a8a8fab7bbf0ed9",
+    "source": "instagram",
+    "sports": [
+      "general"
+    ],
+    "sentiment_encoded": 0,
+    "sentiment_score": 0.39,
+    "emotional_affinity_score": 83,
+    "confidence_score": 0.53,
+    "cluster": 5,
+    "segment": "Passive / Disengaged"
+  },
+  {
+    "record_id": "0239e8ab8a048be82cda6c53",
+    "source": "instagram",
+    "sports": [
+      "general"
+    ],
+    "sentiment_encoded": 1,
+    "sentiment_score": 0.5,
+    "emotional_affinity_score": 34,
+    "confidence_score": 0.17,
+    "cluster": 3,
+    "segment": "Casual Enthusiast"
+  },
+  {
+    "record_id": "3e0ebb7b122f41594d8b4f0c",
+    "source": "instagram",
+    "sports": [
+      "general"
+    ],
+    "sentiment_encoded": 0,
+    "sentiment_score": 0.22,
+    "emotional_affinity_score": 57,
+    "confidence_score": 0.56,
+    "cluster": 1,
+    "segment": "Emotionally Invested, Weak Signal"
+  },
+  {
+    "record_id": "f0e64c11ba49c2123550379b",
+    "source": "instagram",
+    "sports": [
+      "general"
+    ],
+    "sentiment_encoded": 0,
+    "sentiment_score": 0.21,
+    "emotional_affinity_score": 56,
+    "confidence_score": 0.57,
+    "cluster": 1,
+    "segment": "Emotionally Invested, Weak Signal"
+  },
+  {
+    "record_id": "2e8a73c71c94db1c2160cc28",
+    "source": "instagram",
+    "sports": [
+      "general"
+    ],
+    "sentiment_encoded": 2,
+    "sentiment_score": 0.84,
+    "emotional_affinity_score": 70,
+    "confidence_score": 0.69,
+    "cluster": 4,
+    "segment": "Frustrated Loyalist"
+  },
+  {
+    "record_id": "c996f613e3cd1fa3421fcfab",
+    "source": "instagram",
+    "sports": [
+      "general"
+    ],
+    "sentiment_encoded": 0,
+    "sentiment_score": 0.33,
+    "emotional_affinity_score": 65,
+    "confidence_score": 0.5,
+    "cluster": 1,
+    "segment": "Emotionally Invested, Weak Signal"
+  },
+  {
+    "record_id": "1238895b3c9ab2088311fc9e",
+    "source": "instagram",
+    "sports": [
+      "general"
+    ],
+    "sentiment_encoded": 0,
+    "sentiment_score": 0.35,
+    "emotional_affinity_score": 85,
+    "confidence_score": 0.57,
+    "cluster": 5,
+    "segment": "Passive / Disengaged"
+  },
+  {
+    "record_id": "d57e0174c8a069e8977ed312",
+    "source": "instagram",
+    "sports": [
+      "general"
+    ],
+    "sentiment_encoded": 2,
+    "sentiment_score": 0.73,
+    "emotional_affinity_score": 91,
+    "confidence_score": 0.68,
+    "cluster": 0,
+    "segment": "Superfan"
+  },
+  {
+    "record_id": "98c2e08a67f24957d03a254a",
+    "source": "instagram",
+    "sports": [
+      "general"
+    ],
+    "sentiment_encoded": 2,
+    "sentiment_score": 0.91,
+    "emotional_affinity_score": 74,
+    "confidence_score": 0.78,
+    "cluster": 4,
+    "segment": "Frustrated Loyalist"
+  },
+  {
+    "record_id": "b20016dc8ab50c9f46bd4be5",
+    "source": "instagram",
+    "sports": [
+      "general"
+    ],
+    "sentiment_encoded": 2,
+    "sentiment_score": 0.97,
+    "emotional_affinity_score": 81,
+    "confidence_score": 0.88,
+    "cluster": 0,
+    "segment": "Superfan"
+  },
+  {
+    "record_id": "d42b627872d241a052ca7fa2",
+    "source": "instagram",
+    "sports": [
+      "general"
+    ],
+    "sentiment_encoded": 1,
+    "sentiment_score": 0.5,
+    "emotional_affinity_score": 55,
+    "confidence_score": 0.27,
+    "cluster": 3,
+    "segment": "Casual Enthusiast"
+  },
+  {
+    "record_id": "49e168d6fab3807e661f02ca",
+    "source": "instagram",
+    "sports": [
+      "general"
+    ],
+    "sentiment_encoded": 2,
+    "sentiment_score": 0.92,
+    "emotional_affinity_score": 51,
+    "confidence_score": 0.68,
+    "cluster": 2,
+    "segment": "Core Engaged Fan"
+  },
+  {
+    "record_id": "3811b846198c2e242bf4251a",
+    "source": "instagram",
+    "sports": [
+      "general"
+    ],
+    "sentiment_encoded": 2,
+    "sentiment_score": 0.79,
+    "emotional_affinity_score": 62,
+    "confidence_score": 0.6,
+    "cluster": 4,
+    "segment": "Frustrated Loyalist"
+  },
+  {
+    "record_id": "dc2739845659814d7b092380",
+    "source": "instagram",
+    "sports": [
+      "general"
+    ],
+    "sentiment_encoded": 2,
+    "sentiment_score": 0.85,
+    "emotional_affinity_score": 73,
+    "confidence_score": 0.71,
+    "cluster": 4,
+    "segment": "Frustrated Loyalist"
+  },
+  {
+    "record_id": "3227dc2de0a1dbe6b49b0f35",
+    "source": "instagram",
+    "sports": [
+      "general"
+    ],
+    "sentiment_encoded": 2,
+    "sentiment_score": 0.93,
+    "emotional_affinity_score": 59,
+    "confidence_score": 0.73,
+    "cluster": 4,
+    "segment": "Frustrated Loyalist"
+  },
+  {
+    "record_id": "aac073c00f61f8682e1e6094",
+    "source": "instagram",
+    "sports": [
+      "general"
+    ],
+    "sentiment_encoded": 2,
+    "sentiment_score": 0.8,
+    "emotional_affinity_score": 88,
+    "confidence_score": 0.74,
+    "cluster": 0,
+    "segment": "Superfan"
+  },
+  {
+    "record_id": "18188f31857b978b10072659",
+    "source": "instagram",
+    "sports": [
+      "general"
+    ],
+    "sentiment_encoded": 2,
+    "sentiment_score": 0.69,
+    "emotional_affinity_score": 47,
+    "confidence_score": 0.42,
+    "cluster": 2,
+    "segment": "Core Engaged Fan"
+  },
+  {
+    "record_id": "1fc7e9e09f0204035e48f2e6",
+    "source": "instagram",
+    "sports": [
+      "general"
+    ],
+    "sentiment_encoded": 2,
+    "sentiment_score": 0.7,
+    "emotional_affinity_score": 77,
+    "confidence_score": 0.58,
+    "cluster": 4,
+    "segment": "Frustrated Loyalist"
+  },
+  {
+    "record_id": "c0137cb5b0c39a16b4d7df2b",
+    "source": "instagram",
+    "sports": [
+      "general"
+    ],
+    "sentiment_encoded": 0,
+    "sentiment_score": 0.4,
+    "emotional_affinity_score": 97,
+    "confidence_score": 0.58,
+    "cluster": 5,
+    "segment": "Passive / Disengaged"
+  },
+  {
+    "record_id": "8c380aab17d87c68fcc8e43a",
+    "source": "instagram",
+    "sports": [
+      "general"
+    ],
+    "sentiment_encoded": 2,
+    "sentiment_score": 0.7,
+    "emotional_affinity_score": 88,
+    "confidence_score": 0.64,
+    "cluster": 4,
+    "segment": "Frustrated Loyalist"
+  },
+  {
+    "record_id": "271ce6012d0cf8d445e2e633",
+    "source": "instagram",
+    "sports": [
+      "general"
+    ],
+    "sentiment_encoded": 2,
+    "sentiment_score": 0.72,
+    "emotional_affinity_score": 54,
+    "confidence_score": 0.49,
+    "cluster": 2,
+    "segment": "Core Engaged Fan"
+  },
+  {
+    "record_id": "a7117679fcbd95cb788b4939",
+    "source": "instagram",
+    "sports": [
+      "general"
+    ],
+    "sentiment_encoded": 2,
+    "sentiment_score": 0.96,
+    "emotional_affinity_score": 75,
+    "confidence_score": 0.84,
+    "cluster": 0,
+    "segment": "Superfan"
+  },
+  {
+    "record_id": "ddbd3c4b2f28d16a72af1b4c",
+    "source": "instagram",
+    "sports": [
+      "general"
+    ],
+    "sentiment_encoded": 2,
+    "sentiment_score": 0.8,
+    "emotional_affinity_score": 70,
+    "confidence_score": 0.65,
+    "cluster": 4,
+    "segment": "Frustrated Loyalist"
+  },
+  {
+    "record_id": "9b86213406b62b12641bd0ec",
+    "source": "instagram",
+    "sports": [
+      "general"
+    ],
+    "sentiment_encoded": 2,
+    "sentiment_score": 0.82,
+    "emotional_affinity_score": 80,
+    "confidence_score": 0.72,
+    "cluster": 4,
+    "segment": "Frustrated Loyalist"
+  },
+  {
+    "record_id": "efe63f0f3006e68871d458a2",
+    "source": "instagram",
+    "sports": [
+      "general"
+    ],
+    "sentiment_encoded": 2,
+    "sentiment_score": 0.99,
+    "emotional_affinity_score": 89,
+    "confidence_score": 0.94,
+    "cluster": 0,
+    "segment": "Superfan"
+  },
+  {
+    "record_id": "e1448db7e4ed3bf1c15ae7ca",
+    "source": "instagram",
+    "sports": [
+      "general"
+    ],
+    "sentiment_encoded": 2,
+    "sentiment_score": 0.88,
+    "emotional_affinity_score": 55,
+    "confidence_score": 0.66,
+    "cluster": 2,
+    "segment": "Core Engaged Fan"
+  },
+  {
+    "record_id": "ce136f0e474b1ac5b56130d5",
+    "source": "instagram",
+    "sports": [
+      "general"
+    ],
+    "sentiment_encoded": 2,
+    "sentiment_score": 0.91,
+    "emotional_affinity_score": 95,
+    "confidence_score": 0.89,
+    "cluster": 0,
+    "segment": "Superfan"
+  },
+  {
+    "record_id": "bf1365a5696d8f8e217c4607",
+    "source": "instagram",
+    "sports": [
+      "general"
+    ],
+    "sentiment_encoded": 2,
+    "sentiment_score": 0.6,
+    "emotional_affinity_score": 82,
+    "confidence_score": 0.51,
+    "cluster": 5,
+    "segment": "Passive / Disengaged"
+  },
+  {
+    "record_id": "053f5309837ba148d7e2e9ab",
+    "source": "instagram",
+    "sports": [
+      "general"
+    ],
+    "sentiment_encoded": 2,
+    "sentiment_score": 0.92,
+    "emotional_affinity_score": 83,
+    "confidence_score": 0.83,
+    "cluster": 0,
+    "segment": "Superfan"
+  },
+  {
+    "record_id": "908bd67ef21b6d81dd4eb524",
+    "source": "instagram",
+    "sports": [
+      "general"
+    ],
+    "sentiment_encoded": 2,
+    "sentiment_score": 0.84,
+    "emotional_affinity_score": 90,
+    "confidence_score": 0.79,
+    "cluster": 0,
+    "segment": "Superfan"
+  },
+  {
+    "record_id": "f5941125fa6a6d22f116bfea",
+    "source": "instagram",
+    "sports": [
+      "general"
+    ],
+    "sentiment_encoded": 2,
+    "sentiment_score": 0.75,
+    "emotional_affinity_score": 76,
+    "confidence_score": 0.63,
+    "cluster": 4,
+    "segment": "Frustrated Loyalist"
+  },
+  {
+    "record_id": "1a7c08e5ed0b631138aa5ff6",
+    "source": "instagram",
+    "sports": [
+      "general"
+    ],
+    "sentiment_encoded": 2,
+    "sentiment_score": 0.95,
+    "emotional_affinity_score": 82,
+    "confidence_score": 0.86,
+    "cluster": 0,
+    "segment": "Superfan"
+  },
+  {
+    "record_id": "235f07b7c2febe953e35d38c",
+    "source": "instagram",
+    "sports": [
+      "general"
+    ],
+    "sentiment_encoded": 2,
+    "sentiment_score": 0.78,
+    "emotional_affinity_score": 74,
+    "confidence_score": 0.65,
+    "cluster": 4,
+    "segment": "Frustrated Loyalist"
+  },
+  {
+    "record_id": "0cf56f549a51854dfe8bfba5",
+    "source": "instagram",
+    "sports": [
+      "general"
+    ],
+    "sentiment_encoded": 2,
+    "sentiment_score": 0.82,
+    "emotional_affinity_score": 69,
+    "confidence_score": 0.66,
+    "cluster": 4,
+    "segment": "Frustrated Loyalist"
+  },
+  {
+    "record_id": "99a4612ea69e5292940eb21a",
+    "source": "instagram",
+    "sports": [
+      "general"
+    ],
+    "sentiment_encoded": 2,
+    "sentiment_score": 0.83,
+    "emotional_affinity_score": 74,
+    "confidence_score": 0.7,
+    "cluster": 4,
+    "segment": "Frustrated Loyalist"
+  },
+  {
+    "record_id": "f94423db368708b46d290bc8",
+    "source": "instagram",
+    "sports": [
+      "general"
+    ],
+    "sentiment_encoded": 2,
+    "sentiment_score": 0.82,
+    "emotional_affinity_score": 79,
+    "confidence_score": 0.72,
+    "cluster": 4,
+    "segment": "Frustrated Loyalist"
+  },
+  {
+    "record_id": "d3b586c3f46d2b41334700fc",
+    "source": "instagram",
+    "sports": [
+      "general"
+    ],
+    "sentiment_encoded": 2,
+    "sentiment_score": 0.71,
+    "emotional_affinity_score": 81,
+    "confidence_score": 0.62,
+    "cluster": 4,
+    "segment": "Frustrated Loyalist"
+  },
+  {
+    "record_id": "4ef37959250f13bedcb2028c",
+    "source": "instagram",
+    "sports": [
+      "general"
+    ],
+    "sentiment_encoded": 1,
+    "sentiment_score": 0.5,
+    "emotional_affinity_score": 70,
+    "confidence_score": 0.35,
+    "cluster": 5,
+    "segment": "Passive / Disengaged"
+  },
+  {
+    "record_id": "2e0e71a0aa7a72a856ad2aad",
+    "source": "instagram",
+    "sports": [
+      "general"
+    ],
+    "sentiment_encoded": 2,
+    "sentiment_score": 0.86,
+    "emotional_affinity_score": 53,
+    "confidence_score": 0.63,
+    "cluster": 2,
+    "segment": "Core Engaged Fan"
+  },
+  {
+    "record_id": "8fa31d0883883fc7f61f400d",
+    "source": "instagram",
+    "sports": [
+      "general"
+    ],
+    "sentiment_encoded": 1,
+    "sentiment_score": 0.5,
+    "emotional_affinity_score": 63,
+    "confidence_score": 0.32,
+    "cluster": 3,
+    "segment": "Casual Enthusiast"
+  },
+  {
+    "record_id": "a62ab55ae99c0132678140de",
+    "source": "instagram",
+    "sports": [
+      "general"
+    ],
+    "sentiment_encoded": 2,
+    "sentiment_score": 0.83,
+    "emotional_affinity_score": 92,
+    "confidence_score": 0.79,
+    "cluster": 0,
+    "segment": "Superfan"
+  },
+  {
+    "record_id": "e7c62be46033b36ffbacc1f9",
+    "source": "instagram",
+    "sports": [
+      "general"
+    ],
+    "sentiment_encoded": 2,
+    "sentiment_score": 0.95,
+    "emotional_affinity_score": 97,
+    "confidence_score": 0.94,
+    "cluster": 0,
+    "segment": "Superfan"
+  },
+  {
+    "record_id": "25a20f9fb57cf1c79c1140ae",
+    "source": "instagram",
+    "sports": [
+      "general"
+    ],
+    "sentiment_encoded": 2,
+    "sentiment_score": 0.78,
+    "emotional_affinity_score": 74,
+    "confidence_score": 0.66,
+    "cluster": 4,
+    "segment": "Frustrated Loyalist"
+  },
+  {
+    "record_id": "f7ae82fb190aed2eda1d06da",
+    "source": "instagram",
+    "sports": [
+      "general"
+    ],
+    "sentiment_encoded": 2,
+    "sentiment_score": 0.71,
+    "emotional_affinity_score": 98,
+    "confidence_score": 0.7,
+    "cluster": 0,
+    "segment": "Superfan"
+  },
+  {
+    "record_id": "36b8c4581a2e609652393426",
+    "source": "instagram",
+    "sports": [
+      "general"
+    ],
+    "sentiment_encoded": 2,
+    "sentiment_score": 0.75,
+    "emotional_affinity_score": 75,
+    "confidence_score": 0.63,
+    "cluster": 4,
+    "segment": "Frustrated Loyalist"
+  },
+  {
+    "record_id": "8998dfcdd3888e20350eacaf",
+    "source": "instagram",
+    "sports": [
+      "general"
+    ],
+    "sentiment_encoded": 1,
+    "sentiment_score": 0.5,
+    "emotional_affinity_score": 85,
+    "confidence_score": 0.42,
+    "cluster": 5,
+    "segment": "Passive / Disengaged"
+  },
+  {
+    "record_id": "a075e8b2357802892c8c88c6",
+    "source": "instagram",
+    "sports": [
+      "general"
+    ],
+    "sentiment_encoded": 2,
+    "sentiment_score": 0.93,
+    "emotional_affinity_score": 98,
+    "confidence_score": 0.92,
+    "cluster": 0,
+    "segment": "Superfan"
+  },
+  {
+    "record_id": "2e618a85a6196017f0a0b368",
+    "source": "instagram",
+    "sports": [
+      "general"
+    ],
+    "sentiment_encoded": 1,
+    "sentiment_score": 0.5,
+    "emotional_affinity_score": 47,
+    "confidence_score": 0.23,
+    "cluster": 3,
+    "segment": "Casual Enthusiast"
+  },
+  {
+    "record_id": "24867a23185a11a9d362f7c6",
+    "source": "instagram",
+    "sports": [
+      "general"
+    ],
+    "sentiment_encoded": 2,
+    "sentiment_score": 0.9,
+    "emotional_affinity_score": 59,
+    "confidence_score": 0.7,
+    "cluster": 4,
+    "segment": "Frustrated Loyalist"
+  },
+  {
+    "record_id": "ef03f0155312ed65d0dfd18e",
+    "source": "instagram",
+    "sports": [
+      "general"
+    ],
+    "sentiment_encoded": 2,
+    "sentiment_score": 0.92,
+    "emotional_affinity_score": 69,
+    "confidence_score": 0.77,
+    "cluster": 4,
+    "segment": "Frustrated Loyalist"
+  },
+  {
+    "record_id": "66b90a3c9ac6a2c8d1778d37",
+    "source": "instagram",
+    "sports": [
+      "general"
+    ],
+    "sentiment_encoded": 0,
+    "sentiment_score": 0.11,
+    "emotional_affinity_score": 53,
+    "confidence_score": 0.65,
+    "cluster": 1,
+    "segment": "Emotionally Invested, Weak Signal"
+  },
+  {
+    "record_id": "48408a93dcddcf7870579a09",
+    "source": "instagram",
+    "sports": [
+      "general"
+    ],
+    "sentiment_encoded": 0,
+    "sentiment_score": 0.45,
+    "emotional_affinity_score": 27,
+    "confidence_score": 0.19,
+    "cluster": 3,
+    "segment": "Casual Enthusiast"
+  },
+  {
+    "record_id": "a3402b2c41b7f7a4866bc380",
+    "source": "instagram",
+    "sports": [
+      "general"
+    ],
+    "sentiment_encoded": 0,
+    "sentiment_score": 0.3,
+    "emotional_affinity_score": 35,
+    "confidence_score": 0.37,
+    "cluster": 3,
+    "segment": "Casual Enthusiast"
+  },
+  {
+    "record_id": "bbf867088a9001a901bf4024",
+    "source": "instagram",
+    "sports": [
+      "general"
+    ],
+    "sentiment_encoded": 1,
+    "sentiment_score": 0.5,
+    "emotional_affinity_score": 79,
+    "confidence_score": 0.39,
+    "cluster": 5,
+    "segment": "Passive / Disengaged"
+  },
+  {
+    "record_id": "a32f2a72825f8d6536bff1bb",
+    "source": "instagram",
+    "sports": [
+      "general"
+    ],
+    "sentiment_encoded": 0,
+    "sentiment_score": 0.1,
+    "emotional_affinity_score": 50,
+    "confidence_score": 0.65,
+    "cluster": 1,
+    "segment": "Emotionally Invested, Weak Signal"
+  },
+  {
+    "record_id": "f254f188593b2721518ca2ea",
+    "source": "instagram",
+    "sports": [
+      "general"
+    ],
+    "sentiment_encoded": 2,
+    "sentiment_score": 0.98,
+    "emotional_affinity_score": 43,
+    "confidence_score": 0.7,
+    "cluster": 2,
+    "segment": "Core Engaged Fan"
+  },
+  {
+    "record_id": "2e7e691aa02a29a5e74755cc",
+    "source": "instagram",
+    "sports": [
+      "general"
+    ],
+    "sentiment_encoded": 2,
+    "sentiment_score": 0.95,
+    "emotional_affinity_score": 59,
+    "confidence_score": 0.74,
+    "cluster": 4,
+    "segment": "Frustrated Loyalist"
+  },
+  {
+    "record_id": "31cf42f952639d6db422fd58",
+    "source": "instagram",
+    "sports": [
+      "general"
+    ],
+    "sentiment_encoded": 2,
+    "sentiment_score": 0.6,
+    "emotional_affinity_score": 78,
+    "confidence_score": 0.49,
+    "cluster": 5,
+    "segment": "Passive / Disengaged"
+  },
+  {
+    "record_id": "3b28d779bdb63da97cd3e16e",
+    "source": "instagram",
+    "sports": [
+      "general"
+    ],
+    "sentiment_encoded": 2,
+    "sentiment_score": 0.91,
+    "emotional_affinity_score": 91,
+    "confidence_score": 0.87,
+    "cluster": 0,
+    "segment": "Superfan"
+  },
+  {
+    "record_id": "30e1c20df3474acc83c205b0",
+    "source": "instagram",
+    "sports": [
+      "general"
+    ],
+    "sentiment_encoded": 1,
+    "sentiment_score": 0.5,
+    "emotional_affinity_score": 80,
+    "confidence_score": 0.4,
+    "cluster": 5,
+    "segment": "Passive / Disengaged"
+  },
+  {
+    "record_id": "9e6e71db8b0e44417e28624b",
+    "source": "instagram",
+    "sports": [
+      "general"
+    ],
+    "sentiment_encoded": 2,
+    "sentiment_score": 0.83,
+    "emotional_affinity_score": 67,
+    "confidence_score": 0.66,
+    "cluster": 4,
+    "segment": "Frustrated Loyalist"
+  },
+  {
+    "record_id": "2ab35d52a434984641bb4534",
+    "source": "instagram",
+    "sports": [
+      "general"
+    ],
+    "sentiment_encoded": 2,
+    "sentiment_score": 0.68,
+    "emotional_affinity_score": 74,
+    "confidence_score": 0.55,
+    "cluster": 5,
+    "segment": "Passive / Disengaged"
+  },
+  {
+    "record_id": "d2875d8439e39a4c3a9ca5fa",
+    "source": "instagram",
+    "sports": [
+      "general"
+    ],
+    "sentiment_encoded": 2,
+    "sentiment_score": 0.93,
+    "emotional_affinity_score": 94,
+    "confidence_score": 0.9,
+    "cluster": 0,
+    "segment": "Superfan"
+  },
+  {
+    "record_id": "d3a4b8ce3d6808ea613b187b",
+    "source": "instagram",
+    "sports": [
+      "general"
+    ],
+    "sentiment_encoded": 2,
+    "sentiment_score": 0.95,
+    "emotional_affinity_score": 84,
+    "confidence_score": 0.87,
+    "cluster": 0,
+    "segment": "Superfan"
+  },
+  {
+    "record_id": "ce89e48a744c020d6517fd80",
+    "source": "instagram",
+    "sports": [
+      "general"
+    ],
+    "sentiment_encoded": 2,
+    "sentiment_score": 0.94,
+    "emotional_affinity_score": 81,
+    "confidence_score": 0.84,
+    "cluster": 0,
+    "segment": "Superfan"
+  },
+  {
+    "record_id": "f205c23db7027479908e3fd2",
+    "source": "instagram",
+    "sports": [
+      "general"
+    ],
+    "sentiment_encoded": 2,
+    "sentiment_score": 0.79,
+    "emotional_affinity_score": 54,
+    "confidence_score": 0.56,
+    "cluster": 2,
+    "segment": "Core Engaged Fan"
+  },
+  {
+    "record_id": "40c7952f6435729d51e0b554",
+    "source": "instagram",
+    "sports": [
+      "general"
+    ],
+    "sentiment_encoded": 1,
+    "sentiment_score": 0.5,
+    "emotional_affinity_score": 71,
+    "confidence_score": 0.36,
+    "cluster": 5,
+    "segment": "Passive / Disengaged"
+  },
+  {
+    "record_id": "35c19347fff2d6efc57a04cf",
+    "source": "instagram",
+    "sports": [
+      "general"
+    ],
+    "sentiment_encoded": 2,
+    "sentiment_score": 0.89,
+    "emotional_affinity_score": 86,
+    "confidence_score": 0.82,
+    "cluster": 0,
+    "segment": "Superfan"
+  },
+  {
+    "record_id": "3cc4a359e096e478961b63fc",
+    "source": "instagram",
+    "sports": [
+      "general"
+    ],
+    "sentiment_encoded": 2,
+    "sentiment_score": 0.94,
+    "emotional_affinity_score": 80,
+    "confidence_score": 0.84,
+    "cluster": 0,
+    "segment": "Superfan"
+  },
+  {
+    "record_id": "1020aa64e687928a030e2241",
+    "source": "instagram",
+    "sports": [
+      "general"
+    ],
+    "sentiment_encoded": 2,
+    "sentiment_score": 0.96,
+    "emotional_affinity_score": 92,
+    "confidence_score": 0.92,
+    "cluster": 0,
+    "segment": "Superfan"
+  },
+  {
+    "record_id": "a375f1a7667f603090c0c51e",
+    "source": "instagram",
+    "sports": [
+      "general"
+    ],
+    "sentiment_encoded": 2,
+    "sentiment_score": 0.82,
+    "emotional_affinity_score": 49,
+    "confidence_score": 0.56,
+    "cluster": 2,
+    "segment": "Core Engaged Fan"
+  },
+  {
+    "record_id": "26fa97629dd17159c0cc1416",
+    "source": "instagram",
+    "sports": [
+      "general"
+    ],
+    "sentiment_encoded": 2,
+    "sentiment_score": 0.82,
+    "emotional_affinity_score": 67,
+    "confidence_score": 0.65,
+    "cluster": 4,
+    "segment": "Frustrated Loyalist"
+  },
+  {
+    "record_id": "5f666f3b1c5c3292874a50b0",
+    "source": "instagram",
+    "sports": [
+      "general"
+    ],
+    "sentiment_encoded": 2,
+    "sentiment_score": 0.89,
+    "emotional_affinity_score": 64,
+    "confidence_score": 0.71,
+    "cluster": 4,
+    "segment": "Frustrated Loyalist"
+  },
+  {
+    "record_id": "7c153b0589d3fd4e08fe148d",
+    "source": "instagram",
+    "sports": [
+      "general"
+    ],
+    "sentiment_encoded": 0,
+    "sentiment_score": 0.45,
+    "emotional_affinity_score": 53,
+    "confidence_score": 0.31,
+    "cluster": 3,
+    "segment": "Casual Enthusiast"
+  },
+  {
+    "record_id": "171094e4d9570d2165ee4928",
+    "source": "instagram",
+    "sports": [
+      "general"
+    ],
+    "sentiment_encoded": 2,
+    "sentiment_score": 0.75,
+    "emotional_affinity_score": 46,
+    "confidence_score": 0.49,
+    "cluster": 2,
+    "segment": "Core Engaged Fan"
+  },
+  {
+    "record_id": "8fa6609f6f46269129ddd62f",
+    "source": "instagram",
+    "sports": [
+      "general"
+    ],
+    "sentiment_encoded": 1,
+    "sentiment_score": 0.5,
+    "emotional_affinity_score": 49,
+    "confidence_score": 0.25,
+    "cluster": 3,
+    "segment": "Casual Enthusiast"
+  },
+  {
+    "record_id": "5e5ef53380e137648c3aab23",
+    "source": "instagram",
+    "sports": [
+      "general"
+    ],
+    "sentiment_encoded": 2,
+    "sentiment_score": 0.82,
+    "emotional_affinity_score": 48,
+    "confidence_score": 0.56,
+    "cluster": 2,
+    "segment": "Core Engaged Fan"
+  },
+  {
+    "record_id": "07ec3b1c4938595bec070810",
+    "source": "instagram",
+    "sports": [
+      "general"
+    ],
+    "sentiment_encoded": 2,
+    "sentiment_score": 0.89,
+    "emotional_affinity_score": 44,
+    "confidence_score": 0.61,
+    "cluster": 2,
+    "segment": "Core Engaged Fan"
+  },
+  {
+    "record_id": "0e2733352c89dd5682ca9751",
+    "source": "instagram",
+    "sports": [
+      "general"
+    ],
+    "sentiment_encoded": 2,
+    "sentiment_score": 0.73,
+    "emotional_affinity_score": 49,
+    "confidence_score": 0.47,
+    "cluster": 2,
+    "segment": "Core Engaged Fan"
+  },
+  {
+    "record_id": "1412601a11f08689aff68193",
+    "source": "instagram",
+    "sports": [
+      "general"
+    ],
+    "sentiment_encoded": 0,
+    "sentiment_score": 0.33,
+    "emotional_affinity_score": 56,
+    "confidence_score": 0.45,
+    "cluster": 1,
+    "segment": "Emotionally Invested, Weak Signal"
+  },
+  {
+    "record_id": "f9cf384cab0cd53474319468",
+    "source": "instagram",
+    "sports": [
+      "general"
+    ],
+    "sentiment_encoded": 2,
+    "sentiment_score": 0.81,
+    "emotional_affinity_score": 80,
+    "confidence_score": 0.71,
+    "cluster": 4,
+    "segment": "Frustrated Loyalist"
+  },
+  {
+    "record_id": "74700560a727c1b159f2fb5d",
+    "source": "instagram",
+    "sports": [
+      "general"
+    ],
+    "sentiment_encoded": 0,
+    "sentiment_score": 0.07,
+    "emotional_affinity_score": 35,
+    "confidence_score": 0.61,
+    "cluster": 1,
+    "segment": "Emotionally Invested, Weak Signal"
+  },
+  {
+    "record_id": "6c87dff0f607fdaa67feab42",
+    "source": "instagram",
+    "sports": [
+      "general"
+    ],
+    "sentiment_encoded": 2,
+    "sentiment_score": 0.93,
+    "emotional_affinity_score": 83,
+    "confidence_score": 0.85,
+    "cluster": 0,
+    "segment": "Superfan"
+  },
+  {
+    "record_id": "affeaceaf3b2d5dba9e695fc",
+    "source": "instagram",
+    "sports": [
+      "general"
+    ],
+    "sentiment_encoded": 2,
+    "sentiment_score": 0.96,
+    "emotional_affinity_score": 67,
+    "confidence_score": 0.79,
+    "cluster": 4,
+    "segment": "Frustrated Loyalist"
+  },
+  {
+    "record_id": "b4d673793af8874a00def090",
+    "source": "instagram",
+    "sports": [
+      "general"
+    ],
+    "sentiment_encoded": 2,
+    "sentiment_score": 0.68,
+    "emotional_affinity_score": 46,
+    "confidence_score": 0.41,
+    "cluster": 2,
+    "segment": "Core Engaged Fan"
+  },
+  {
+    "record_id": "59c9fc75cac1348258918ace",
+    "source": "instagram",
+    "sports": [
+      "general"
+    ],
+    "sentiment_encoded": 2,
+    "sentiment_score": 0.69,
+    "emotional_affinity_score": 76,
+    "confidence_score": 0.57,
+    "cluster": 4,
+    "segment": "Frustrated Loyalist"
+  },
+  {
+    "record_id": "6d48fca7185ee490c7209529",
+    "source": "instagram",
+    "sports": [
+      "general"
+    ],
+    "sentiment_encoded": 1,
+    "sentiment_score": 0.49,
+    "emotional_affinity_score": 88,
+    "confidence_score": 0.45,
+    "cluster": 5,
+    "segment": "Passive / Disengaged"
+  },
+  {
+    "record_id": "5e1a02e948f31cc87b939cb3",
+    "source": "instagram",
+    "sports": [
+      "general"
+    ],
+    "sentiment_encoded": 0,
+    "sentiment_score": 0.14,
+    "emotional_affinity_score": 89,
+    "confidence_score": 0.81,
+    "cluster": 1,
+    "segment": "Emotionally Invested, Weak Signal"
+  },
+  {
+    "record_id": "cf2a31e2638b5715e4fcad39",
+    "source": "instagram",
+    "sports": [
+      "general"
+    ],
+    "sentiment_encoded": 1,
+    "sentiment_score": 0.5,
+    "emotional_affinity_score": 41,
+    "confidence_score": 0.2,
+    "cluster": 3,
+    "segment": "Casual Enthusiast"
+  },
+  {
+    "record_id": "056f5bb4b74e94e347a124cf",
+    "source": "instagram",
+    "sports": [
+      "general"
+    ],
+    "sentiment_encoded": 1,
+    "sentiment_score": 0.5,
+    "emotional_affinity_score": 68,
+    "confidence_score": 0.34,
+    "cluster": 5,
+    "segment": "Passive / Disengaged"
+  },
+  {
+    "record_id": "9c2b292c8b514c404e05cb13",
+    "source": "instagram",
+    "sports": [
+      "general"
+    ],
+    "sentiment_encoded": 0,
+    "sentiment_score": 0.36,
+    "emotional_affinity_score": 94,
+    "confidence_score": 0.61,
+    "cluster": 5,
+    "segment": "Passive / Disengaged"
+  },
+  {
+    "record_id": "761389253e0d74a545f4e5f8",
+    "source": "instagram",
+    "sports": [
+      "general"
+    ],
+    "sentiment_encoded": 2,
+    "sentiment_score": 0.68,
+    "emotional_affinity_score": 99,
+    "confidence_score": 0.67,
+    "cluster": 0,
+    "segment": "Superfan"
+  },
+  {
+    "record_id": "b479cece6163cc73862a4139",
+    "source": "instagram",
+    "sports": [
+      "general"
+    ],
+    "sentiment_encoded": 0,
+    "sentiment_score": 0.26,
+    "emotional_affinity_score": 97,
+    "confidence_score": 0.73,
+    "cluster": 5,
+    "segment": "Passive / Disengaged"
+  },
+  {
+    "record_id": "7d81488ce98894a4f2e7318d",
+    "source": "instagram",
+    "sports": [
+      "general"
+    ],
+    "sentiment_encoded": 2,
+    "sentiment_score": 0.86,
+    "emotional_affinity_score": 89,
+    "confidence_score": 0.81,
+    "cluster": 0,
+    "segment": "Superfan"
+  },
+  {
+    "record_id": "39342a87398791874bd6a5e6",
+    "source": "instagram",
+    "sports": [
+      "general"
+    ],
+    "sentiment_encoded": 0,
+    "sentiment_score": 0.22,
+    "emotional_affinity_score": 86,
+    "confidence_score": 0.71,
+    "cluster": 1,
+    "segment": "Emotionally Invested, Weak Signal"
+  },
+  {
+    "record_id": "a8d5137c55f04a687a81bf1e",
+    "source": "instagram",
+    "sports": [
+      "general"
+    ],
+    "sentiment_encoded": 0,
+    "sentiment_score": 0.47,
+    "emotional_affinity_score": 36,
+    "confidence_score": 0.2,
+    "cluster": 3,
+    "segment": "Casual Enthusiast"
+  },
+  {
+    "record_id": "989e5beb58e0e63c4fe0bb5c",
+    "source": "instagram",
+    "sports": [
+      "general"
+    ],
+    "sentiment_encoded": 2,
+    "sentiment_score": 0.6,
+    "emotional_affinity_score": 67,
+    "confidence_score": 0.44,
+    "cluster": 5,
+    "segment": "Passive / Disengaged"
+  },
+  {
+    "record_id": "f3e5f096f10e9484430aea13",
+    "source": "instagram",
+    "sports": [
+      "general"
+    ],
+    "sentiment_encoded": 1,
+    "sentiment_score": 0.5,
+    "emotional_affinity_score": 51,
+    "confidence_score": 0.25,
+    "cluster": 3,
+    "segment": "Casual Enthusiast"
+  },
+  {
+    "record_id": "59a5a82f6c69acf60de11510",
+    "source": "instagram",
+    "sports": [
+      "general"
+    ],
+    "sentiment_encoded": 1,
+    "sentiment_score": 0.5,
+    "emotional_affinity_score": 85,
+    "confidence_score": 0.42,
+    "cluster": 5,
+    "segment": "Passive / Disengaged"
+  },
+  {
+    "record_id": "71f8eb170a938e2799b34cb7",
+    "source": "instagram",
+    "sports": [
+      "general"
+    ],
+    "sentiment_encoded": 2,
+    "sentiment_score": 0.94,
+    "emotional_affinity_score": 80,
+    "confidence_score": 0.83,
+    "cluster": 0,
+    "segment": "Superfan"
+  },
+  {
+    "record_id": "fdb11be4b9770ef7524f4874",
+    "source": "instagram",
+    "sports": [
+      "general"
+    ],
+    "sentiment_encoded": 2,
+    "sentiment_score": 0.78,
+    "emotional_affinity_score": 52,
+    "confidence_score": 0.55,
+    "cluster": 2,
+    "segment": "Core Engaged Fan"
+  },
+  {
+    "record_id": "c9bdf9389c28f7b967a93d59",
+    "source": "instagram",
+    "sports": [
+      "general"
+    ],
+    "sentiment_encoded": 2,
+    "sentiment_score": 0.97,
+    "emotional_affinity_score": 85,
+    "confidence_score": 0.9,
+    "cluster": 0,
+    "segment": "Superfan"
+  },
+  {
+    "record_id": "d3c6fb003010522f29eeb43e",
+    "source": "instagram",
+    "sports": [
+      "general"
+    ],
+    "sentiment_encoded": 2,
+    "sentiment_score": 0.95,
+    "emotional_affinity_score": 50,
+    "confidence_score": 0.7,
+    "cluster": 2,
+    "segment": "Core Engaged Fan"
+  },
+  {
+    "record_id": "e3c8088a8c9c112a3643a7d7",
+    "source": "instagram",
+    "sports": [
+      "general"
+    ],
+    "sentiment_encoded": 2,
+    "sentiment_score": 0.83,
+    "emotional_affinity_score": 46,
+    "confidence_score": 0.56,
+    "cluster": 2,
+    "segment": "Core Engaged Fan"
+  },
+  {
+    "record_id": "d95e5597df3b5905d0a9eabf",
+    "source": "instagram",
+    "sports": [
+      "general"
+    ],
+    "sentiment_encoded": 2,
+    "sentiment_score": 0.8,
+    "emotional_affinity_score": 74,
+    "confidence_score": 0.67,
+    "cluster": 4,
+    "segment": "Frustrated Loyalist"
+  },
+  {
+    "record_id": "bd23a894094eac12360b5618",
+    "source": "instagram",
+    "sports": [
+      "general"
+    ],
+    "sentiment_encoded": 2,
+    "sentiment_score": 0.85,
+    "emotional_affinity_score": 37,
+    "confidence_score": 0.54,
+    "cluster": 2,
+    "segment": "Core Engaged Fan"
+  },
+  {
+    "record_id": "8e767be3efaaeb9aa2e7e4fd",
+    "source": "instagram",
+    "sports": [
+      "general"
+    ],
+    "sentiment_encoded": 2,
+    "sentiment_score": 0.84,
+    "emotional_affinity_score": 61,
+    "confidence_score": 0.65,
+    "cluster": 4,
+    "segment": "Frustrated Loyalist"
+  },
+  {
+    "record_id": "ad852a6ef31e23c8aaa389fb",
+    "source": "instagram",
+    "sports": [
+      "general"
+    ],
+    "sentiment_encoded": 2,
+    "sentiment_score": 0.79,
+    "emotional_affinity_score": 71,
+    "confidence_score": 0.65,
+    "cluster": 4,
+    "segment": "Frustrated Loyalist"
+  },
+  {
+    "record_id": "ee6433b14e34688869630c4c",
+    "source": "instagram",
+    "sports": [
+      "general"
+    ],
+    "sentiment_encoded": 2,
+    "sentiment_score": 0.99,
+    "emotional_affinity_score": 97,
+    "confidence_score": 0.97,
+    "cluster": 0,
+    "segment": "Superfan"
+  },
+  {
+    "record_id": "bd23a894094eac12360b5618",
+    "source": "instagram",
+    "sports": [
+      "general"
+    ],
+    "sentiment_encoded": 2,
+    "sentiment_score": 0.85,
+    "emotional_affinity_score": 37,
+    "confidence_score": 0.54,
+    "cluster": 2,
+    "segment": "Core Engaged Fan"
+  },
+  {
+    "record_id": "e273b3839062497e39dcee0f",
+    "source": "instagram",
+    "sports": [
+      "general"
+    ],
+    "sentiment_encoded": 1,
+    "sentiment_score": 0.5,
+    "emotional_affinity_score": 66,
+    "confidence_score": 0.33,
+    "cluster": 5,
+    "segment": "Passive / Disengaged"
+  },
+  {
+    "record_id": "679fb1be405ceee12600188e",
+    "source": "instagram",
+    "sports": [
+      "general"
+    ],
+    "sentiment_encoded": 2,
+    "sentiment_score": 0.93,
+    "emotional_affinity_score": 98,
+    "confidence_score": 0.92,
+    "cluster": 0,
+    "segment": "Superfan"
+  },
+  {
+    "record_id": "a8aa6f786be950321afb5adf",
+    "source": "instagram",
+    "sports": [
+      "general"
+    ],
+    "sentiment_encoded": 2,
+    "sentiment_score": 0.82,
+    "emotional_affinity_score": 76,
+    "confidence_score": 0.7,
+    "cluster": 4,
+    "segment": "Frustrated Loyalist"
+  },
+  {
+    "record_id": "6fbde55b38fb8d5c1c96303e",
+    "source": "instagram",
+    "sports": [
+      "general"
+    ],
+    "sentiment_encoded": 1,
+    "sentiment_score": 0.5,
+    "emotional_affinity_score": 83,
+    "confidence_score": 0.42,
+    "cluster": 5,
+    "segment": "Passive / Disengaged"
+  },
+  {
+    "record_id": "68a131fa8f98412635504787",
+    "source": "instagram",
+    "sports": [
+      "general"
+    ],
+    "sentiment_encoded": 1,
+    "sentiment_score": 0.5,
+    "emotional_affinity_score": 38,
+    "confidence_score": 0.19,
+    "cluster": 3,
+    "segment": "Casual Enthusiast"
+  },
+  {
+    "record_id": "d0ec25a942eb82fb7c4a5767",
+    "source": "instagram",
+    "sports": [
+      "general"
+    ],
+    "sentiment_encoded": 2,
+    "sentiment_score": 0.96,
+    "emotional_affinity_score": 46,
+    "confidence_score": 0.69,
+    "cluster": 2,
+    "segment": "Core Engaged Fan"
+  },
+  {
+    "record_id": "1d588ba8c098a98b2bc71246",
+    "source": "instagram",
+    "sports": [
+      "general"
+    ],
+    "sentiment_encoded": 2,
+    "sentiment_score": 0.72,
+    "emotional_affinity_score": 69,
+    "confidence_score": 0.56,
+    "cluster": 4,
+    "segment": "Frustrated Loyalist"
+  },
+  {
+    "record_id": "fd50acfbbb42919ef3eead6d",
+    "source": "instagram",
+    "sports": [
+      "general"
+    ],
+    "sentiment_encoded": 1,
+    "sentiment_score": 0.5,
+    "emotional_affinity_score": 81,
+    "confidence_score": 0.41,
+    "cluster": 5,
+    "segment": "Passive / Disengaged"
+  },
+  {
+    "record_id": "fe16a37ae2f533265a7c7dc1",
+    "source": "instagram",
+    "sports": [
+      "general"
+    ],
+    "sentiment_encoded": 2,
+    "sentiment_score": 0.84,
+    "emotional_affinity_score": 67,
+    "confidence_score": 0.68,
+    "cluster": 4,
+    "segment": "Frustrated Loyalist"
+  },
+  {
+    "record_id": "4aa36ebcfd57af7eff975934",
+    "source": "instagram",
+    "sports": [
+      "general"
+    ],
+    "sentiment_encoded": 1,
+    "sentiment_score": 0.5,
+    "emotional_affinity_score": 79,
+    "confidence_score": 0.4,
+    "cluster": 5,
+    "segment": "Passive / Disengaged"
+  },
+  {
+    "record_id": "cb8f562dbe2fd67935ceb547",
+    "source": "instagram",
+    "sports": [
+      "general"
+    ],
+    "sentiment_encoded": 2,
+    "sentiment_score": 0.92,
+    "emotional_affinity_score": 98,
+    "confidence_score": 0.91,
+    "cluster": 0,
+    "segment": "Superfan"
+  },
+  {
+    "record_id": "57ef6d4b39ebbdfaf96079e4",
+    "source": "instagram",
+    "sports": [
+      "general"
+    ],
+    "sentiment_encoded": 2,
+    "sentiment_score": 0.85,
+    "emotional_affinity_score": 79,
+    "confidence_score": 0.75,
+    "cluster": 4,
+    "segment": "Frustrated Loyalist"
+  },
+  {
+    "record_id": "1e7240c29337b4d978d5bb89",
+    "source": "instagram",
+    "sports": [
+      "general"
+    ],
+    "sentiment_encoded": 1,
+    "sentiment_score": 0.5,
+    "emotional_affinity_score": 48,
+    "confidence_score": 0.24,
+    "cluster": 3,
+    "segment": "Casual Enthusiast"
+  },
+  {
+    "record_id": "8699dee11b9cd0bdeb799b5e",
+    "source": "instagram",
+    "sports": [
+      "general"
+    ],
+    "sentiment_encoded": 2,
+    "sentiment_score": 0.88,
+    "emotional_affinity_score": 98,
+    "confidence_score": 0.87,
+    "cluster": 0,
+    "segment": "Superfan"
+  },
+  {
+    "record_id": "acdc15f7dd8d7c0f0cf8b356",
+    "source": "instagram",
+    "sports": [
+      "general"
+    ],
+    "sentiment_encoded": 2,
+    "sentiment_score": 0.94,
+    "emotional_affinity_score": 71,
+    "confidence_score": 0.79,
+    "cluster": 4,
+    "segment": "Frustrated Loyalist"
+  },
+  {
+    "record_id": "93049ce18bd6509817ded559",
+    "source": "instagram",
+    "sports": [
+      "general"
+    ],
+    "sentiment_encoded": 1,
+    "sentiment_score": 0.5,
+    "emotional_affinity_score": 74,
+    "confidence_score": 0.37,
+    "cluster": 5,
+    "segment": "Passive / Disengaged"
+  },
+  {
+    "record_id": "dc3b2bbe0c2f177e7d5acbb6",
+    "source": "instagram",
+    "sports": [
+      "general"
+    ],
+    "sentiment_encoded": 2,
+    "sentiment_score": 0.66,
+    "emotional_affinity_score": 76,
+    "confidence_score": 0.54,
+    "cluster": 5,
+    "segment": "Passive / Disengaged"
+  },
+  {
+    "record_id": "d438091192882be86004eff4",
+    "source": "instagram",
+    "sports": [
+      "general"
+    ],
+    "sentiment_encoded": 0,
+    "sentiment_score": 0.3,
+    "emotional_affinity_score": 89,
+    "confidence_score": 0.65,
+    "cluster": 5,
+    "segment": "Passive / Disengaged"
+  },
+  {
+    "record_id": "7ce2918e31aac0dd940ef0c1",
+    "source": "instagram",
+    "sports": [
+      "general"
+    ],
+    "sentiment_encoded": 2,
+    "sentiment_score": 0.9,
+    "emotional_affinity_score": 94,
+    "confidence_score": 0.87,
+    "cluster": 0,
+    "segment": "Superfan"
+  },
+  {
+    "record_id": "ca95aadeb54da2a9a59ba128",
+    "source": "instagram",
+    "sports": [
+      "general"
+    ],
+    "sentiment_encoded": 0,
+    "sentiment_score": 0.26,
+    "emotional_affinity_score": 79,
+    "confidence_score": 0.63,
+    "cluster": 1,
+    "segment": "Emotionally Invested, Weak Signal"
+  }
+]
