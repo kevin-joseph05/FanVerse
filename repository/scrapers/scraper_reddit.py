@@ -16,10 +16,10 @@ from typing import Optional
 import requests
 from dotenv import load_dotenv
 
-sys.path.insert(0, str(Path(__file__).parent))
-from ingest import ingest  # noqa: E402
+sys.path.insert(0, str(Path(__file__).parent.parent))
+from pipeline.ingest import ingest  # noqa: E402
 
-load_dotenv(Path(__file__).parent / ".env", override=False)
+load_dotenv(Path(__file__).parent.parent / "pipeline" / ".env", override=False)
 
 # Vague User-Agents get throttled — Reddit requires a descriptive string.
 USER_AGENT = os.environ.get("REDDIT_USER_AGENT", "script:FanVerse-scraper:v0.1 (research project)")

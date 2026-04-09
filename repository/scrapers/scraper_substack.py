@@ -14,10 +14,10 @@ from pathlib import Path
 import requests
 from dotenv import load_dotenv
 
-sys.path.insert(0, str(Path(__file__).parent))
-from ingest import ingest
+sys.path.insert(0, str(Path(__file__).parent.parent))
+from pipeline.ingest import ingest
 
-load_dotenv(Path(__file__).parent / ".env", override=False)
+load_dotenv(Path(__file__).parent.parent / "pipeline" / ".env", override=False)
 
 HEADERS = {"User-Agent": "Mozilla/5.0 (compatible; FanVerse-scraper/0.1; research project)"}
 REQUEST_DELAY = 0.5

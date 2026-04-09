@@ -14,8 +14,8 @@ emotion_classifier = pipeline(
 )
 
 # ---- LOAD DATA ----
-REPO_PATH = Path(__file__).parent.parent / "repository" / "repository.json"
-OUTPUT_PATH = Path(__file__).parent.parent / "repository" / "repository_signals.json"
+REPO_PATH = Path(__file__).parent.parent / "data" / "processed" / "repository.json"
+OUTPUT_PATH = Path(__file__).parent.parent / "output" / "repository_signals.json"
 
 with open(REPO_PATH, "r") as f:
     posts = json.load(f)

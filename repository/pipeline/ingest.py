@@ -51,8 +51,8 @@ def infer_sports_from_context(entry: dict) -> list:
 
     return current
 
-REPO_PATH = Path("repository.jsonl")    # one record per line
-LOG_PATH = Path("ingestion_log.jsonl")  # one entry per run
+REPO_PATH = Path(__file__).parent.parent / "data" / "processed" / "repository.jsonl"    # one record per line
+LOG_PATH = Path(__file__).parent.parent / "output" / "logs" / "ingestion_log.jsonl"  # one entry per run
 
 def load_existing_ids() -> set[str]:
     # Returns all record fingerprints already in the repo — used for deduplication.
