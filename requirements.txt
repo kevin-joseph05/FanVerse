@@ -7,3 +7,7 @@ python-dotenv>=1.0.0
 requests>=2.31.0
 pillow>=12.1.1
 vaderSentiment
+transformers
+torch
+langdetect
+deep-translator

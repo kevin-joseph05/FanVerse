@@ -3,6 +3,8 @@ import sys
 from pathlib import Path
 from vaderSentiment.vaderSentiment import SentimentIntensityAnalyzer
 from transformers import pipeline
+from langdetect import detect, detect_langs, LangDetectException
+from deep_translator import GoogleTranslator
 
 # ---- CLIENT CONFIGURATION ----
 if len(sys.argv) < 2:
@@ -80,6 +82,49 @@ def classify_priority(text):
         return max(scores, key=scores.get)
     return "none"
 
+def detect_and_translate(text):
+    """
+    Detect language and translate to English if needed.
+
+    Thresholds:
+    - MIN_LENGTH: 30 chars (skip detection on very short text, assume English)
+    - MIN_CONFIDENCE: 0.85 (only translate if confidence >= 85%)
+
+    Returns: (translated_text, detected_language)
+    Falls back to original text on translation failure or low confidence.
+    """
+    MIN_LENGTH = 30
+    MIN_CONFIDENCE = 0.85
+
+    # Skip detection for very short texts (too unreliable with emojis, etc.)
+    if len(text.strip()) < MIN_LENGTH:
+        return text, "en"
+
+    try:
+        # Get confidence scores for all detected languages
+        results = detect_langs(text)
+        top_detection = results[0]
+
+        # If top detection is English, no translation needed
+        if top_detection.lang == "en":
+            return text, "en"
+
+        # If confidence is below threshold, assume English (fall back)
+        if top_detection.prob < MIN_CONFIDENCE:
+            return text, "en"
+
+        # Translate non-English text with high confidence
+        translator = GoogleTranslator(source_language=top_detection.lang, target_language="en")
+        translated = translator.translate(text)
+        return translated, top_detection.lang
+
+    except LangDetectException:
+        # If detection fails, assume English
+        return text, "en"
+    except Exception as e:
+        # On translation failure, fall back to original text
+        return text, "en"
+
 # ---- MAIN PIPELINE ----
 total = len(posts)
 print(f"Processing {total} records...")
@@ -87,7 +132,10 @@ print(f"Processing {total} records...")
 enriched = []
 
 for i, post in enumerate(posts, 1):
-    text = post["text"]
+    original_text = post["text"]
+
+    # Language detection and translation
+    text, detected_language = detect_and_translate(original_text)
 
     # VADER Sentiment
     vader = sid.polarity_scores(text)
@@ -119,6 +167,9 @@ for i, post in enumerate(posts, 1):
 
     enriched.append({
         **post,
+        "text": text,  # Store translated text for analysis
+        "original_text": original_text,  # Keep original
+        "detected_language": detected_language,
         "sentiment": sentiment,
         "sentiment_score": sentiment_score,
         "emotional_affinity_score": emotional_affinity_score,
@@ -127,7 +178,7 @@ for i, post in enumerate(posts, 1):
         "confidence_score": confidence_score,
     })
 
-    print(f"  [{i}/{total}] {str(post['post_id'])[:8]}... {sentiment} | {behavioral_pathway} | {priority_signal}")
+    print(f"  [{i}/{total}] {str(post['post_id'])[:8]}... {sentiment} | {behavioral_pathway} | {priority_signal} | lang: {detected_language}")
 
 # ---- SAVE OUTPUT ----
 with open(OUTPUT_PATH, "w") as f:
