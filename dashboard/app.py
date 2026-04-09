@@ -38,98 +38,261 @@ st.set_page_config(
     initial_sidebar_state="collapsed",
 )
 
+# ── Theme Toggle ────────────────────────────────────────────────────────────
+
+if "dark_mode" not in st.session_state:
+    st.session_state["dark_mode"] = True
+
+dark_mode = st.session_state["dark_mode"]
+
+toggle_col = st.columns([9, 1])[1]
+with toggle_col:
+    if st.button("Light" if dark_mode else "Dark"):
+        st.session_state["dark_mode"] = not st.session_state["dark_mode"]
+        st.rerun()
+
+if dark_mode:
+    BG          = "#0a0a0a"
+    CARD_BG     = "#1a1a1a"
+    CARD_BORDER = "#2a2a2a"
+    TEXT        = "#ffffff"
+    SUBTEXT     = "#888888"
+    GRID        = "#2a2a2a"
+    PLOT_BG     = "#1a1a1a"
+    TEXT_STRONG = "#ffffff"
+    TEXT_MID    = "#cccccc"
+else:
+    BG          = "#f5f5f5"
+    CARD_BG     = "#ffffff"
+    CARD_BORDER = "#e8e8e8"
+    TEXT        = "#012120"
+    SUBTEXT     = "#888888"
+    GRID        = "#f0f0f0"
+    PLOT_BG     = "#ffffff"
+    TEXT_STRONG = "#012120"
+    TEXT_MID    = "#444444"
+
 # ── Styling ────────────────────────────────────────────────────────────────
 
-st.markdown("""
+st.markdown(f"""
 <style>
-  /* Global font */
-  html, body, [class*="css"] { font-family: 'Inter', 'Segoe UI', sans-serif; }
-
-  /* Hide default Streamlit chrome */
-  #MainMenu, footer, header { visibility: hidden; }
-
-  /* Top bar */
-  .topbar {
+  html, body, [class*="css"] {{
+    font-family: 'Inter', 'Segoe UI', sans-serif;
+    background-color: {BG};
+    color: {TEXT};
+  }}
+  #MainMenu, footer, header {{ visibility: hidden; }}
+  .stApp {{ background-color: {BG}; }}
+  .block-container {{ background-color: {BG}; padding-top: 2rem; }}
+  .topbar {{
     display: flex;
     align-items: center;
     gap: 12px;
     padding: 10px 0 14px 0;
     border-bottom: 2px solid #9fe9c8;
     margin-bottom: 20px;
-  }
-  .wordmark {
-    font-size: 22px;
-    font-weight: 800;
-    letter-spacing: 3px;
-    color: #012120;
-    margin-right: 8px;
-  }
-  .tagline {
+  }}
+  .tagline {{
     font-size: 11px;
-    color: #888;
+    color: {SUBTEXT};
     letter-spacing: 1px;
     text-transform: uppercase;
-  }
-
-  /* KPI cards */
-  .kpi-card {
-    background: #fafafa;
-    border: 1px solid #e8e8e8;
+  }}
+  .kpi-card {{
+    background: {CARD_BG};
+    border: 1px solid {CARD_BORDER};
     border-top: 3px solid #9fe9c8;
     border-radius: 8px;
     padding: 16px 20px;
-  }
-  .kpi-label {
+  }}
+  .kpi-label {{
     font-size: 10px;
     text-transform: uppercase;
     letter-spacing: 1.2px;
-    color: #999;
+    color: {SUBTEXT};
     margin-bottom: 4px;
-  }
-  .kpi-value {
+  }}
+  .kpi-value {{
     font-size: 36px;
     font-weight: 700;
     line-height: 1;
-    color: #012120;
-  }
-  .kpi-delta-pos { font-size: 12px; color: #3a9a3a; margin-top: 4px; }
-  .kpi-delta-neg { font-size: 12px; color: #c03030; margin-top: 4px; }
-  .kpi-delta-neu { font-size: 12px; color: #999;    margin-top: 4px; }
-
-  /* Tag chips */
-  .chip {
+    color: {TEXT};
+  }}
+  .kpi-delta-pos {{ font-size: 12px; color: #3a9a3a; margin-top: 4px; }}
+  .kpi-delta-neg {{ font-size: 12px; color: #c03030; margin-top: 4px; }}
+  .kpi-delta-neu {{ font-size: 12px; color: {SUBTEXT}; margin-top: 4px; }}
+  .chip {{
     display: inline-block;
     padding: 2px 8px;
     border-radius: 4px;
     font-size: 10px;
     margin: 2px 2px 2px 0;
-  }
-  .chip-red   { background: #fde8e8; color: #900; }
-  .chip-green { background: #e8f5e8; color: #040; }
-  .chip-blue  { background: #e8f0fd; color: #003; }
-
-  /* Section headers */
-  .section-header {
+  }}
+  .chip-red   {{ background: {'#3a1010' if dark_mode else '#fde8e8'}; color: {'#ff6b6b' if dark_mode else '#900'}; }}
+  .chip-green {{ background: {'#0a2a0a' if dark_mode else '#e8f5e8'}; color: {'#6bff6b' if dark_mode else '#040'}; }}
+  .chip-blue  {{ background: {'#0a1a3a' if dark_mode else '#e8f0fd'}; color: {'#6b9fff' if dark_mode else '#003'}; }}
+  .section-header {{
     font-size: 11px;
     font-weight: 700;
     text-transform: uppercase;
     letter-spacing: 1.5px;
-    color: #012120;
-    border-bottom: 2px solid #9fe9c8;
+    color: {'#9fe9c8' if dark_mode else '#007a5a'};
+    border-bottom: 2px solid {'#9fe9c8' if dark_mode else '#007a5a'};
     padding-bottom: 6px;
     margin-bottom: 12px;
-  }
+  }}
+  .chart-container {{
+    background: {CARD_BG};
+    border: 1px solid {CARD_BORDER};
+    border-radius: 8px;
+    padding: 16px;
+    margin-bottom: 16px;
+  }}
+  .stSelectbox > div > div {{
+    background-color: {CARD_BG};
+    border-color: {CARD_BORDER};
+    color: {TEXT};
+  }}
+  .stTextInput > div > div > input {{
+    background-color: {CARD_BG};
+    border-color: {CARD_BORDER};
+    color: {TEXT};
+  }}
+  .streamlit-expanderHeader {{
+    background-color: {CARD_BG};
+    color: {TEXT_STRONG};
+    border: 1px solid {CARD_BORDER};
+    border-radius: 8px;
+  }}
+  .streamlit-expanderHeader p {{
+    color: {TEXT_STRONG} !important;
+    font-size: 12px;
+  }}
+  .streamlit-expanderContent {{
+    background-color: {CARD_BG};
+    border: 1px solid {CARD_BORDER};
+  }}
+  .stCaption {{ color: {SUBTEXT}; }}
+  .stTabs [data-baseweb="tab-list"] {{
+    background-color: {CARD_BG};
+    border-radius: 8px;
+  }}
+  .stTabs [data-baseweb="tab"] {{ color: {SUBTEXT}; }}
+  .stTabs [aria-selected="true"] {{
+    color: #9fe9c8;
+    border-bottom-color: #9fe9c8;
+  }}
+  .stButton > button {{
+    background-color: {CARD_BG};
+    color: #9fe9c8;
+    border: 1px solid #9fe9c8;
+    border-radius: 6px;
+  }}
+  .stButton > button:hover {{
+    background-color: #9fe9c8;
+    color: {BG};
+  }}
+  /* Tighter, more premium feel */
+  .block-container {{
+    padding-left: 2rem;
+    padding-right: 2rem;
+    max-width: 1400px;
+  }}
+
+  /* Better caption text */
+  .stCaption p {{
+    color: {SUBTEXT} !important;
+    font-size: 11px;
+  }}
+
+  /* Cleaner tab styling */
+  .stTabs [data-baseweb="tab"] {{
+    font-size: 11px;
+    font-weight: 600;
+    letter-spacing: 0.5px;
+    text-transform: uppercase;
+    color: {SUBTEXT};
+    padding: 8px 16px;
+  }}
+  .stTabs [aria-selected="true"] {{
+    color: {'#9fe9c8' if dark_mode else '#007a5a'} !important;
+    border-bottom: 2px solid {'#9fe9c8' if dark_mode else '#007a5a'} !important;
+  }}
+
+  /* Cleaner select boxes */
+  .stSelectbox label {{
+    color: {TEXT_STRONG} !important;
+    font-size: 11px;
+  }}
+
+  /* Preset query buttons more readable */
+  .stButton > button {{
+    background-color: {CARD_BG};
+    color: {'#9fe9c8' if dark_mode else '#007a5a'};
+    border: 1px solid {'#9fe9c8' if dark_mode else '#007a5a'};
+    border-radius: 6px;
+    font-size: 12px;
+    font-weight: 500;
+  }}
+  .stButton > button:hover {{
+    background-color: {'#9fe9c8' if dark_mode else '#007a5a'};
+    color: {BG};
+  }}
+   /* Force expander text to be visible in dark mode */
+  [data-testid="stExpander"] summary p {{
+    color: {TEXT_STRONG} !important;
+    font-size: 12px !important;
+  }}
+  [data-testid="stExpander"] summary {{
+    color: {TEXT_STRONG} !important;
+  }}
+  [data-testid="stExpander"] details summary {{
+    color: {TEXT_STRONG} !important;
+  }}
+  div[data-testid="stExpanderToggleIcon"] svg {{
+    fill: {TEXT_STRONG} !important;
+  }}
+  /* Force table text to be readable */
+  [data-testid="stExpander"] table {{
+    color: {TEXT_STRONG} !important;
+  }}
+  [data-testid="stExpander"] td {{
+    color: {TEXT_STRONG} !important;
+  }}
+  [data-testid="stExpander"] th {{
+    color: {TEXT_STRONG} !important;
+  }}
+  [data-testid="stExpander"] p {{
+    color: {TEXT_STRONG} !important;
+  }}
+  [data-testid="stExpander"] strong {{
+    color: {TEXT_STRONG} !important;
+  }}
+  /* Subtle theme toggle */
+  [data-testid="stButton"] button {{
+    font-size: 10px !important;
+    padding: 4px 10px !important;
+    border-radius: 4px !important;
+    opacity: 0.5;
+    transition: opacity 0.2s;
+  }}
+  [data-testid="stButton"] button:hover {{
+    opacity: 1;
+  }}
 </style>
 """, unsafe_allow_html=True)
 
 
 # ── Top bar ────────────────────────────────────────────────────────────────
 
+import base64
 title_col = st.columns([1])[0]
 with title_col:
-    st.markdown("""
+    with open("dashboard/FanVerseLogo.png", "rb") as f:
+        encoded = base64.b64encode(f.read()).decode()
+    st.markdown(f"""
 <div class="topbar">
-  <span class="wordmark">FANVERSE</span>
+  <img src="data:image/png;base64,{encoded}" style="height: 40px; image-rendering: crisp-edges;">
   <span class="tagline">Female Fan Intelligence</span>
 </div>
 """, unsafe_allow_html=True)
@@ -262,7 +425,6 @@ with trend_col:
                 ),
             ))
 
-        # Annotations for notable events
         for ann in annotations:
             if ann["sport"] in sports_in_data:
                 colour = SPORT_COLOURS.get(ann["sport"], "#888")
@@ -282,16 +444,16 @@ with trend_col:
         fig.update_layout(
             height=280,
             margin=dict(l=0, r=0, t=8, b=0),
-            plot_bgcolor="white",
-            paper_bgcolor="white",
-            legend=dict(orientation="h", yanchor="bottom", y=1.02, xanchor="left", x=0),
-            xaxis=dict(showgrid=False, title=""),
-            yaxis=dict(showgrid=True, gridcolor="#f0f0f0", range=[0, 105], title="Avg Affinity Score"),
+            plot_bgcolor=PLOT_BG,
+            paper_bgcolor=PLOT_BG,
+            font=dict(color=TEXT),
+            legend=dict(orientation="h", yanchor="bottom", y=1.02, xanchor="left", x=0, font=dict(color=TEXT_STRONG)),
+            xaxis=dict(showgrid=False, title="", color=TEXT_STRONG, tickfont=dict(color=TEXT_STRONG)),
+            yaxis=dict(showgrid=True, gridcolor=GRID, range=[0, 105], title="Avg Affinity Score", color=TEXT_STRONG, tickfont=dict(color=TEXT_STRONG)),
             hovermode="x unified",
         )
         st.plotly_chart(fig, use_container_width=True)
 
-        # "What moved it" expander
         if annotations:
             with st.expander("What moved it — notable signal records", expanded=False):
                 for ann in annotations:
@@ -302,12 +464,12 @@ with trend_col:
                     st.markdown(
                         f"<span style='color:{colour};font-weight:bold;'>{arrow} {ann['score']}</span>"
                         f"&nbsp;·&nbsp;<code>{ann['sport']}</code>"
-                        f"&nbsp;·&nbsp;<span style='color:#888;font-size:12px;'>{date_display}</span>"
+                        f"&nbsp;·&nbsp;<span style='color:{SUBTEXT};font-size:12px;'>{date_display}</span>"
                         f"&nbsp;·&nbsp;<span style='font-size:11px;color:#4A90D9;'>{signal_display}</span>",
                         unsafe_allow_html=True,
                     )
                     st.markdown(
-                        f"<div style='font-size:12px;color:#333;line-height:1.6;white-space:pre-wrap;margin-top:4px;'>{ann['full_text']}</div>",
+                        f"<div style='font-size:12px;color:{TEXT_STRONG};line-height:1.6;white-space:pre-wrap;margin-top:4px;'>{ann['full_text']}</div>",
                         unsafe_allow_html=True,
                     )
                     st.markdown("---")
@@ -333,20 +495,20 @@ with seg_col:
             height=210,
             margin=dict(l=0, r=0, t=0, b=0),
             showlegend=False,
-            paper_bgcolor="white",
+            paper_bgcolor=PLOT_BG,
+            font=dict(color=TEXT),
         )
         st.plotly_chart(fig_donut, use_container_width=True)
 
-        # Segment table
         for _, row in seg_summary.iterrows():
             colour = SEGMENT_COLOURS.get(row["segment"], "#ccc")
             st.markdown(
                 f"<div style='display:flex;justify-content:space-between;align-items:center;"
-                f"border-bottom:1px solid #f0f0f0;padding:4px 0;font-size:12px;'>"
+                f"border-bottom:1px solid {GRID};padding:4px 0;font-size:12px;color:{TEXT};'>"
                 f"<span style='display:flex;align-items:center;gap:6px;'>"
                 f"<span style='width:10px;height:10px;border-radius:50%;background:{colour};"
                 f"display:inline-block;flex-shrink:0;'></span>{row['segment']}</span>"
-                f"<span style='color:#888;'><b style='color:#333;'>{row['count']}</b> &nbsp; {row['pct']}%</span>"
+                f"<span style='color:{SUBTEXT};'><b style='color:{TEXT};'>{row['count']}</b> &nbsp; {row['pct']}%</span>"
                 f"</div>",
                 unsafe_allow_html=True,
             )
@@ -360,10 +522,8 @@ st.markdown('<div class="section-header">Fan Segment Map — PCA 2D Scatter</div
 
 pca_df = build_pca_df()
 
-# Apply the sidebar sport filter so the scatter respects the global selection.
 pca_view = pca_df[pca_df["sport"] == sport_filter] if sport_filter != "All" else pca_df
 
-# Build sport tabs dynamically from whatever sports are present after filtering.
 _SPORT_TAB_LABELS = {
     "WNBA": "WNBA", "NWSL": "NWSL", "WTA": "WTA", "PWHL": "PWHL",
     "NFL": "NFL", "NBA": "NBA", "NHL": "NHL", "MLB": "MLB", "MLS": "MLS",
@@ -381,13 +541,11 @@ _all_tab_labels = (
 _tabs = st.tabs(_all_tab_labels)
 
 def _render_scatter(df: pd.DataFrame, title_note: str = "") -> None:
-    """Renders a PCA scatter for the given (already filtered) dataframe."""
     if df.empty:
         st.info("No records match this view.")
         return
 
     n = len(df)
-    # Normalise dot size: confidence_score 0→1 mapped to marker size 6→18
     marker_sizes = (df["confidence_score"] * 12 + 6).clip(6, 18)
 
     fig = go.Figure()
@@ -427,30 +585,31 @@ def _render_scatter(df: pd.DataFrame, title_note: str = "") -> None:
     fig.update_layout(
         height=420,
         margin=dict(l=0, r=0, t=24, b=0),
-        plot_bgcolor="white",
-        paper_bgcolor="white",
+        plot_bgcolor=PLOT_BG,
+        paper_bgcolor=PLOT_BG,
+        font=dict(color=TEXT),
         legend=dict(
             orientation="v",
             yanchor="top", y=1,
             xanchor="left", x=1.01,
-            font=dict(size=11),
+            font=dict(size=11, color=TEXT),
         ),
         xaxis=dict(
             title="PC1 — Overall Engagement (↑ sentiment · affinity · confidence)",
-            showgrid=True, gridcolor="#f5f5f5", zeroline=True, zerolinecolor="#ddd",
-            title_font=dict(size=11), tickfont=dict(size=10),
+            showgrid=True, gridcolor=GRID, zeroline=True, zerolinecolor=GRID,
+            title_font=dict(size=11, color=TEXT_STRONG), tickfont=dict(size=10, color=TEXT_STRONG),
         ),
         yaxis=dict(
             title="PC2 — Sentiment vs Affinity Trade-off",
-            showgrid=True, gridcolor="#f5f5f5", zeroline=True, zerolinecolor="#ddd",
-            title_font=dict(size=11), tickfont=dict(size=10),
+            showgrid=True, gridcolor=GRID, zeroline=True, zerolinecolor=GRID,
+            title_font=dict(size=11, color=TEXT_STRONG), tickfont=dict(size=10, color=TEXT_STRONG),
         ),
         hovermode="closest",
         annotations=[dict(
             text=f"{n} records · 88.7% variance explained{' · ' + title_note if title_note else ''}",
             xref="paper", yref="paper",
             x=0, y=1.04, showarrow=False,
-            font=dict(size=10, color="#aaa"),
+            font=dict(size=10, color=SUBTEXT),
         )],
     )
     st.plotly_chart(fig, use_container_width=True)
@@ -512,7 +671,6 @@ with b_col:
         st.info("No priority signals in current filter.")
     else:
         counts = bar_df.groupby(["sport", "priority_signal"]).size().reset_index(name="n")
-        # Order sports by total signal count descending so the most data-rich sport leads
         sport_order = (
             counts.groupby("sport")["n"].sum()
             .sort_values(ascending=False)
@@ -536,11 +694,12 @@ with b_col:
             barmode="group",
             height=320,
             margin=dict(l=0, r=0, t=8, b=0),
-            plot_bgcolor="white",
-            paper_bgcolor="white",
-            legend=dict(orientation="h", yanchor="bottom", y=1.02, xanchor="left", x=0, font=dict(size=10)),
-            xaxis=dict(title="", showgrid=False),
-            yaxis=dict(title="Records", showgrid=True, gridcolor="#f0f0f0"),
+            plot_bgcolor=PLOT_BG,
+            paper_bgcolor=PLOT_BG,
+            font=dict(color=TEXT),
+            legend=dict(orientation="h", yanchor="bottom", y=1.02, xanchor="left", x=0, font=dict(size=10, color=TEXT_STRONG)),
+            xaxis=dict(title="", showgrid=False, color=TEXT_STRONG, tickfont=dict(color=TEXT_STRONG)),
+            yaxis=dict(title="Records", showgrid=True, gridcolor=GRID, color=TEXT_STRONG, tickfont=dict(color=TEXT_STRONG)),
             bargap=0.25,
             bargroupgap=0.08,
         )
@@ -564,7 +723,6 @@ with b_col:
 with feed_col:
     st.markdown('<div class="section-header">Cultural Signal Feed</div>', unsafe_allow_html=True)
 
-    # Signal → (hex colour, display label)
     FEED_SIGNAL_STYLE = {
         "churn_risk":            ("#D95B5B", "Churn Risk"),
         "disengagement_marker":  ("#D95B5B", "Disengagement"),
@@ -605,7 +763,6 @@ with feed_col:
             subreddit    = str(row.get("subreddit", "")) or ""
             source_label = f"r/{subreddit}" if subreddit and subreddit != "nan" else str(row.get("source", "—"))
 
-            # Pick the most specific signal for display
             active_signal = (
                 row["priority_signal"]
                 if row["priority_signal"] != "none"
@@ -618,6 +775,7 @@ with feed_col:
             )
 
             expander_label = f"{sig_label}  ·  {date_str}  ·  {source_label}"
+            
 
             with st.expander(expander_label, expanded=False):
                 st.markdown(
@@ -629,7 +787,7 @@ with feed_col:
                 if title:
                     st.markdown(f"**{title}**")
                 st.markdown(
-                    f"<span style='font-size:11px;color:#aaa;'>{sport} · "
+                    f"<span style='font-size:11px;color:{SUBTEXT};'>{sport} · "
                     f"sentiment: <span style='color:{sent_colour};'>{row['sentiment']} "
                     f"({row['sentiment_score']:.2f})</span> · "
                     f"affinity: {int(row['emotional_affinity_score'])}</span>",
@@ -637,7 +795,7 @@ with feed_col:
                 )
                 st.markdown("---")
                 st.markdown(
-                    f"<div style='font-size:13px;color:#333;line-height:1.6;white-space:pre-wrap;'>{text}</div>",
+                    f"<div style='font-size:13px;color:{TEXT_STRONG};line-height:1.6;white-space:pre-wrap;'>{text}</div>",
                     unsafe_allow_html=True,
                 )
             n_shown += 1
@@ -648,7 +806,6 @@ st.markdown("<div style='margin-top:16px;'></div>", unsafe_allow_html=True)
 
 st.markdown('<div class="section-header">Insight Panel — Ask FanVerse</div>', unsafe_allow_html=True)
 
-# Session state
 if "fanverse_query"     not in st.session_state:
     st.session_state["fanverse_query"]     = None
 if "fanverse_query_idx" not in st.session_state:
@@ -656,8 +813,7 @@ if "fanverse_query_idx" not in st.session_state:
 if "fanverse_insight"   not in st.session_state:
     st.session_state["fanverse_insight"]   = None
 
-# Preset query chips
-st.markdown("<div style='font-size:11px;color:#999;text-transform:uppercase;letter-spacing:1px;margin-bottom:8px;'>Preset queries</div>", unsafe_allow_html=True)
+st.markdown(f"<div style='font-size:11px;color:{TEXT_STRONG};text-transform:uppercase;letter-spacing:1px;font-weight:700;margin-bottom:8px;'>Preset queries</div>", unsafe_allow_html=True)
 chip_cols = st.columns(len(PRESET_QUERIES))
 for i, q in enumerate(PRESET_QUERIES):
     with chip_cols[i]:
@@ -666,7 +822,6 @@ for i, q in enumerate(PRESET_QUERIES):
             st.session_state["fanverse_query_idx"] = i
             st.session_state["fanverse_insight"]   = get_insight(q, signals, segments)
 
-# Free-text input
 st.markdown("<div style='margin-top:10px;'></div>", unsafe_allow_html=True)
 free_col, btn_col = st.columns([5, 1])
 with free_col:
@@ -683,14 +838,13 @@ with btn_col:
             st.session_state["fanverse_query_idx"] = None
             st.session_state["fanverse_insight"]   = get_insight(free_text.strip(), signals, segments)
 
-# Response card
 st.markdown("<div style='margin-top:14px;'></div>", unsafe_allow_html=True)
 insight = st.session_state["fanverse_insight"]
 
 if insight is None:
     st.markdown(
-        "<div style='background:#fafafa;border:1px solid #eee;border-radius:8px;"
-        "padding:20px;text-align:center;color:#bbb;font-size:13px;'>"
+        f"<div style='background:{CARD_BG};border:1px solid {CARD_BORDER};border-radius:8px;"
+        f"padding:20px;text-align:center;color:{SUBTEXT};font-size:13px;'>"
         "Select a preset query or type your own to generate an insight."
         "</div>",
         unsafe_allow_html=True,
@@ -715,41 +869,41 @@ else:
 
     with r_finding:
         st.markdown(
-            "<div style='font-size:10px;font-weight:700;text-transform:uppercase;"
-            "letter-spacing:1px;color:#999;margin-bottom:6px;'>Finding</div>",
+            f"<div style='font-size:10px;font-weight:700;text-transform:uppercase;"
+            f"letter-spacing:1px;color:{SUBTEXT};margin-bottom:6px;'>Finding</div>",
             unsafe_allow_html=True,
         )
-        st.markdown(f"<div style='font-size:13px;color:#333;line-height:1.5;'>{insight['finding']}</div>", unsafe_allow_html=True)
+        st.markdown(f"<div style='font-size:13px;color:{TEXT_STRONG};line-height:1.5;'>{insight['finding']}</div>", unsafe_allow_html=True)
 
     with r_evidence:
         st.markdown(
-            "<div style='font-size:10px;font-weight:700;text-transform:uppercase;"
-            "letter-spacing:1px;color:#999;margin-bottom:6px;'>Evidence</div>",
+            f"<div style='font-size:10px;font-weight:700;text-transform:uppercase;"
+            f"letter-spacing:1px;color:{SUBTEXT};margin-bottom:6px;'>Evidence</div>",
             unsafe_allow_html=True,
         )
-        st.markdown(f"<div style='font-size:13px;color:#555;line-height:1.5;'>{insight['evidence']}</div>", unsafe_allow_html=True)
+        st.markdown(f"<div style='font-size:13px;color:{SUBTEXT};line-height:1.5;'>{insight['evidence']}</div>", unsafe_allow_html=True)
 
     with r_confidence:
         st.markdown(
-            "<div style='font-size:10px;font-weight:700;text-transform:uppercase;"
-            "letter-spacing:1px;color:#999;margin-bottom:6px;'>Confidence</div>",
+            f"<div style='font-size:10px;font-weight:700;text-transform:uppercase;"
+            f"letter-spacing:1px;color:{SUBTEXT};margin-bottom:6px;'>Confidence</div>",
             unsafe_allow_html=True,
         )
         st.markdown(
             f"<div style='font-size:38px;font-weight:700;color:{confidence_colour};line-height:1;'>"
             f"{insight['confidence']}%</div>"
-            f"<div style='font-size:11px;color:#aaa;margin-top:4px;'>signal match</div>",
+            f"<div style='font-size:11px;color:{SUBTEXT};margin-top:4px;'>signal match</div>",
             unsafe_allow_html=True,
         )
 
     with r_action:
         st.markdown(
-            "<div style='font-size:10px;font-weight:700;text-transform:uppercase;"
-            "letter-spacing:1px;color:#999;margin-bottom:6px;'>Recommended Action</div>",
+            f"<div style='font-size:10px;font-weight:700;text-transform:uppercase;"
+            f"letter-spacing:1px;color:{SUBTEXT};margin-bottom:6px;'>Recommended Action</div>",
             unsafe_allow_html=True,
         )
         st.markdown(
-            f"<div style='font-size:13px;color:#333;line-height:1.5;'>{insight['recommended_action']}</div>",
+            f"<div style='font-size:13px;color:{TEXT_STRONG};line-height:1.5;'>{insight['recommended_action']}</div>",
             unsafe_allow_html=True,
         )
 
@@ -800,12 +954,13 @@ with sim_chart_col:
     fig_sim.update_layout(
         height=340,
         margin=dict(l=0, r=0, t=40, b=0),
-        paper_bgcolor="white",
+        paper_bgcolor=PLOT_BG,
+        font=dict(color=TEXT_STRONG),
         legend=dict(
             orientation="v",
             yanchor="middle", y=0.5,
             xanchor="left", x=1.02,
-            font=dict(size=10),
+            font=dict(size=10, color=TEXT_STRONG),
         ),
     )
     st.plotly_chart(fig_sim, use_container_width=True)
@@ -814,14 +969,14 @@ with sim_summary_col:
     s = sim["summary"]
 
     st.markdown(
-        "<div style='background:#fafafa;border:1px solid #eee;border-radius:8px;padding:16px 18px;'>",
+        f"<div style='background:{CARD_BG};border:1px solid {CARD_BORDER};border-radius:8px;padding:16px 18px;'>",
         unsafe_allow_html=True,
     )
 
     def _metric_row(label: str, value: str, colour: str) -> None:
         st.markdown(
-            f"<div style='border-bottom:1px solid #f0f0f0;padding:8px 0;'>"
-            f"<div style='font-size:10px;color:#999;text-transform:uppercase;letter-spacing:1px;'>{label}</div>"
+            f"<div style='border-bottom:1px solid {GRID};padding:8px 0;'>"
+            f"<div style='font-size:10px;color:{SUBTEXT};text-transform:uppercase;letter-spacing:1px;'>{label}</div>"
             f"<div style='font-size:26px;font-weight:700;color:{colour};line-height:1.2;'>{value}</div>"
             f"</div>",
             unsafe_allow_html=True,
