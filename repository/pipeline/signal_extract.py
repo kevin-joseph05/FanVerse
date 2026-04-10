@@ -14,11 +14,20 @@ if len(sys.argv) < 2:
     sys.exit(1)
 
 CLIENT = sys.argv[1]
-REPO_PATH = Path(__file__).parent.parent / "data" / "clients" / f"{CLIENT}_repository.jsonl"
 OUTPUT_PATH = Path(__file__).parent.parent / "output" / f"repository_signals_{CLIENT}.json"
 
-if not REPO_PATH.exists():
-    print(f"ERROR: {REPO_PATH} not found")
+# Check for both _repository.jsonl and _raw.jsonl variants
+repo_path_repository = Path(__file__).parent.parent / "data" / "clients" / f"{CLIENT}_repository.jsonl"
+repo_path_raw = Path(__file__).parent.parent / "data" / "clients" / f"{CLIENT}_raw.jsonl"
+
+if repo_path_repository.exists():
+    REPO_PATH = repo_path_repository
+elif repo_path_raw.exists():
+    REPO_PATH = repo_path_raw
+else:
+    print(f"ERROR: Could not find data for '{CLIENT}'")
+    print(f"  Checked: {repo_path_repository}")
+    print(f"  Checked: {repo_path_raw}")
     sys.exit(1)
 
 # ---- LOAD MODELS ----
